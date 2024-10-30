@@ -3,8 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Artista(models.Model):
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
+    nombre_ape = models.CharField(max_length=255, default='Desconocido')
     fecha_nacimiento = models.DateField()
     fecha_fallecimiento = models.DateField(null=True, blank=True)
     biografia = models.TextField()
@@ -12,7 +11,7 @@ class Artista(models.Model):
     # foto = models.ImageField(upload_to='artistas', null=True, blank=True)
     
     def __str__(self):
-        return self.nombre + ' ' + self.apellido
+        return self.nombre_ape
     
 class Cuadro(models.Model):
     nombre = models.CharField(max_length=50)
@@ -23,7 +22,6 @@ class Cuadro(models.Model):
     dato_curioso = models.TextField(blank=True, null=True)
     dimensiones = models.CharField(max_length=50)
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE, related_name='cuadros')
-    
     
     def __str__(self):
         return self.nombre

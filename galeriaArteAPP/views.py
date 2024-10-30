@@ -3,9 +3,6 @@ from .models import Artista, Cuadro, Exposicion
 from django.http import JsonResponse
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello, world. You're at the galeriaArteAPP index.")
-
 def lista_artistas(request):
     artistas = Artista.objects.values()  
     return JsonResponse(list(artistas), safe=False)
