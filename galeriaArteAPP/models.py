@@ -8,7 +8,7 @@ class Artista(models.Model):
     fecha_fallecimiento = models.DateField(null=True, blank=True)
     biografia = models.TextField()
     nacionalidad = models.CharField(max_length=50)
-    # foto = models.ImageField(upload_to='artistas', null=True, blank=True)
+    #foto = models.URLField(blank=True, null=True)
     
     def __str__(self):
         return self.nombre_ape
