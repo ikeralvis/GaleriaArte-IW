@@ -12,7 +12,8 @@ class Artista(models.Model):
     
     def __str__(self):
         return self.nombre_ape
-    
+   
+
 class Cuadro(models.Model):
     nombre = models.CharField(max_length=50)
     fecha_creacion = models.DateField()
