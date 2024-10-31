@@ -22,6 +22,7 @@ class Cuadro(models.Model):
     dato_curioso = models.TextField(blank=True, null=True)
     dimensiones = models.CharField(max_length=50)
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE, related_name='cuadros')
+    foto = models.URLField(blank=True, null=True)
     
     def __str__(self):
         return self.nombre
@@ -31,7 +32,9 @@ class Exposicion(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     descripcion = models.TextField()
+    tipo = models.CharField(max_length=50, default='Temporal')
     cuadros = models.ManyToManyField(Cuadro)
+    foto = models.URLField(blank=True, null=True)
     
     def __str__(self):
         return self.nombre
