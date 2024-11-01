@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exposiciones</title>
+</head>
+<body>
+    <h1>Exposiciones</h1>
+
+    <!-- Formulario de filtros de fecha -->
+    <form method="get">
+        <label for="fecha_limite_inicio">Fecha de inicio:</label>
+        <input type="date" id="fecha_limite_inicio" name="fecha_limite_inicio" value="">
+
+        <label for="fecha_limite_fin">Fecha de fin:</label>
+        <input type="date" id="fecha_limite_fin" name="fecha_limite_fin" value="">
+
+        <button type="submit">Aplicar filtros</button>
+    </form>
+
+
+    <!-- Sección de exposiciones activas -->
+    <h2>Exposiciones Activas en el Rango</h2>
+    <ul>
+        {% for exposicion in exposiciones_activas %}
+            <li>
+                {{ exposicion.nombre }} - Del {{ exposicion.fecha_inicio }} al {{ exposicion.fecha_fin }}
+            </li>
+        {% empty %}
+            <li>No hay exposiciones activas en el rango seleccionado.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Sección de exposiciones pasadas -->
+    <h2>Exposiciones Pasadas</h2>
+    <ul>
+        {% for exposicion in exposiciones_acabadas %}
+            <li>
+                {{ exposicion.nombre }} - Del {{ exposicion.fecha_inicio }} al {{ exposicion.fecha_fin }}
+            </li>
+        {% empty %}
+            <li>No hay exposiciones pasadas antes de {{ fecha_limite_inicio }}.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Sección de exposiciones futuras -->
+    <h2>Exposiciones Futuras</h2>
+    <ul>
+        {% for exposicion in exposiciones_futuras %}
+            <li>
+                {{ exposicion.nombre }} - Del {{ exposicion.fecha_inicio }} al {{ exposicion.fecha_fin }}
+            </li>
+        {% empty %}
+            <li>No hay exposiciones futuras después de {{ fecha_limite_fin }}.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
