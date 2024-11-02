@@ -6,8 +6,8 @@ from datetime import timedelta
 
 # Create your views here.
 def lista_artistas(request):
-    artistas = Artista.objects.values()  
-    return JsonResponse(list(artistas), safe=False)
+    artistas = Artista.objects.all()
+    return render(request, 'artistas.html', {'artistas': artistas})
 
 def lista_cuadros(request):
     cuadros = Cuadro.objects.values()

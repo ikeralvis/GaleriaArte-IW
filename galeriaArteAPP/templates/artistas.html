@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Artistas</title>
+</head>
+<body>
+    <h1>Artistas</h1>
+    <ul>
+        {% for artista in artistas %}
+            <li>{{ artista.nombre_ape }} - Nacionalidad: {{ artista.nacionalidad }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
