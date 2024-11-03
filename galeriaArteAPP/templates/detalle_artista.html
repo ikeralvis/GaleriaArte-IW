@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Artista</title>
+</head>
+<body>
+    <h1>{{ artista.nombre_ape }}</h1>
+    <p>Nacionalidad: {{ artista.nacionalidad }}</p>
+    <p>Fecha de nacimiento: {{ artista.fecha_nacimiento }}</p>
+    <p>Fecha de fallecimiento: {{ artista.fecha_fallecimiento }}</p>
+    <p>Biografía: {{ artista.biografia }}</p>
+    <h2>Obras</h2>
+    <ul>
+        {% for cuadro in artista.cuadros.all %}
+            <li>{{ cuadro.nombre }} ({{ cuadro.fecha_creacion }})</li>  
+        {% endfor %}
+    </ul>
+    <a href="{% url 'lista_artistas' %}">Volver a la lista de artistas</a>
+</body>
+</html>

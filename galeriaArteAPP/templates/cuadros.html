@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Cuadros</title>
+</head>
+<body>
+    <h1>Cuadros</h1>
+    <ul>
+        {% for cuadro in cuadros %}
+            <li>
+                <h2>{{ cuadro.nombre }}</h2>
+                <p><strong>Artista:</strong> {{ cuadro.artista.nombre_ape }}</p>
+                <p><strong>Fecha de Creación:</strong> {{ cuadro.fecha_creacion }}</p>
+                <p><strong>Descripción:</strong> {{ cuadro.descripcion }}</p>
+                <p><strong>Estilo:</strong> {{ cuadro.estilo }}</p>
+                <p><strong>Técnica:</strong> {{ cuadro.tecnica }}</p>
+                <p><strong>Dato Curioso:</strong> {{ cuadro.dato_curioso }}</p>
+                <p><strong>Dimensiones:</strong> {{ cuadro.dimensiones }}</p>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+    </ul>
+</body>
+</html>

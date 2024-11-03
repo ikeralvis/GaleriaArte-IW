@@ -5,10 +5,10 @@
     <title>Lista de Artistas</title>
 </head>
 <body>
-    <h1>Artistas</h1>
+    <h1>Lista de Artistas</h1>
     <ul>
         {% for artista in artistas %}
-            <li>{{ artista.nombre_ape }} - Nacionalidad: {{ artista.nacionalidad }}</li>
+            <li><a href="{% url 'detalle_artista' artista.id %}">{{ artista.nombre_ape }}</a></li>
         {% endfor %}
     </ul>
 </body>

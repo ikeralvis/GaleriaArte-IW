@@ -10,8 +10,8 @@ def lista_artistas(request):
     return render(request, 'artistas.html', {'artistas': artistas})
 
 def lista_cuadros(request):
-    cuadros = Cuadro.objects.values()
-    return JsonResponse(list(cuadros), safe=False)
+    cuadros = Cuadro.objects.all()
+    return render(request, 'cuadros.html', {'cuadros': cuadros})
 
 def lista_exposiciones(request, 
                        fecha_limite_inicio = timezone.now().date(), 
@@ -59,3 +59,6 @@ def lista_exposiciones(request,
         'fecha_limite_fin': fecha_limite_fin,
     })
 
+def detalle_artista(request, artista_id):
+    artista = get_object_or_404(Artista, pk=artista_id)
+    return render(request, 'detalle_artista.html', {'artista': artista})
