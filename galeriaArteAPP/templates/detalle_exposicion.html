@@ -1,0 +1,39 @@
+<!-- detalle_exposicion.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ exposicion.nombre }}</title>
+    
+</head>
+<body>
+    <div class="exposicion-header">
+        <h1>{{ exposicion.nombre }}</h1>
+        {% if exposicion.foto %}
+            <img src="{{ exposicion.foto }}" alt="Foto de {{ exposicion.nombre }}">
+        {% endif %}
+    </div>
+
+    <div class="exposicion-info">
+        <p><strong>Descripción:</strong> {{ exposicion.descripcion }}</p>
+        <p><strong>Tipo:</strong> {{ exposicion.tipo }}</p>
+        <p><strong>Fecha de inicio:</strong> {{ exposicion.fecha_inicio }}</p>
+        <p><strong>Fecha de fin:</strong> {{ exposicion.fecha_fin }}</p>
+    </div>
+
+    <div class="cuadros-list">
+        <h2>Cuadros en esta exposición</h2>
+        {% if exposicion.cuadros.exists %}
+            <ul>
+                {% for cuadro in exposicion.cuadros.all %}
+                    <li>{{ cuadro.nombre }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay cuadros asociados con esta exposición.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'listaE' %}">Volver a la lista de exposiciones</a>
+</body>
+</html>

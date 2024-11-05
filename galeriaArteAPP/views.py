@@ -51,13 +51,17 @@ def lista_exposiciones(request,
     ).order_by('fecha_inicio')
 
     # Pasar los conjuntos de exposiciones y las fechas límite al template
-    return render(request, 'exposiciones.html', {
+    return render(request, 'lista_exposiciones.html', {
         'exposiciones_activas': exposiciones_activas,
         'exposiciones_acabadas': exposiciones_acabadas,
         'exposiciones_futuras': exposiciones_futuras,
         'fecha_limite_inicio': fecha_limite_inicio,
         'fecha_limite_fin': fecha_limite_fin,
     })
+
+def detalle_exposicion(request, id):
+    exposicion = get_object_or_404(Exposicion, pk = id)
+    return render(request, "detalle_exposicion.html", {"exposicion": exposicion})
 
 def detalle_artista(request, artista_id):
     artista = get_object_or_404(Artista, pk=artista_id)
