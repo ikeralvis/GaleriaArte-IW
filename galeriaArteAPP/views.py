@@ -73,7 +73,3 @@ def index(request):
 def detalle_cuadro(request, cuadro_id):
     cuadro = get_object_or_404(Cuadro, pk=cuadro_id)
     return render(request, 'detalle_cuadro.html', {'cuadro': cuadro})
-
-def detalle_exposicion(request, exposicion_id):
-    exposicion = get_object_or_404(Exposicion, pk=exposicion_id)
-    return render(request, 'detalle_exposicion.html', {'exposicion': exposicion})
