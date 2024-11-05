@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Cuadro</title>
+</head>
+<body>
+    <h1>Detalle Cuadro</h1>
+    <p>Nombre: {{cuadro.nombre}}</p>
+    <p>Fecha de creacion: {{cuadro. fecha_creacion}} </p>
+    <p>Técnica: {{cuadro.tecnica}}</p>
+    <p>Descripción: {{cuadro.descripcion}}</p>
+    <p>Estilo: {{cuadro.estilo}}</p>
+    <p>Estilo: {{cuadro.dato_curioso}}</p>
+    <p>Dimensiones: {{cuadro.dimensiones}}</p>
+    <p>Artista: {{cuadro.artista.nombre}}</p>
+    <p>Foto: {{cuadro.foto}}</p>
+    <a href="{% url 'lista_cuadros' %}">Volver a la lista de cuadros</a>
+</body>
+</html>
