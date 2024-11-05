@@ -62,3 +62,7 @@ def lista_exposiciones(request,
 def detalle_artista(request, artista_id):
     artista = get_object_or_404(Artista, pk=artista_id)
     return render(request, 'detalle_artista.html', {'artista': artista})
+                  
+def index(request):
+    exposiciones = Exposicion.objects.all()
+    return render(request, 'index.html', {'exposiciones': exposiciones})

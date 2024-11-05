@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>GaleriaArte</title>
+</head>
+
+<body>
+    {% for exposicion in exposiciones %}
+        <div class="exposicion">
+            <h2>{{ exposicion.nombre }}</h2>
+            <p>{{ exposicion.descripcion }}</p>
+            <p>Del {{ exposicion.fecha_inicio }} al {{ exposicion.fecha_fin }}</p>
+            <p>{{ exposicion.tipo}}</p>
+            <a href="{% url 'detalle_exposicion' exposicion.id %}">Descubrir exposicion</a>
+        </div>
+    {% endfor %}
+</body>
+</html>
