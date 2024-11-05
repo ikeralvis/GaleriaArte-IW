@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Artista, Cuadro, Exposicion
-from django.http import JsonResponse
 from django.utils import timezone
 from datetime import timedelta
 
@@ -66,3 +65,11 @@ def detalle_artista(request, artista_id):
 def index(request):
     exposiciones = Exposicion.objects.all()
     return render(request, 'index.html', {'exposiciones': exposiciones})
+
+def detalle_cuadro(request, cuadro_id):
+    cuadro = get_object_or_404(Cuadro, pk=cuadro_id)
+    return render(request, 'detalle_cuadro.html', {'cuadro': cuadro})
+
+def detalle_exposicion(request, exposicion_id):
+    exposicion = get_object_or_404(Exposicion, pk=exposicion_id)
+    return render(request, 'detalle_exposicion.html', {'exposicion': exposicion})
