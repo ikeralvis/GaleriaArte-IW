@@ -4,56 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exposiciones</title>
-</head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/lista_exposiciones.css' %}"> 
 <body>
     <h1>Exposiciones</h1>
 
     <!-- Formulario de filtros de fecha -->
     <form method="get">
-        <label for="fecha_limite_inicio">Fecha de inicio:</label>
-        <input type="date" id="fecha_limite_inicio" name="fecha_limite_inicio" value="">
+        <label for="inicio_rango">Fecha de inicio:</label>
+        <input type="date" id="inicio_rango" name="inicio_rango" value="{{ inicio_rango }}">
 
-        <label for="fecha_limite_fin">Fecha de fin:</label>
-        <input type="date" id="fecha_limite_fin" name="fecha_limite_fin" value="">
+        <label for="fin_rango">Fecha de fin:</label>
+        <input type="date" id="fin_rango" name="fin_rango" value="{{ fin_rango }}">
 
         <button type="submit">Aplicar filtros</button>
     </form>
+    <a href="{% url 'listaE' %}">Borrar todos los filtros</a>
 
+    <!-- Título condicional según los filtros aplicados -->
+    {% if not inicio_rango %}
+        {% if not fin_rango %}
+            <h2>Todas las exposiciones</h2>
+        {% else %}
+            <h2>Exposiciones anteriores al {{ fin_rango }}</h2>
+        {% endif %}
 
-    <!-- Sección de exposiciones activas -->
-    <h2>Exposiciones Activas en el Rango</h2>
-    <ul>
+    {% elif not fin_rango %}
+        <h2>Exposiciones posteriores al {{ inicio_rango }}</h2>
+
+    {% else %}
+        {% if inicio_rango == fin_rango %}
+            <h2>Exposiciones el {{ inicio_rango }}</h2>
+        {% else %}
+            <h2>Exposiciones entre el {{ inicio_rango }} y el {{ fin_rango }}</h2>
+        {% endif %}
+    {% endif %}
+
+    <div class = "lista_exposiciones">
+
         {% for exposicion in exposiciones_activas %}
-            <li>
-                <a href="{% url 'detalle_exposicion' exposicion.id %}"> {{ exposicion.nombre }} - Del {{ exposicion.fecha_inicio }} al {{ exposicion.fecha_fin }} </a>
-            </li>
-        {% empty %}
-            <li>No hay exposiciones activas en el rango seleccionado.</li>
+            <a class = "activa enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+                {% if exposicion.foto %}
+                    <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
+                {% endif %}
+                <div class = "preview_exposicion">
+                    <h3> {{ exposicion.nombre }} </h3>
+                    <p>{{ exposicion.fecha_inicio }} - {{ exposicion.fecha_fin }} <span>Ya disponible</span></p>
+                </div>
+            </a>
         {% endfor %}
-    </ul>
 
-    <!-- Sección de exposiciones pasadas -->
-    <h2>Exposiciones Pasadas</h2>
-    <ul>
-        {% for exposicion in exposiciones_acabadas %}
-            <li>
-                <a href="{% url 'detalle_exposicion' exposicion.id %}"> {{ exposicion.nombre }} - Del {{ exposicion.fecha_inicio }} al {{ exposicion.fecha_fin }} </a>
-            </li>
-        {% empty %}
-            <li>No hay exposiciones pasadas antes de {{ fecha_limite_inicio }}.</li>
-        {% endfor %}
-    </ul>
-
-    <!-- Sección de exposiciones futuras -->
-    <h2>Exposiciones Futuras</h2>
-    <ul>
         {% for exposicion in exposiciones_futuras %}
-            <li>
-                <a href="{% url 'detalle_exposicion' exposicion.id %}"> {{ exposicion.nombre }} - Del {{ exposicion.fecha_inicio }} al {{ exposicion.fecha_fin }} </a>
-            </li>
-        {% empty %}
-            <li>No hay exposiciones futuras después de {{ fecha_limite_fin }}.</li>
+        <a class = "futura enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+            {% if exposicion.foto %}
+                <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
+            {% endif %}
+            <div class = "preview_exposicion">
+                <h3> {{ exposicion.nombre }} </h3>
+                <p>{{ exposicion.fecha_inicio }} - {{ exposicion.fecha_fin }} <span>Próximamente</span></p>
+            </div>
+        </a>
         {% endfor %}
-    </ul>
+
+        {% for exposicion in exposiciones_acabadas %}
+        <a class = "acabada enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+            {% if exposicion.foto %}
+            <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
+            {% endif %}
+            <div class = "preview_exposicion">
+                <h3> {{ exposicion.nombre }} </h3>
+                <p>{{ exposicion.fecha_inicio }} - {{ exposicion.fecha_fin }} <span>Finalizada</span></p>
+            </div>
+        </a>
+        {% endfor %}
+
+    </div>
+
 </body>
 </html>
