@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Artistas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/artistas.css' %}"> 
 </head>
 <body>
     <h1>Lista de Artistas</h1>
-    <ul>
+
+    <div class="lista_artistas">
         {% for artista in artistas %}
-            <li><a href="{% url 'detalle_artista' artista.id %}">{{ artista.nombre_ape }}</a></li>
+            <a class="enlace_artista" href="{% url 'detalle_artista' artista.id %}">
+                {% if artista.foto %}
+                    <img src="{{ artista.foto }}" alt="Imagen del artista">
+                {% endif %}
+                <div class="preview_artista">
+                    <div class="info_superpuesta">
+                        <h3>{{ artista.nombre_ape }}</h3>
+                        <p>{{ artista.estilo }}</p>
+                        <div class="info_hover"> 
+                            <hr>
+                            <p>{{ artista.biografia|truncatewords:20 }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>

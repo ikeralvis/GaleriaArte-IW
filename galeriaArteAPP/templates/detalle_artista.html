@@ -3,19 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalle del Artista</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/detalle_artista.css' %}">
 </head>
 <body>
-    <h1>{{ artista.nombre_ape }}</h1>
-    <p>Nacionalidad: {{ artista.nacionalidad }}</p>
-    <p>Fecha de nacimiento: {{ artista.fecha_nacimiento }}</p>
-    <p>Fecha de fallecimiento: {{ artista.fecha_fallecimiento }}</p>
-    <p>Biografía: {{ artista.biografia }}</p>
-    <h2>Obras</h2>
-    <ul>
-        {% for cuadro in artista.cuadros.all %}
-            <li>{{ cuadro.nombre }} ({{ cuadro.fecha_creacion }})</li>  
-        {% endfor %}
-    </ul>
-    <a href="{% url 'lista_artistas' %}">Volver a la lista de artistas</a>
+    <div class="container">
+        <header class="artista-header">
+            <h1>{{ artista.nombre_ape }}</h1>
+        </header>
+
+        <div class="artista-detalle">
+            {% if artista.foto %}
+                <img class="foto" src="{{ artista.foto }}" alt="Foto de {{ artista.nombre_ape }}">
+            {% endif %}
+
+            <div class="info">
+                <h2>Información</h2>
+                <p class="nacionalidad">{{ artista.nacionalidad }}</p>
+                <p><strong>Estilo:</strong> {{ artista.estilo }}</p>
+                <p><strong>Fecha de Nacimiento:</strong> {{ artista.fecha_nacimiento }}</p>
+                <p><strong>Fecha de Fallecimiento:</strong> {{ artista.fecha_fallecimiento }}</p>
+            </div>
+
+            <div class="biografia">
+                <h2>Biografía</h2>
+                <p>{{ artista.biografia }}</p>
+            </div>
+        </div>
+
+        {% if artista.cuadros.all %}
+            <section class="obras">
+                <h2>Obras Representativas</h2>
+                <div class="cuadros">
+                    {% for cuadro in artista.cuadros.all %}
+                        <div class="cuadro"> 
+                            {% if cuadro.foto %}
+                                <a href="{% url 'detalle_cuadro' cuadro.id %}">
+                                    <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}">
+                                </a>
+                            {% endif %}
+                            <h3>{{ cuadro.nombre }}</h3>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+        <a href="{% url 'lista_artistas' %}">Volver a la lista de artistas</a>
+    </div>
 </body>
 </html>

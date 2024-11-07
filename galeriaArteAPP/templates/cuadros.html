@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Cuadros</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cuadro.css' %}">
 </head>
 <body>
-    <h1>Cuadros</h1>
-    <ul>
-        {% for cuadro in cuadros %}
-            <li><a href="{% url 'detalle_cuadro' cuadro.id %}">{{cuadro.nombre}}</a></li>
-        {% endfor %}
-    </ul>
-    </ul>
+    <div class="container">
+        <header>
+            <h1>Cuadros</h1>
+        </header>
+        <div class="cuadros-lista">
+            {% for cuadro in cuadros %}
+                <div class="cuadro-item">
+                    <a href="{% url 'detalle_cuadro' cuadro.id %}">
+                        {% if cuadro.foto %}
+                            <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}" class="cuadro-imagen">
+                        {% endif %}
+                        <p class="cuadro-nombre">{{ cuadro.nombre }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="volver-link" href="{% url 'lista_artistas' %}">Volver a la lista de artistas</a>
+    </div>
 </body>
 </html>
