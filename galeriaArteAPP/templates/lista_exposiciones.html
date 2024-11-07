@@ -53,8 +53,17 @@
                     <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
                 {% endif %}
                 <div class = "preview_exposicion">
-                    <h3> {{ exposicion.nombre }} </h3>
-                    <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }} <span>Disponible</span></p>
+                    <div class = "info_superpuesta">
+                        <h3> {{ exposicion.nombre }} </h3>
+                        <div class = "info_disponibilidad">
+                            <p>Hasta el {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
+                            <p class = "etiqueta">Disponible</p>
+                        </div>
+                        <div class = "info_hover"> 
+                            <hr>
+                            <p>{{ exposicion.descripcion }}</p>
+                        </div>
+                    </div>
                 </div>
             </a>
         {% endfor %}
@@ -65,8 +74,17 @@
                 <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
             {% endif %}
             <div class = "preview_exposicion">
-                <h3> {{ exposicion.nombre }} </h3>
-                <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }} <span>Próximamente</span></p>
+                <div class = "info_superpuesta">
+                    <h3> {{ exposicion.nombre }} </h3>
+                    <div class = "info_disponibilidad">
+                        <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
+                        <p class = "etiqueta">Disponible</p>
+                    </div>
+                    <div class = "info_hover"> 
+                        <hr>
+                        <p>{{ exposicion.descripcion }}</p>
+                    </div>
+                </div>
             </div>
         </a>
         {% endfor %}
@@ -74,11 +92,20 @@
         {% for exposicion in exposiciones_acabadas %}
         <a class = "acabada enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
             {% if exposicion.foto %}
-            <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
+                <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
             {% endif %}
             <div class = "preview_exposicion">
-                <h3> {{ exposicion.nombre }} </h3>
-                <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }} <span>Finalizada</span></p>
+                <div class = "info_superpuesta">
+                    <h3> {{ exposicion.nombre }} </h3>
+                    <div class = "info_disponibilidad">
+                        <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
+                        <p class = "etiqueta">Disponible</p>
+                    </div>
+                    <div class = "info_hover"> 
+                        <hr>
+                        <p>{{ exposicion.descripcion }}</p>
+                    </div>
+                </div>
             </div>
         </a>
         {% endfor %}

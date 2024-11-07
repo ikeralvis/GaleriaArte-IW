@@ -57,7 +57,7 @@ class ListaExposiciones(View):
         exposiciones_futuras = exposiciones.filter(fecha_inicio__gt = fecha_actual)
         exposiciones_acabadas = exposiciones.filter(fecha_fin__lt = fecha_actual)
 
-        return {"exposiciones_activas": exposiciones_activas.order_by("fecha_inicio"), 
+        return {"exposiciones_activas": exposiciones_activas.order_by("fecha_fin"), 
                 "exposiciones_acabadas": exposiciones_acabadas.order_by("fecha_inicio"),
                 "exposiciones_futuras": exposiciones_futuras.order_by("fecha_inicio")}
 
