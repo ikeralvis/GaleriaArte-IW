@@ -6,20 +6,25 @@
     <title>Exposiciones</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/lista_exposiciones.css' %}"> 
+</head>
 <body>
     <h1>Exposiciones</h1>
 
     <!-- Formulario de filtros de fecha -->
     <form method="get">
-        <label for="inicio_rango">Fecha de inicio:</label>
-        <input type="date" id="inicio_rango" name="inicio_rango" value="{{ inicio_rango }}">
+        <fieldset>
+            <legend>Filtrar por fecha</legend>
 
-        <label for="fin_rango">Fecha de fin:</label>
-        <input type="date" id="fin_rango" name="fin_rango" value="{{ fin_rango }}">
+            <label for="inicio_rango">Del:</label>
+            <input type="date" id="inicio_rango" name="inicio_rango" value="{{ inicio_rango }}">
 
-        <button type="submit">Aplicar filtros</button>
+            <label for="fin_rango">Al:</label>
+            <input type="date" id="fin_rango" name="fin_rango" value="{{ fin_rango }}">
+
+            <button type="submit">Aplicar filtros</button>
+            <a href="{% url 'listaE' %}">Borrar todos los filtros</a>
+        </fieldset>
     </form>
-    <a href="{% url 'listaE' %}">Borrar todos los filtros</a>
 
     <!-- Título condicional según los filtros aplicados -->
     {% if not inicio_rango %}
@@ -49,7 +54,7 @@
                 {% endif %}
                 <div class = "preview_exposicion">
                     <h3> {{ exposicion.nombre }} </h3>
-                    <p>{{ exposicion.fecha_inicio }} - {{ exposicion.fecha_fin }} <span>Ya disponible</span></p>
+                    <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }} <span>Disponible</span></p>
                 </div>
             </a>
         {% endfor %}
@@ -61,7 +66,7 @@
             {% endif %}
             <div class = "preview_exposicion">
                 <h3> {{ exposicion.nombre }} </h3>
-                <p>{{ exposicion.fecha_inicio }} - {{ exposicion.fecha_fin }} <span>Próximamente</span></p>
+                <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }} <span>Próximamente</span></p>
             </div>
         </a>
         {% endfor %}
@@ -73,7 +78,7 @@
             {% endif %}
             <div class = "preview_exposicion">
                 <h3> {{ exposicion.nombre }} </h3>
-                <p>{{ exposicion.fecha_inicio }} - {{ exposicion.fecha_fin }} <span>Finalizada</span></p>
+                <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }} <span>Finalizada</span></p>
             </div>
         </a>
         {% endfor %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Artista, Cuadro, Exposicion
 from django.utils import timezone
-from datetime import timedelta
+from datetime import datetime
 from django.views import View
 
 # Create your views here.
@@ -24,9 +24,18 @@ class ListaExposiciones(View):
         # Llama al método filtrar()
         exposiciones = self.filtrar(inicio_rango, fin_rango)
 
-        # Pasa los conjuntos de exposiciones y el rango de fechas al template
+        # Formatea las fechas
+        if inicio_rango:
+            inicio_rango = datetime.strptime(inicio_rango, "%Y-%m-%d")  # Ajusta el formato si es necesario
+            inicio_rango = inicio_rango.strftime("%d/%m/%Y")  # Formato deseado
+        if fin_rango:
+            fin_rango = datetime.strptime(fin_rango, "%Y-%m-%d")  # Ajusta el formato si es necesario
+            fin_rango = fin_rango.strftime("%d/%m/%Y")  # Formato deseadoo
+            
         exposiciones["inicio_rango"] = inicio_rango
         exposiciones["fin_rango"] = fin_rango
+
+        # Pasa los conjuntos de exposiciones y el rango de fechas al template
         return render(request, 'lista_exposiciones.html', exposiciones)
 
     def filtrar(self, inicio_rango = None, fin_rango = None):
