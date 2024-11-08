@@ -36,7 +36,7 @@ class ListaExposiciones(View):
         exposiciones["fin_rango"] = fin_rango
 
         # Pasa los conjuntos de exposiciones y el rango de fechas al template
-        return render(request, 'lista_exposiciones.html', exposiciones)
+        return render(request, 'exposiciones.html', exposiciones)
 
     def filtrar(self, inicio_rango = None, fin_rango = None):
         """Devuelve las exposiciones que están disponibles en, al menos, 

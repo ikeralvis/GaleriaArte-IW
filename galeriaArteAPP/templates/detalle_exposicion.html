@@ -4,36 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ exposicion.nombre }}</title>
-    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/detalle_exposicion.css' %}"> 
 </head>
+
 <body>
-    <div class="exposicion-header">
-        <h1>{{ exposicion.nombre }}</h1>
-        {% if exposicion.foto %}
-            <img src="{{ exposicion.foto }}" alt="Foto de {{ exposicion.nombre }}">
+    <div class="container">
+
+        <header class="exposicion-header">
+            <h1>{{ exposicion.nombre }}</h1>
+        </header>
+
+        <div class="exposicion-detalle">
+            {% if exposicion.foto %}
+                <img class="foto" src="{{ exposicion.foto }}" alt="Foto de {{ exposicion.nombre }}">
+            {% endif %}
+
+            <div class="info">
+                <h2>Información</h2>
+                <p><strong>Fecha de inicio:</strong> {{ exposicion.fecha_inicio }}</p>
+                <p><strong>Fecha de fin:</strong> {{ exposicion.fecha_fin }}</p>
+                <p><strong>Descripción:</strong> {{ exposicion.descripcion }}</p>
+            </div>
+        </div>
+
+        {% if exposicion.cuadros.all %}
+            <section class="obras">
+                <h2>Obras de la exposición</h2>
+                <div class="cuadros">
+                    {% for cuadro in exposicion.cuadros.all %}
+                        <div class="cuadro"> 
+                            {% if cuadro.foto %}
+                                <a href="{% url 'detalle_cuadro' cuadro.id %}">
+                                    <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}">
+                                </a>
+                            {% endif %}
+                            <h3>{{ cuadro.nombre }}</h3>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
         {% endif %}
-    </div>
 
-    <div class="exposicion-info">
-        <p><strong>Descripción:</strong> {{ exposicion.descripcion }}</p>
-        <p><strong>Tipo:</strong> {{ exposicion.tipo }}</p>
-        <p><strong>Fecha de inicio:</strong> {{ exposicion.fecha_inicio }}</p>
-        <p><strong>Fecha de fin:</strong> {{ exposicion.fecha_fin }}</p>
+        <a href="{% url 'listaE' %}">Volver a la lista de exposiciones</a>
     </div>
-
-    <div class="cuadros-list">
-        <h2>Cuadros en esta exposición</h2>
-        {% if exposicion.cuadros.exists %}
-            <ul>
-                {% for cuadro in exposicion.cuadros.all %}
-                    <li>{{ cuadro.nombre }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No hay cuadros asociados con esta exposición.</p>
-        {% endif %}
-    </div>
-
-    <a href="{% url 'listaE' %}">Volver a la lista de exposiciones</a>
 </body>
 </html>

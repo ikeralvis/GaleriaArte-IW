@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exposiciones</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/lista_exposiciones.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/exposiciones.css' %}"> 
 </head>
 <body>
     <h1>Exposiciones</h1>
@@ -78,7 +78,7 @@
                     <h3> {{ exposicion.nombre }} </h3>
                     <div class = "info_disponibilidad">
                         <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                        <p class = "etiqueta">Disponible</p>
+                        <p class = "etiqueta">Próximamente</p>
                     </div>
                     <div class = "info_hover"> 
                         <hr>
@@ -99,7 +99,7 @@
                     <h3> {{ exposicion.nombre }} </h3>
                     <div class = "info_disponibilidad">
                         <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                        <p class = "etiqueta">Disponible</p>
+                        <p class = "etiqueta">Finalizada</p>
                     </div>
                     <div class = "info_hover"> 
                         <hr>
