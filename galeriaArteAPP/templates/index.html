@@ -2,20 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>GaleriaArte</title>
+    <title>Galería de Arte</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
-
 <body>
-    {% for exposicion in exposiciones %}
-        <div class="exposicion">
-            <h2>{{ exposicion.nombre }}</h2>
-            <p>{{ exposicion.descripcion }}</p>
-            <p>Del {{ exposicion.fecha_inicio }} al {{ exposicion.fecha_fin }}</p>
-            <p>{{ exposicion.tipo}}</p>
-            <a href="{% url 'detalle_exposicion' exposicion.id %}">Descubrir exposicion</a>
-        </div>
-    {% endfor %}
+    <header class="header">
+        <h1>Galería de Arte</h1>
+        <p>Explora las exposiciones, cuadros y artistas destacados.</p>
+    </header>
+
+    <main class="main-container">
+        <!-- Resumen de Exposiciones -->
+        <section class="section exposiciones">
+            <h2>Exposiciones</h2>
+            <p>Descubre nuestras colecciones y eventos.</p>
+            <a href="{% url 'lista_exposiciones' %}" class="ver-mas">Ver Exposiciones</a>
+        </section>
+
+        <!-- Resumen de Cuadros -->
+        <section class="section cuadros">
+            <h2>Cuadros</h2>
+            <p>Explora una selección de obras de arte.</p>
+            <a href="{% url 'lista_cuadros' %}" class="ver-mas">Ver Cuadros</a>
+        </section>
+
+        <!-- Resumen de Artistas -->
+        <section class="section artistas">
+            <h2>Artistas</h2>
+            <p>Conoce a los artistas y su legado.</p>
+            <a href="{% url 'lista_artistas' %}" class="ver-mas">Ver Artistas</a>
+        </section>
+    </main>
 </body>
 </html>

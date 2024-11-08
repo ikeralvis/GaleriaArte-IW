@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="{% static 'css/artistas.css' %}"> 
 </head>
 <body>
-    <h1>Lista de Artistas</h1>
+    <div class="container">
+        <header>
+            <h1>Artistas</h1>
+        </header>
 
-    <div class="lista_artistas">
+        <div class="lista_artistas">
         {% for artista in artistas %}
             <a class="enlace_artista" href="{% url 'detalle_artista' artista.id %}">
                 {% if artista.foto %}

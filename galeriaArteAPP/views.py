@@ -70,8 +70,7 @@ def detalle_artista(request, artista_id):
     return render(request, 'detalle_artista.html', {'artista': artista})
                   
 def index(request):
-    exposiciones = Exposicion.objects.all()
-    return render(request, 'index.html', {'exposiciones': exposiciones})
+    return render(request, 'index.html')
 
 def detalle_cuadro(request, cuadro_id):
     cuadro = get_object_or_404(Cuadro, pk=cuadro_id)
