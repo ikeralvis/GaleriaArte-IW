@@ -19,22 +19,25 @@ body {
     text-align: center;
 }
 
-header h1 {
+/* Header para Artistas */
+.header h1 {
     font-size: 2.5em;
     color: #4a4e69;
     margin-bottom: 30px;
+    text-align: center;
 }
 
-
 .lista_artistas {
-    display: flex;
-    flex-wrap: wrap;
+    display: flex; /* Ajusta la lista de artistas en una fila */
+    flex-wrap: wrap; /* Ajusta la lista de artistas en varias filas */
     gap: 20px;
+    justify-content: center;
+    
 }
 
 .enlace_artista {
-    display: block;
-    position: relative;
+    display: block; /* Ajusta el contenedor de la imagen y el texto en un bloque */
+    position: relative; /* Ajusta la posición de la imagen y el texto */
     width: 400px; /* Ajusta el ancho del contenedor para que sea más compacto */
     height: 300px; /* Ajusta la altura del contenedor */
     text-decoration: none;
@@ -53,9 +56,9 @@ header h1 {
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    transition: filter 0.3s ease-in;
+    transition: filter 0.3s ease-in; 
     /* Asegura que la imagen cubra el contenedor */
-    object-fit: cover; 
+    object-fit: cover;  
 }
 
 .preview_artista {
@@ -86,7 +89,6 @@ header h1 {
 
 /* Aplica una máscara de imagen con un degradado lineal 
 que va de opaco a transparente */
-
 .info_superpuesta {
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 200px, rgba(0, 0, 0, 0) 250px);
 }
@@ -119,4 +121,18 @@ al pasar el ratón por encima */
 /* Al pasar el ratón por encima, la imagen se desvanece */
 .enlace_artista:hover img {
     filter: opacity(0);
+}
+
+.volver-index {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4a4e69;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.volver-index:hover {
+    background-color: #22223b;
 }

@@ -1,69 +1,81 @@
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Ajusta que el tamaño total del elemento incluya el padding y el borde */
     margin: 0;
     padding: 0;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+    color: #fff;
+    background: url('https://cms.guggenheim-bilbao.eus/uploads/2022/12/obras-maestras-de-la-coleccion.jpg');
+    background-size: cover;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 50px 0;
 }
 
 .header h1 {
-    font-size: 2.5em;
-    color: #7563ae;
+    font-size: 3em;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .header p {
     font-size: 1.2em;
-    color: #555;
+    color: #e0e0e0;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
 }
 
 .main-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
-    width: 100%;
+    display: flex; /* Ajusta los elementos en una fila */
+    flex-direction: column; /* Ajusta la dirección de los elementos */
+    align-items: center; 
+    gap: 30px;
 }
 
 .section {
-    background: #fff;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Al pasar el mouse sobre la sección, se escala un 5% */
+.section:hover {
+    transform: scale(1.05);
 }
 
 .section h2 {
     font-size: 1.8em;
-    color: #7563ae;
+    color: #eaeaea;
+    margin-bottom: 10px;
 }
 
 .section p {
     font-size: 1em;
-    color: #666;
+    color: #ccc;
+    margin-bottom: 15px;
 }
 
 .ver-mas {
-    display: inline-block;
-    margin-top: 10px;
+    display: inline-block; /* Ajusta el botón en línea con el texto */
+    font-size: 1em;
     color: #fff;
-    background: #7563ae;
-    padding: 10px 15px;
-    text-decoration: none;
+    padding: 8px 20px;
+    border: 2px solid #7563ae;
     border-radius: 5px;
-    transition: background 0.3s;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .ver-mas:hover {
-    background: #5e4a9f;
+    background-color: #7563ae;
+    color: #ffffff;
 }

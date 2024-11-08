@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+
 .lista_exposiciones {
     display: flex;
     flex-wrap: wrap;
@@ -123,4 +131,17 @@
 .acabada .etiqueta {
     background-color: #878787;
 }
-            
+
+.volver-index {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4a4e69;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.volver-index:hover {
+    background-color: #22223b;
+}

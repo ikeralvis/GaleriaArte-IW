@@ -10,6 +10,7 @@
     <div class="container">
         <header>
             <h1>Cuadros</h1>
+            
         </header>
         <div class="cuadros-lista">
             {% for cuadro in cuadros %}
@@ -24,6 +25,7 @@
             {% endfor %}
         </div>
         <a class="volver-link" href="{% url 'lista_artistas' %}">Volver a la lista de artistas</a>
+        <a href="{% url 'index' %}" class="volver-index">Volver al Índice</a>
     </div>
 </body>
 </html>

@@ -72,3 +72,17 @@ header h1 {
 .volver-link:hover {
     background-color: #22223b;
 }
+
+.volver-index {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4a4e69;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.volver-index:hover {
+    background-color: #22223b;
+}
