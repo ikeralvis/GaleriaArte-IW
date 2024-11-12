@@ -13,7 +13,8 @@ body {
 .lista_exposiciones {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    justify-content: center;
+    gap: 40px;
 }
 
     .enlace_exposicion {
@@ -24,7 +25,7 @@ body {
         text-decoration: none;
         border-radius: 12px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.3s;
+        transition: box-shadow 0.5s;
         background: linear-gradient(to top, black, #7563ae);
         overflow: hidden;
     }
@@ -36,7 +37,7 @@ body {
         height: 100%;
         object-fit: cover;
         border-radius: 12px;
-        transition: filter 0.3s ease-in;
+        transition: filter 0.5s ease-in;
     }
 
 /* Información de la exposición */
@@ -91,13 +92,15 @@ body {
     height: 0px;
     overflow: hidden;
     text-align: justify;
-    transition: height 0.3s ease-out;
+    transition: height 0.4s ease-out;
 }
 
     .info_hover hr {
         border: none;
         border-top: 1px solid #e0e0e0;
         margin-top: 20px;
+        max-width: 0px;
+        transition: max-width 0.4s ease;
     }
 
 /* Muestra información adicional y animación con hover */
@@ -110,8 +113,12 @@ body {
     height: 400px;
 }
 
+.enlace_exposicion:hover .info_hover hr {
+    max-width: 600px;
+}
+
 .enlace_exposicion:hover img {
-    filter: opacity(0);
+    filter: blur(50px);
 }
 
 /* Código de colores en función de la disponibilidad */
