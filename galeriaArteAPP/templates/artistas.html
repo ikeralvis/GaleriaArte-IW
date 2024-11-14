@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Artistas</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/artistas.css' %}"> 
-</head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1>Artistas</h1>
+{% extends 'base.html' %}
 
-        </header>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/artistas.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="titulo">
+            <h1>Artistas</h1>
+        </div>
 
         <div class="lista_artistas">
             {% for artista in artistas %}
@@ -34,5 +32,4 @@
         </div>
         <a href="{% url 'index' %}" class="volver-index">Volver al Índice</a>
     </div>
-</body>
-</html>
+{% endblock %}

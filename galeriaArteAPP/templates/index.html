@@ -1,18 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Galería de Arte</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-</head>
-<body>
-    <header class="header">
-        <h1>Galería de Arte</h1>
-        <p>Explora las exposiciones, cuadros y artistas destacados.</p>
-    </header>
+{% extends 'base.html' %}
 
-    <main class="main-container">
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div>
+        <img class="hero-image-mobile" src="./assets/mobile/image-hero@2x.jpg" alt="Art Gallery Picture">
+        <div class="container">
+
+            <div class="hero-section">
+            <h1 class="heading-xl h1-heading">Galería de Arte</h1>
+            <div class="hero-text">
+                <p class="body-m hero-paragraph pb-64">The arts in the collection of the <span>Modern Art Gallery</span> all started from a spark of inspiration. Will these pieces inspire you? <span>Visit us and find out.</span></p>
+                <div class="btn">
+                <a class="btn-link" href="./location.html"> Our Location</a>
+                <a class="arrow-right" href="./location.html"><img src="./assets/icon-arrow-right.svg" alt="Arrow Button"></a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>  
+
+    <div class="main-container">
         <section class="section exposiciones">
             <h2>Exposiciones</h2>
             <p>Descubre nuestras colecciones y eventos.</p>
@@ -30,6 +40,5 @@
             <p>Conoce a los artistas y su legado.</p>
             <a href="{% url 'lista_artistas' %}" class="ver-mas">Ver Artistas</a>
         </section>
-    </main>
-</body>
-</html>
+    </div>
+{% endblock %}
