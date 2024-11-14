@@ -72,6 +72,9 @@ def detalle_artista(request, artista_id):
 def index(request):
     return render(request, 'index.html')
 
+def base(request):
+    return render(request, 'base.html')
+
 def detalle_cuadro(request, cuadro_id):
     cuadro = get_object_or_404(Cuadro, pk=cuadro_id)
     return render(request, 'detalle_cuadro.html', {'cuadro': cuadro})
