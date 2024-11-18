@@ -4,25 +4,23 @@
     <link rel="stylesheet" href="{% static 'css/cuadro.css' %}">
 {% endblock %}
 
-
-
-    <div class="container">
-        <div class = "titulo">
-            <h1>Cuadros</h1> 
-        </div>
-        <div class="cuadros-lista">
-            {% for cuadro in cuadros %}
-                <div class="cuadro-item">
-                    <a href="{% url 'detalle_cuadro' cuadro.id %}">
-                        {% if cuadro.foto %}
-                            <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}" class="cuadro-imagen">
-                        {% endif %}
-                        <p class="cuadro-nombre">{{ cuadro.nombre }}</p>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-        <a class="volver-link" href="{% url 'lista_artistas' %}">Volver a la lista de artistas</a>
-        <a href="{% url 'index' %}" class="volver-index">Volver al Índice</a>
+{% load i18n %}
+<div class="container">
+    <div class="titulo">
+        <h1>{% translate "Cuadros" %}</h1>
     </div>
-
+    <div class="cuadros-lista">
+        {% for cuadro in cuadros %}
+            <div class="cuadro-item">
+                <a href="{% url 'detalle_cuadro' cuadro.id %}">
+                    {% if cuadro.foto %}
+                        <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}" class="cuadro-imagen">
+                    {% endif %}
+                    <p class="cuadro-nombre">{{ cuadro.nombre }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <a class="volver-link" href="{% url 'lista_artistas' %}">{% translate "Volver a la lista de artistas" %}</a>
+    <a href="{% url 'index' %}" class="volver-index">{% translate "Volver al Índice" %}</a>
+</div>

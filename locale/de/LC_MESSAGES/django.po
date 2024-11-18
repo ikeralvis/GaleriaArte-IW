@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-18 20:22+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German <LL@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\galeriaArteAPP\templates\artistas.html:12
+msgid "Artistas"
+msgstr "Künstler"
+
+#: .\galeriaArteAPP\templates\artistas.html:19
+msgid "Imagen del artista"
+msgstr "Bild des Künstlers"
+
+#: .\galeriaArteAPP\templates\artistas.html:34
+#: .\galeriaArteAPP\templates\cuadros.html:25
+#: .\galeriaArteAPP\templates\exposiciones.html:117
+msgid "Volver al Índice"
+msgstr "Zurück zum Index"
+
+#: .\galeriaArteAPP\templates\cuadros.html:10
+msgid "Cuadros"
+msgstr "Gemälde"
+
+#: .\galeriaArteAPP\templates\cuadros.html:17
+#: .\galeriaArteAPP\templates\detalle_artista.html:48
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:19
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:40
+msgid "Imagen de"
+msgstr "Bild von"
+
+#: .\galeriaArteAPP\templates\cuadros.html:24
+#: .\galeriaArteAPP\templates\detalle_artista.html:57
+msgid "Volver a la lista de artistas"
+msgstr "Zurück zur Künstlerliste"
+
+#: .\galeriaArteAPP\templates\detalle_artista.html:5
+msgid "Detalle del Artista"
+msgstr "Künstlerdetails"
+
+#: .\galeriaArteAPP\templates\detalle_artista.html:18
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:21
+msgid "Foto de"
+msgstr "Foto von"
+
+#: .\galeriaArteAPP\templates\detalle_artista.html:22
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:25
+msgid "Información"
+msgstr "Informationen"
+
+#: .\galeriaArteAPP\templates\detalle_artista.html:24
+msgid "Nacionalidad:"
+msgstr "Nationalität:"
+
+#: .\galeriaArteAPP\templates\detalle_artista.html:27
+msgid "Fecha de Nacimiento:"
+msgstr "Geburtsdatum:"
+
+#: .\galeriaArteAPP\templates\detalle_artista.html:30
+msgid "Fecha de Fallecimiento:"
+msgstr "Todestag:"
+
+#: .\galeriaArteAPP\templates\detalle_artista.html:35
+msgid "Biografía"
+msgstr "Biografie"
+
+#: .\galeriaArteAPP\templates\detalle_artista.html:42
+msgid "Obras Representativas"
+msgstr "Vertretene Werke"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:5
+msgid "Detalle del Cuadro"
+msgstr "Gemäldedetails"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:25
+msgid "Fecha de Creación:"
+msgstr "Erstellungsdatum:"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:28
+msgid "Técnica:"
+msgstr "Technik:"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:31
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:28
+msgid "Descripción:"
+msgstr "Beschreibung:"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:34
+msgid "Estilo:"
+msgstr "Stil:"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:38
+msgid "Dato Curioso:"
+msgstr "Interessante Tatsache:"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:42
+msgid "Dimensiones:"
+msgstr "Abmessungen:"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:45
+msgid "Artista:"
+msgstr "Künstler:"
+
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:51
+msgid "Volver a la lista de cuadros"
+msgstr "Zurück zur Gemäldeliste"
+
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:26
+msgid "Fecha de inicio:"
+msgstr "Beginndatum:"
+
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:27
+msgid "Fecha de fin:"
+msgstr "Enddatum:"
+
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:34
+msgid "Obras de la exposición"
+msgstr "Werke der Ausstellung"
+
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:50
+msgid "Volver a la lista de exposiciones"
+msgstr "Zurück zur Ausstellungsübersicht"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:14
+msgid "Exposiciones"
+msgstr "Ausstellungen"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:19
+msgid "Filtrar"
+msgstr "Filtern"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:21
+msgid "Del:"
+msgstr "Vom:"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:24
+msgid "Al:"
+msgstr "Bis:"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:27
+msgid "Aplicar filtros:"
+msgstr "Filter anwenden:"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:28
+msgid "Borrar todos los filtros:"
+msgstr "Alle Filter löschen:"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:35
+msgid "Todas las exposiciones"
+msgstr "Alle Ausstellungen"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:37
+msgid "Exposiciones anteriores al"
+msgstr "Ausstellungen vor dem"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:41
+msgid "Exposiciones posteriores al"
+msgstr "Ausstellungen nach dem"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:45
+msgid "Exposiciones el"
+msgstr "Ausstellungen am"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:47
+msgid "Exposiciones entre el"
+msgstr "Ausstellungen zwischen dem"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:47
+msgid "y el"
+msgstr "und dem"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:62
+msgid "Hasta el"
+msgstr "Bis zum"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:84
+msgid "Próximamente"
+msgstr "Demnächst"

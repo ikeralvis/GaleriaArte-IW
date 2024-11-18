@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    {% load i18n %}
     <div class="container">
 
         <header class="exposicion-header">
@@ -17,26 +18,26 @@
 
         <div class="exposicion-detalle">
             {% if exposicion.foto %}
-                <img class="foto" src="{{ exposicion.foto }}" alt="Foto de {{ exposicion.nombre }}">
+                <img class="foto" src="{{ exposicion.foto }}" alt="{% translate "Foto de" %} {{ exposicion.nombre }}">
             {% endif %}
 
             <div class="info">
-                <h2>Información</h2>
-                <p><strong>Fecha de inicio:</strong> {{ exposicion.fecha_inicio }}</p>
-                <p><strong>Fecha de fin:</strong> {{ exposicion.fecha_fin }}</p>
-                <p><strong>Descripción:</strong> {{ exposicion.descripcion }}</p>
+                <h2>{% translate "Información" %}</h2>
+                <p><strong>{% translate "Fecha de inicio:" %}</strong> {{ exposicion.fecha_inicio }}</p>
+                <p><strong>{% translate "Fecha de fin:" %}</strong> {{ exposicion.fecha_fin }}</p>
+                <p><strong>{% translate "Descripción:" %}</strong> {{ exposicion.descripcion }}</p>
             </div>
         </div>
 
         {% if exposicion.cuadros.all %}
             <section class="obras">
-                <h2>Obras de la exposición</h2>
+                <h2>{% translate "Obras de la exposición" %}</h2>
                 <div class="cuadros">
                     {% for cuadro in exposicion.cuadros.all %}
                         <div class="cuadro"> 
                             {% if cuadro.foto %}
                                 <a href="{% url 'detalle_cuadro' cuadro.id %}">
-                                    <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}">
+                                    <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}">
                                 </a>
                             {% endif %}
                             <h3>{{ cuadro.nombre }}</h3>
@@ -46,7 +47,7 @@
             </section>
         {% endif %}
 
-        <a href="{% url 'lista_exposiciones' %}">Volver a la lista de exposiciones</a>
+        <a href="{% url 'lista_exposiciones' %}">{% translate "Volver a la lista de exposiciones" %}</a>
     </div>
 </body>
 </html>

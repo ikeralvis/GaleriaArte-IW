@@ -6,8 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    color: #fff;
-    background: url('https://cms.guggenheim-bilbao.eus/uploads/2022/12/obras-maestras-de-la-coleccion.jpg');
+    background-color: white; 
     background-size: cover;
 }
 

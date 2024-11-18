@@ -5,17 +5,18 @@
 {% endblock %}
 
 {% block content %}
+{% load i18n %}
     <div class="container">
 
         <div class="titulo">
-            <h1>Artistas</h1>
+            <h1>{% translate "Artistas" %}</h1>
         </div>
 
         <div class="lista_artistas">
             {% for artista in artistas %}
                 <a class="enlace_artista" href="{% url 'detalle_artista' artista.id %}">
                     {% if artista.foto %}
-                        <img src="{{ artista.foto }}" alt="Imagen del artista">
+                        <img src="{{ artista.foto }}" alt="{% translate 'Imagen del artista' %}">
                     {% endif %}
                     <div class="preview_artista">
                         <div class="info_superpuesta">
@@ -30,6 +31,6 @@
                 </a>
             {% endfor %}
         </div>
-        <a href="{% url 'index' %}" class="volver-index">Volver al Índice</a>
+        <a href="{% url 'index' %}" class="volver-index">{% translate 'Volver al Índice' %}</a>
     </div>
 {% endblock %}

@@ -8,40 +8,43 @@
     <link rel="stylesheet" href="{% static 'css/exposiciones.css' %}"> 
 </head>
 <body>
-    <h1>Exposiciones</h1>
+
+    {% load i18n %}
+
+    <h1>{% translate "Exposiciones" %}</h1>
 
     <!-- Formulario de filtros de fecha -->
     <form method="get">
         <fieldset>
-            <legend>Filtrar por fecha</legend>
+            <legend>{% translate "Filtrar" %}</legend>
 
-            <label for="inicio_rango">Del:</label>
+            <label for="inicio_rango">{% translate "Del:" %}</label>
             <input type="date" id="inicio_rango" name="inicio_rango" value="{{ inicio_rango }}">
 
-            <label for="fin_rango">Al:</label>
+            <label for="fin_rango">{% translate "Al:" %}</label>
             <input type="date" id="fin_rango" name="fin_rango" value="{{ fin_rango }}">
 
-            <button type="submit">Aplicar filtros</button>
-            <a href="{% url 'lista_exposiciones' %}">Borrar todos los filtros</a>
+            <button type="submit">{% translate "Aplicar filtros:" %}</button>
+            <a href="{% url 'lista_exposiciones' %}">{% translate "Borrar todos los filtros:" %}</a>
         </fieldset>
     </form>
 
     <!-- Título condicional según los filtros aplicados -->
     {% if not inicio_rango %}
         {% if not fin_rango %}
-            <h2>Todas las exposiciones</h2>
+            <h2>{% translate "Todas las exposiciones" %}</h2>
         {% else %}
-            <h2>Exposiciones anteriores al {{ fin_rango }}</h2>
+            <h2>{% translate "Exposiciones anteriores al" %} {{ fin_rango }}</h2>
         {% endif %}
 
     {% elif not fin_rango %}
-        <h2>Exposiciones posteriores al {{ inicio_rango }}</h2>
+        <h2>{% translate "Exposiciones posteriores al" %} {{ inicio_rango }}</h2>
 
     {% else %}
         {% if inicio_rango == fin_rango %}
-            <h2>Exposiciones el {{ inicio_rango }}</h2>
+            <h2>{% translate "Exposiciones el" %} {{ inicio_rango }}</h2>
         {% else %}
-            <h2>Exposiciones entre el {{ inicio_rango }} y el {{ fin_rango }}</h2>
+            <h2>{% translate "Exposiciones entre el" %} {{ inicio_rango }}  {% translate "y el"%} {{ fin_rango }}</h2>
         {% endif %}
     {% endif %}
 
@@ -56,7 +59,7 @@
                     <div class = "info_superpuesta">
                         <h3> {{ exposicion.nombre }} </h3>
                         <div class = "info_disponibilidad">
-                            <p>Hasta el {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
+                            <p>{% translate "Hasta el"%} {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
                             <p class = "etiqueta">Disponible</p>
                         </div>
                         <div class = "info_hover"> 
@@ -78,7 +81,7 @@
                     <h3> {{ exposicion.nombre }} </h3>
                     <div class = "info_disponibilidad">
                         <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                        <p class = "etiqueta">Próximamente</p>
+                        <p class = "etiqueta">{% translate "Próximamente" %}</p>
                     </div>
                     <div class = "info_hover"> 
                         <hr>
@@ -111,6 +114,6 @@
         {% endfor %}
         
     </div>
-    <a href="{% url 'index' %}" class="volver-index">Volver al Índice</a>
+    <a href="{% url 'index' %}" class="volver-index">{% translate "Volver al Índice"%}</a>
 </body>
 </html>
