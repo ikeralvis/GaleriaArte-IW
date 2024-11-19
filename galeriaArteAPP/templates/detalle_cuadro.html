@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load i18n %}
-    <meta charset="UTF-8">
-    <title>{% translate "Detalle del Cuadro" %}</title>
-    {% load static %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/detalle_cuadro.css' %}">
-</head>
-<body>   
+{% endblock %}
+
+{% block content %}
     <div class="container">
         <header class="titulo-header">
             <h1>{{ cuadro.nombre }}</h1>
@@ -50,5 +49,4 @@
 
         <a href="{% url 'lista_cuadros' %}" class="volver-link">{% translate "Volver a la lista de cuadros" %}</a>
     </div>
-</body>
-</html>
+{% endblock %}

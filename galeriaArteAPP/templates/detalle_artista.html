@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load i18n %}
-    <meta charset="UTF-8">
-    <title>{% translate "Detalle del Artista" %}</title>
-    {% load static %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/detalle_artista.css' %}">
-</head>
-<body>
-   
+{% endblock %}
+
+{% block content %}
     <div class="container">
         <header class="artista-header">
             <h1>{{ artista.nombre_ape }}</h1>
@@ -57,5 +55,4 @@
         {% endif %}
         <a href="{% url 'lista_artistas' %}">{% translate "Volver a la lista de artistas" %}</a>
     </div>
-</body>
-</html>
+{% endblock %}

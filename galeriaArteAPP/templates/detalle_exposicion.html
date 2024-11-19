@@ -1,15 +1,13 @@
-<!-- detalle_exposicion.html -->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ exposicion.nombre }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/detalle_exposicion.css' %}"> 
-</head>
 
-<body>
-    {% load i18n %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/detalle_exposicion.css' %}"> 
+{% endblock %}
+
+{% block content %}
     <div class="container">
 
         <header class="exposicion-header">
@@ -49,5 +47,4 @@
 
         <a href="{% url 'lista_exposiciones' %}">{% translate "Volver a la lista de exposiciones" %}</a>
     </div>
-</body>
-</html>
+{% endblock %}
