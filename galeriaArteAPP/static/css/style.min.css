@@ -188,9 +188,6 @@ span {
     filter: grayscale(100)
 }
 
-header {
-    background: linear-gradient(270deg, #fff 50%, hsla(0, 0%, 8%, 1) 50%)
-}
 
 .container {
     max-width: 69.375rem;
@@ -396,7 +393,7 @@ footer {
 }
 
 .simple-header {
-    width: 100%;
+    max-width: 100%;
     background-color: var(--black); 
     padding: 1rem 0;
 }
@@ -424,13 +421,10 @@ footer {
 
 
 
-@media (max-width:50rem) {
+@media (max-width:1000px) {
     .container {
-        max-width: 43.75rem
-    }
+        padding-inline: 1.25rem
 
-    header {
-        background: var(--white) url(assets/tablet/image-hero.jpg) no-repeat
     }
 
     .hero-section {
@@ -507,9 +501,9 @@ footer {
     }
 }
 
-@media (max-width:33.75rem) {
-    header {
-        background: var(--white)
+@media (max-width:100%) {
+    .container {
+        padding-inline: 1.25rem
     }
 
     .hero-section {
