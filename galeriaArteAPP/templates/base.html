@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,10 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>Art Gallery Website - correlucas</title>
-  {% load static %}
+
   {% block extra_css %}
   {% endblock %}
   <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+ 
 </head>
 
 <body>
@@ -24,8 +26,9 @@
         </ul>
       </nav>
     </header>
-
-    <article class="container">
+    {% block content %} {% endblock %}
+    
+    <!-- <article class="container">
 
       <div class="grid">
         <div class="top-feature-left">
@@ -59,7 +62,9 @@
         </div>
       </div>
 
-    </article>
+    </article> 
+  -->
+    
 
   </main>
 
