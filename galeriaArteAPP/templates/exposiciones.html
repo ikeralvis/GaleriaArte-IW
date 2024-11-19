@@ -7,12 +7,32 @@
 
 {% block content %}
 {% load i18n %}
-<h1>{% translate "Exposiciones" %}</h1>
+<div class="titulo">
+    <!-- Título condicional según los filtros aplicados -->
+    {% if not inicio_rango %}
+    {% if not fin_rango %}
+    <h1>{% translate "Todas las exposiciones" %}</h1>
+    {% else %}
+    <h1>{% translate "Exposiciones anteriores al" %} {{ fin_rango }}</h1>
+    {% endif %}
+
+    {% elif not fin_rango %}
+    <h1>{% translate "Exposiciones posteriores al" %} {{ inicio_rango }}</h1>
+
+    {% else %}
+    {% if inicio_rango == fin_rango %}
+    <h1>{% translate "Exposiciones el" %} {{ inicio_rango }}</h1>
+    {% else %}
+    <h1>{% translate "Exposiciones entre el" %} {{ inicio_rango }} {% translate "y el"%} {{ fin_rango }}</h1>
+    {% endif %}
+    {% endif %}
+</div>
 
 <!-- Formulario de filtros de fecha -->
 <form method="get">
     <fieldset>
         <legend>{% translate "Filtrar" %}</legend>
+        <p> PENDIENTE: Reimplementar con JS y añadir CSS </p>
 
         <label for="inicio_rango">{% translate "Del:" %}</label>
         <input type="date" id="inicio_rango" name="inicio_rango" value="{{ inicio_rango }}">
@@ -23,26 +43,7 @@
         <button type="submit">{% translate "Aplicar filtros:" %}</button>
         <a href="{% url 'lista_exposiciones' %}">{% translate "Borrar todos los filtros:" %}</a>
     </fieldset>
-</form>
-
-<!-- Título condicional según los filtros aplicados -->
-{% if not inicio_rango %}
-{% if not fin_rango %}
-<h2>{% translate "Todas las exposiciones" %}</h2>
-{% else %}
-<h2>{% translate "Exposiciones anteriores al" %} {{ fin_rango }}</h2>
-{% endif %}
-
-{% elif not fin_rango %}
-<h2>{% translate "Exposiciones posteriores al" %} {{ inicio_rango }}</h2>
-
-{% else %}
-{% if inicio_rango == fin_rango %}
-<h2>{% translate "Exposiciones el" %} {{ inicio_rango }}</h2>
-{% else %}
-<h2>{% translate "Exposiciones entre el" %} {{ inicio_rango }} {% translate "y el"%} {{ fin_rango }}</h2>
-{% endif %}
-{% endif %}
+</form><br>
 
 <div class="lista_exposiciones">
 

@@ -7,52 +7,51 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <header class="artista-header">
-            <h1>{{ artista.nombre_ape }}</h1>
-        </header>
+    <div class="titulo">
+        <h1>{{ artista.nombre_ape }}</h1>
+    </div>
 
-        <div class="artista-detalle">
-            {% if artista.foto %}
-                <img class="foto" src="{{ artista.foto }}" alt="{% translate "Foto de" %} {{ artista.nombre_ape }}">
-            {% endif %}
+    <div class="artista-detalle">
+        {% if artista.foto %}
+            <img class="foto" src="{{ artista.foto }}" alt="{% translate "Foto de" %} {{ artista.nombre_ape }}">
+        {% endif %}
 
-            <div class="info">
-                <h2>{% translate "Información" %}</h2>
-                <p class="nacionalidad">
-                    <strong>{% translate "Nacionalidad:" %}</strong> {{ artista.nacionalidad }}
-                </p>
-                <p>
-                    <strong>{% translate "Fecha de Nacimiento:" %}</strong> {{ artista.fecha_nacimiento }}
-                </p>
-                <p>
-                    <strong>{% translate "Fecha de Fallecimiento:" %}</strong> {{ artista.fecha_fallecimiento }}
-                </p>
-            </div>
-
-            <div class="biografia">
-                <h2>{% translate "Biografía" %}</h2>
-                <p>{{ artista.biografia }}</p>
-            </div>
+        <div class="info">
+            <h2>{% translate "Información" %}</h2>
+            <p class="nacionalidad">
+                <strong>{% translate "Nacionalidad:" %}</strong> {{ artista.nacionalidad }}
+            </p>
+            <p>
+                <strong>{% translate "Fecha de Nacimiento:" %}</strong> {{ artista.fecha_nacimiento }}
+            </p>
+            <p>
+                <strong>{% translate "Fecha de Fallecimiento:" %}</strong> {{ artista.fecha_fallecimiento }}
+            </p>
         </div>
 
-        {% if artista.cuadros.all %}
-            <section class="obras">
-                <h2>{% translate "Obras Representativas" %}</h2>
-                <div class="cuadros">
-                    {% for cuadro in artista.cuadros.all %}
-                        <div class="cuadro"> 
-                            {% if cuadro.foto %}
-                                <a href="{% url 'detalle_cuadro' cuadro.id %}">
-                                    <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}">
-                                </a>
-                            {% endif %}
-                            <h3>{{ cuadro.nombre }}</h3>
-                        </div>
-                    {% endfor %}
-                </div>
-            </section>
-        {% endif %}
-        <a href="{% url 'lista_artistas' %}">{% translate "Volver a la lista de artistas" %}</a>
+        <div class="biografia">
+            <h2>{% translate "Biografía" %}</h2>
+            <p>{{ artista.biografia }}</p>
+        </div>
     </div>
+
+    {% if artista.cuadros.all %}
+        <section class="obras">
+            <h2>{% translate "Obras Representativas" %}</h2>
+            <div class="cuadros">
+                {% for cuadro in artista.cuadros.all %}
+                    <div class="cuadro"> 
+                        {% if cuadro.foto %}
+                            <a href="{% url 'detalle_cuadro' cuadro.id %}">
+                                <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}">
+                            </a>
+                        {% endif %}
+                        <h3>{{ cuadro.nombre }}</h3>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+    <a href="{% url 'lista_artistas' %}">{% translate "Volver a la lista de artistas" %}</a>
+    
 {% endblock %}

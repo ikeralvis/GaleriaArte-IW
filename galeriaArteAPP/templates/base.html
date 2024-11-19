@@ -10,69 +10,30 @@
 
   {% block extra_css %}
   {% endblock %}
-  <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
  
 </head>
 
 <body>
+  <header class="simple-header">
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'lista_exposiciones' %}">Exposiciones</a></li>
+        <li><a href="{% url 'lista_artistas' %}">Artistas</a></li>
+        <li><a href="{% url 'lista_cuadros' %}">Cuadros</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
-    <header class="simple-header">
-      <nav>
-        <ul>
-          <li><a href="{% url 'index' %}">Inicio</a></li>
-          <li><a href="{% url 'lista_exposiciones' %}">Exposiciones</a></li>
-          <li><a href="{% url 'lista_artistas' %}">Artistas</a></li>
-          <li><a href="{% url 'lista_cuadros' %}">Cuadro</a></li>
-        </ul>
-      </nav>
-    </header>
     {% block content %} {% endblock %}
-    
-    <!-- <article class="container">
-
-      <div class="grid">
-        <div class="top-feature-left">
-          <h2 class="heading-m">Your Day At The Gallery</h2>
-          <p class="body-m">Wander through our distinct collections and find new about our artists. Dive into the
-            details of their creative process.</p>
-        </div>
-
-        <picture class="top-feature-right">
-          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-1@2x.jpg">
-          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-1@2x.jpg">
-          <img src="./assets/desktop/image-grid-1@2x.jpg" alt="Art Gallery Exposition">
-        </picture>
-
-        <picture class="left-feature">
-          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-2@2x.jpg">
-          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-2@2x.jpg">
-          <img src="./assets/desktop/image-grid-2@2x.jpg" alt="Art Gallery seat">
-        </picture>
-
-        <picture class="right-feature-1">
-          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-3@2x.jpg">
-          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-3@2x.jpg">
-          <img src="./assets/desktop/image-grid-3@2x.jpg" alt="Art Gallery People">
-        </picture>
-
-        <div class="right-feature-2">
-          <h2 class="heading-m white">Come & Be Inspired</h2>
-          <p class="body-m-white">We’re excited to welcome you to our gallery and see how our collections influence you.
-          </p>
-        </div>
-      </div>
-
-    </article> 
-  -->
-    
-
   </main>
 
   <footer>
-
     <div class="container flex">
 
-      <img class="logo" src="./assets/logo-light.svg" alt="">
+      <img class="logo" src="{% static 'assets/logo-light.svg' %}" alt="">
 
       <p class="body-xs">The Modern Art Gallery is free to all visitors and open seven days a week from 8am to 9pm. Find
         us at 99 King Street, Newport, USA.</p>
@@ -101,14 +62,10 @@
           </svg>
         </a>
 
-
-
       </div>
 
     </div>
-
-    <script src="script.js"></script>
   </footer>
-</body>
 
+</body>
 </html>

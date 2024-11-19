@@ -7,7 +7,7 @@
 
 {% block content %}
     <div>
-        <img class="hero-image-mobile" src="./assets/mobile/image-hero@2x.jpg" alt="Art Gallery Picture">
+        <img class="hero-image-mobile" src="{% static 'assets/mobile/image-hero@2x.jpg' %}" alt="Art Gallery Picture">
         <div class="container">
 
             <div class="hero-section">
@@ -16,7 +16,7 @@
                 <p class="body-m hero-paragraph pb-64">Visita esta estupenda exposición exclusva de nuestra galeria de arte.  </p>
                 <div class="btn">
                 <a class="btn-link" href="{% url 'lista_exposiciones' %}"> Ver la exposición</a>
-                <a class="arrow-right" href="{% url 'lista_exposiciones' %}"><img src="../css/assets/icon-arrow-right.svg" alt="Arrow Button"></a>
+                <a class="arrow-right" href="{% url 'lista_exposiciones' %}"><img src="{% static 'assets/icon-arrow-right.svg' %}" alt="Arrow Button"></a>
                 </div>
             </div>
             </div>
@@ -42,4 +42,41 @@
             <a href="{% url 'lista_artistas' %}" class="ver-mas">Ver Artistas</a>
         </section>
     </div>
+
+  <!-- <article class="container">
+
+      <div class="grid">
+        <div class="top-feature-left">
+          <h2 class="heading-m">Your Day At The Gallery</h2>
+          <p class="body-m">Wander through our distinct collections and find new about our artists. Dive into the
+            details of their creative process.</p>
+        </div>
+
+        <picture class="top-feature-right">
+          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-1@2x.jpg">
+          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-1@2x.jpg">
+          <img src="./assets/desktop/image-grid-1@2x.jpg" alt="Art Gallery Exposition">
+        </picture>
+
+        <picture class="left-feature">
+          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-2@2x.jpg">
+          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-2@2x.jpg">
+          <img src="./assets/desktop/image-grid-2@2x.jpg" alt="Art Gallery seat">
+        </picture>
+
+        <picture class="right-feature-1">
+          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-3@2x.jpg">
+          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-3@2x.jpg">
+          <img src="./assets/desktop/image-grid-3@2x.jpg" alt="Art Gallery People">
+        </picture>
+
+        <div class="right-feature-2">
+          <h2 class="heading-m white">Come & Be Inspired</h2>
+          <p class="body-m-white">We’re excited to welcome you to our gallery and see how our collections influence you.
+          </p>
+        </div>
+      </div>
+
+    </article> 
+  -->
 {% endblock %}

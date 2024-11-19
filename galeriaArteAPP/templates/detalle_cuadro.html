@@ -7,46 +7,45 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <header class="titulo-header">
-            <h1>{{ cuadro.nombre }}</h1>
-        </header>
+    <div class="titulo">
+        <h1>{{ cuadro.nombre }}</h1>
+    </div>
 
-        <div class="detalle-cuadro">
-            <div class="cuadro-imagen">
-                {% if cuadro.foto %}
-                    <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}" class="imagen-detalle">
-                {% endif %}
-            </div>
-
-            <div class="informacion">
-                <p>
-                    <strong>{% translate "Fecha de Creación:" %}</strong> {{ cuadro.fecha_creacion }}
-                </p>
-                <p>
-                    <strong>{% translate "Técnica:" %}</strong> {{ cuadro.tecnica }}
-                </p>
-                <p>
-                    <strong>{% translate "Descripción:" %}</strong> {{ cuadro.descripcion }}
-                </p>
-                <p>
-                    <strong>{% translate "Estilo:" %}</strong> {{ cuadro.estilo }}
-                </p>
-                {% if cuadro.dato_curioso %}
-                    <p>
-                        <strong>{% translate "Dato Curioso:" %}</strong> {{ cuadro.dato_curioso }}
-                    </p>
-                {% endif %}
-                <p>
-                    <strong>{% translate "Dimensiones:" %}</strong> {{ cuadro.dimensiones }}
-                </p>
-                <p>
-                    <strong>{% translate "Artista:" %}</strong>
-                    <a href="{% url 'detalle_artista' cuadro.artista.id %}">{{ cuadro.artista.nombre_ape }}</a>
-                </p>
-            </div>
+    <div class="detalle-cuadro">
+        <div class="cuadro-imagen">
+            {% if cuadro.foto %}
+                <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}" class="imagen-detalle">
+            {% endif %}
         </div>
 
-        <a href="{% url 'lista_cuadros' %}" class="volver-link">{% translate "Volver a la lista de cuadros" %}</a>
+        <div class="informacion">
+            <p>
+                <strong>{% translate "Fecha de Creación:" %}</strong> {{ cuadro.fecha_creacion }}
+            </p>
+            <p>
+                <strong>{% translate "Técnica:" %}</strong> {{ cuadro.tecnica }}
+            </p>
+            <p>
+                <strong>{% translate "Descripción:" %}</strong> {{ cuadro.descripcion }}
+            </p>
+            <p>
+                <strong>{% translate "Estilo:" %}</strong> {{ cuadro.estilo }}
+            </p>
+            {% if cuadro.dato_curioso %}
+                <p>
+                    <strong>{% translate "Dato Curioso:" %}</strong> {{ cuadro.dato_curioso }}
+                </p>
+            {% endif %}
+            <p>
+                <strong>{% translate "Dimensiones:" %}</strong> {{ cuadro.dimensiones }}
+            </p>
+            <p>
+                <strong>{% translate "Artista:" %}</strong>
+                <a href="{% url 'detalle_artista' cuadro.artista.id %}">{{ cuadro.artista.nombre_ape }}</a>
+            </p>
+        </div>
     </div>
+
+    <a href="{% url 'lista_cuadros' %}" class="volver-link">{% translate "Volver a la lista de cuadros" %}</a>
+
 {% endblock %}

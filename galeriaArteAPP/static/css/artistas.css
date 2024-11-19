@@ -1,32 +1,3 @@
-* {
-    /* Ajusta que el calculo de las dimensiones incluya el padding y el borde */
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    padding: 0px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Header para Artistas */
-.titulo h1 {
-    font-size: 2.5em;
-    color: #4a4e69;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
 .lista_artistas {
     display: flex; /* Ajusta la lista de artistas en una fila */
     flex-wrap: wrap; /* Ajusta la lista de artistas en varias filas */

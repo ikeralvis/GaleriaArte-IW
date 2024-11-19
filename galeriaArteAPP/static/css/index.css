@@ -1,33 +1,4 @@
-* {
-    box-sizing: border-box; /* Ajusta que el tamaño total del elemento incluya el padding y el borde */
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: white; 
-    background-size: cover;
-}
-
-.header {
-    text-align: center;
-    margin: 50px 0;
-}
-
-.header h1 {
-    font-size: 3em;
-    font-weight: bold;
-    color: #ffffff;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-.header p {
-    font-size: 1.2em;
-    color: #e0e0e0;
-    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
-    margin-top: 10px;
-}
+/*************** LISTA DE VER MÁS ********************/
 
 .main-container {
     display: flex; /* Ajusta los elementos en una fila */
@@ -77,4 +48,350 @@ body {
 .ver-mas:hover {
     background-color: #7563ae;
     color: #ffffff;
+}
+
+/*********************** PORTADA SUPERIOR ************************/
+
+/* Botón principal */
+
+.btn {
+    display: flex;
+    max-width: 16.25rem;
+    z-index: 1;
+    background-color: var(--black);
+    justify-content: flex-end
+}
+
+.btn-2 {
+    display: flex;
+    max-width: 16.25rem;
+    z-index: 1;
+    background-color: var(--black);
+    justify-content: flex-end;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    flex-direction: row-reverse
+}
+
+.btn-link {
+    padding: 1.5rem 2.1875rem;
+    font: 600 1.25rem/1.5rem 'Big Shoulders Display', sans-serif;
+    letter-spacing: .2rem;
+    color: var(--white);
+    text-transform: uppercase;
+    transition: all ease .3s
+}
+
+.btn-2:hover,
+.btn:hover {
+    background-color: var(--brown);
+    transition: all ease .3s
+}
+
+.arrow-left,
+.arrow-right {
+    padding: 1rem;
+    background-color: var(--brown);
+    transition: all ease .3s
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+    background-color: var(--black);
+    transition: all ease .3s
+}
+
+.btn-link:hover~.arrow-right {
+    background-color: var(--black);
+    transition: all ease .3s
+}
+.btn-link:hover {
+    background-color: var(--brown)
+}
+
+.arrow-left img,
+.arrow-right img {
+    padding: .625rem
+}
+
+/* Imagen de fondo */
+.hero-section {
+    display: flex;
+    padding-block: 11.875rem 18.75rem;
+    margin-bottom: 11.25rem;
+    background-repeat: no-repeat;
+    background-image: url("../assets/desktop/image-hero.jpg");
+    background-position: 50% 50%;
+    justify-content: space-between
+}
+.hero-image-mobile {
+    display: none
+}
+
+/* Título principal (Galería de Arte) */
+.h1-heading {
+    max-width: 28.125rem;
+    mix-blend-mode: difference;
+    color: var(--white) !important;
+}
+
+/* Párrafo derecho */
+.hero-paragraph {
+    max-width: 18.75rem
+}
+
+/* Padding del párrafo derecho respecto al botón principal */
+.pb-64 {
+    padding-bottom: 4rem
+}
+
+/******************* GRID DE CUADROS Y EXPOSICIONES *******************/
+/*
+.grid {
+    display: grid;
+    gap: 1.875rem;
+    margin-block: 11.25rem;
+    max-width: 100%;
+    grid-template-columns: 1fr 10rem 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: 't1 t2 t2' 'l1 l1 r1' 'l1 l1 r2';
+    transition: all ease .5s
+}
+
+.top-feature-left {
+    display: flex;
+    flex-direction: column;
+    padding: 3.125rem;
+    gap: 2rem;
+    background-color: #ececec;
+    grid-area: t1
+}
+
+.top-feature-right {
+    display: flex;
+    grid-area: t2;
+    max-width: 100%;
+    overflow: hidden
+}
+
+.left-feature {
+    display: flex;
+    grid-area: l1;
+    max-width: 100%;
+    overflow: hidden
+}
+
+.right-feature-1 {
+    display: flex;
+    grid-area: r1;
+    max-width: 100%;
+    overflow: hidden
+}
+
+.right-feature-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    grid-area: r2;
+    max-width: 100%;
+    padding: 3.125rem;
+    background-color: var(--black)
+}
+
+.left-feature img,
+.top-feature-right img {
+    transform: scale(1);
+    transition: all ease 1s
+}
+
+.left-feature img:hover,
+.right-feature-1 img:hover,
+.top-feature-right img:hover {
+    transform: scale(1.05);
+    transition: all ease .5s
+}
+*/
+
+/********* ANIMACIÓN AL CARGAR LA PÁGINA **********/
+
+@keyframes animateBackground {
+    0% {
+        background-position: 50% -2000%
+    }
+
+    100% {
+        background-position: 50% 50%
+    }
+}
+
+@keyframes slideInTop {
+    0% {
+        transform: translateY(-9.375rem);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes appear {
+    0% {
+        opacity: 0
+    }
+
+    40% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0
+    }
+
+    40% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.hero-text,
+h1 {
+    -webkit-animation: slideInTop ease-out 2s;
+    animation: slideInTop ease-out 2s;;
+    transition: all ease-out 1.5s;
+    animation-delay: .6s
+}
+
+.hero-section {
+    -webkit-animation: animateBackground ease-out 2s;
+    animation: animateBackground ease-out 2s;;
+    transition: all ease-in 1.5s;
+    animation-delay: .5s
+}
+
+/************************ MEDIA QUERIES **************************/
+
+@media (max-width:1000px) {
+
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        padding-block: 6.25rem;
+        margin-bottom: 0;
+        background-image: initial
+    }
+
+    .hero-text {
+        grid-column: 2
+    }
+
+    .pb-64 {
+        padding-bottom: 3rem
+    }
+
+    .grid {
+        display: grid;
+        gap: 1.25rem;
+        margin-block: 11.25rem;
+        max-width: 100%;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: 't1 t2 t2' 'l1 l1 r1' 'l1 l1 r2'
+    }
+
+    .top-feature-left {
+        padding: 2.875rem;
+        align-items: center;
+        justify-content: flex-start
+    }
+}
+
+@media (max-width:100%) {
+
+    .hero-section {
+        display: flex;
+        gap: 2.25rem;
+        padding-block: 2.25rem;
+        flex-direction: column
+    }
+
+    .hero-image-mobile {
+        display: flex;
+        object-fit: cover;
+        max-width: 100%
+    }
+
+    .hero-paragraph {
+        max-width: 100%
+    }
+
+    .btn-link {
+        padding: .5rem 1rem;
+        font: 600 .75rem/1.25rem 'Big Shoulders Display', sans-serif
+    }
+
+    .btn,
+    .btn-2 {
+        gap: .625rem;
+        max-width: 11.25rem;
+        align-items: center;
+        justify-content: space-between
+    }
+
+    .arrow-right {
+        padding: .5rem .375rem
+    }
+
+    .grid {
+        display: flex;
+        gap: 1.25rem;
+        margin-block: 2.5rem;
+        flex-direction: column
+    }
+}
+
+@media (hover:hover) {
+    .grid:hover>picture:not(:hover) {
+        filter: grayscale(100);
+        transition: all ease .5s
+    }
+
+    .grid:hover>picture {
+        filter: grayscale(0);
+        transition: all ease 1.5s
+    }
+
+    .grid img,
+    .grid picture {
+        filter: saturate(1);
+        transition: all ease 1.5s
+    }
+
+    .grid picture:hover {
+        filter: saturate(2);
+        transition: all ease .5s
+    }
+
+    .right-feature-2:hover,
+    .top-feature-left:hover {
+        filter: invert(100);
+        transition: all ease .5s
+    }
+
+    .top-feature-left:hover {
+        filter: invert(100);
+        transition: all ease .5s
+    }
 }
