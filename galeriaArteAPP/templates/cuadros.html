@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/cuadro.css' %}">
 {% endblock %}
 
+{% block content %}
 {% load i18n %}
 <div class="container">
     <div class="titulo">
@@ -24,3 +26,4 @@
     <a class="volver-link" href="{% url 'lista_artistas' %}">{% translate "Volver a la lista de artistas" %}</a>
     <a href="{% url 'index' %}" class="volver-index">{% translate "Volver al Índice" %}</a>
 </div>
+{% endblock %}

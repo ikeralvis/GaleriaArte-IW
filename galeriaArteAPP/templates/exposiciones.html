@@ -1,119 +1,114 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exposiciones</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/exposiciones.css' %}"> 
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-    {% load i18n %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/exposiciones.css' %}">
+{% endblock %}
 
-    <h1>{% translate "Exposiciones" %}</h1>
+{% block content %}
+{% load i18n %}
+<h1>{% translate "Exposiciones" %}</h1>
 
-    <!-- Formulario de filtros de fecha -->
-    <form method="get">
-        <fieldset>
-            <legend>{% translate "Filtrar" %}</legend>
+<!-- Formulario de filtros de fecha -->
+<form method="get">
+    <fieldset>
+        <legend>{% translate "Filtrar" %}</legend>
 
-            <label for="inicio_rango">{% translate "Del:" %}</label>
-            <input type="date" id="inicio_rango" name="inicio_rango" value="{{ inicio_rango }}">
+        <label for="inicio_rango">{% translate "Del:" %}</label>
+        <input type="date" id="inicio_rango" name="inicio_rango" value="{{ inicio_rango }}">
 
-            <label for="fin_rango">{% translate "Al:" %}</label>
-            <input type="date" id="fin_rango" name="fin_rango" value="{{ fin_rango }}">
+        <label for="fin_rango">{% translate "Al:" %}</label>
+        <input type="date" id="fin_rango" name="fin_rango" value="{{ fin_rango }}">
 
-            <button type="submit">{% translate "Aplicar filtros:" %}</button>
-            <a href="{% url 'lista_exposiciones' %}">{% translate "Borrar todos los filtros:" %}</a>
-        </fieldset>
-    </form>
+        <button type="submit">{% translate "Aplicar filtros:" %}</button>
+        <a href="{% url 'lista_exposiciones' %}">{% translate "Borrar todos los filtros:" %}</a>
+    </fieldset>
+</form>
 
-    <!-- Título condicional según los filtros aplicados -->
-    {% if not inicio_rango %}
-        {% if not fin_rango %}
-            <h2>{% translate "Todas las exposiciones" %}</h2>
-        {% else %}
-            <h2>{% translate "Exposiciones anteriores al" %} {{ fin_rango }}</h2>
+<!-- Título condicional según los filtros aplicados -->
+{% if not inicio_rango %}
+{% if not fin_rango %}
+<h2>{% translate "Todas las exposiciones" %}</h2>
+{% else %}
+<h2>{% translate "Exposiciones anteriores al" %} {{ fin_rango }}</h2>
+{% endif %}
+
+{% elif not fin_rango %}
+<h2>{% translate "Exposiciones posteriores al" %} {{ inicio_rango }}</h2>
+
+{% else %}
+{% if inicio_rango == fin_rango %}
+<h2>{% translate "Exposiciones el" %} {{ inicio_rango }}</h2>
+{% else %}
+<h2>{% translate "Exposiciones entre el" %} {{ inicio_rango }} {% translate "y el"%} {{ fin_rango }}</h2>
+{% endif %}
+{% endif %}
+
+<div class="lista_exposiciones">
+
+    {% for exposicion in exposiciones_activas %}
+    <a class="activa enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+        {% if exposicion.foto %}
+        <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
         {% endif %}
-
-    {% elif not fin_rango %}
-        <h2>{% translate "Exposiciones posteriores al" %} {{ inicio_rango }}</h2>
-
-    {% else %}
-        {% if inicio_rango == fin_rango %}
-            <h2>{% translate "Exposiciones el" %} {{ inicio_rango }}</h2>
-        {% else %}
-            <h2>{% translate "Exposiciones entre el" %} {{ inicio_rango }}  {% translate "y el"%} {{ fin_rango }}</h2>
-        {% endif %}
-    {% endif %}
-
-    <div class = "lista_exposiciones">
-
-        {% for exposicion in exposiciones_activas %}
-            <a class = "activa enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
-                {% if exposicion.foto %}
-                    <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
-                {% endif %}
-                <div class = "preview_exposicion">
-                    <div class = "info_superpuesta">
-                        <h3> {{ exposicion.nombre }} </h3>
-                        <div class = "info_disponibilidad">
-                            <p>{% translate "Hasta el"%} {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                            <p class = "etiqueta">Disponible</p>
-                        </div>
-                        <div class = "info_hover"> 
-                            <hr>
-                            <p>{{ exposicion.descripcion }}</p>
-                        </div>
-                    </div>
+        <div class="preview_exposicion">
+            <div class="info_superpuesta">
+                <h3> {{ exposicion.nombre }} </h3>
+                <div class="info_disponibilidad">
+                    <p>{% translate "Hasta el"%} {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
+                    <p class="etiqueta">Disponible</p>
                 </div>
-            </a>
-        {% endfor %}
-
-        {% for exposicion in exposiciones_futuras %}
-        <a class = "futura enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
-            {% if exposicion.foto %}
-                <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
-            {% endif %}
-            <div class = "preview_exposicion">
-                <div class = "info_superpuesta">
-                    <h3> {{ exposicion.nombre }} </h3>
-                    <div class = "info_disponibilidad">
-                        <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                        <p class = "etiqueta">{% translate "Próximamente" %}</p>
-                    </div>
-                    <div class = "info_hover"> 
-                        <hr>
-                        <p>{{ exposicion.descripcion }}</p>
-                    </div>
+                <div class="info_hover">
+                    <hr>
+                    <p>{{ exposicion.descripcion }}</p>
                 </div>
             </div>
-        </a>
-        {% endfor %}
+        </div>
+    </a>
+    {% endfor %}
 
-        {% for exposicion in exposiciones_acabadas %}
-        <a class = "acabada enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
-            {% if exposicion.foto %}
-                <img src = "{{ exposicion.foto }}" alt="Imagen de la exposición">
-            {% endif %}
-            <div class = "preview_exposicion">
-                <div class = "info_superpuesta">
-                    <h3> {{ exposicion.nombre }} </h3>
-                    <div class = "info_disponibilidad">
-                        <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                        <p class = "etiqueta">Finalizada</p>
-                    </div>
-                    <div class = "info_hover"> 
-                        <hr>
-                        <p>{{ exposicion.descripcion }}</p>
-                    </div>
+    {% for exposicion in exposiciones_futuras %}
+    <a class="futura enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+        {% if exposicion.foto %}
+        <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
+        {% endif %}
+        <div class="preview_exposicion">
+            <div class="info_superpuesta">
+                <h3> {{ exposicion.nombre }} </h3>
+                <div class="info_disponibilidad">
+                    <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
+                    <p class="etiqueta">{% translate "Próximamente" %}</p>
+                </div>
+                <div class="info_hover">
+                    <hr>
+                    <p>{{ exposicion.descripcion }}</p>
                 </div>
             </div>
-        </a>
-        {% endfor %}
-        
-    </div>
-    <a href="{% url 'index' %}" class="volver-index">{% translate "Volver al Índice"%}</a>
-</body>
-</html>
+        </div>
+    </a>
+    {% endfor %}
+
+    {% for exposicion in exposiciones_acabadas %}
+    <a class="acabada enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+        {% if exposicion.foto %}
+        <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
+        {% endif %}
+        <div class="preview_exposicion">
+            <div class="info_superpuesta">
+                <h3> {{ exposicion.nombre }} </h3>
+                <div class="info_disponibilidad">
+                    <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
+                    <p class="etiqueta">Finalizada</p>
+                </div>
+                <div class="info_hover">
+                    <hr>
+                    <p>{{ exposicion.descripcion }}</p>
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+<a href="{% url 'index' %}" class="volver-index">{% translate "Volver al Índice"%}</a>
+{% endblock %}
