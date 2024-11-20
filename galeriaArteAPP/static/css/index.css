@@ -146,72 +146,68 @@
     padding-bottom: 4rem
 }
 
-/******************* GRID DE CUADROS Y EXPOSICIONES *******************/
-/*
+/* Estilo para el grid de secciones */
 .grid {
-    display: grid;
-    gap: 1.875rem;
-    margin-block: 11.25rem;
-    max-width: 100%;
-    grid-template-columns: 1fr 10rem 1fr;
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas: 't1 t2 t2' 'l1 l1 r1' 'l1 l1 r2';
-    transition: all ease .5s
-}
-
-.top-feature-left {
     display: flex;
     flex-direction: column;
-    padding: 3.125rem;
-    gap: 2rem;
-    background-color: #ececec;
-    grid-area: t1
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 20px;
 }
 
-.top-feature-right {
+.grid-row {
     display: flex;
-    grid-area: t2;
-    max-width: 100%;
-    overflow: hidden
+    align-items: center;
+    gap: 20px;
 }
 
-.left-feature {
-    display: flex;
-    grid-area: l1;
-    max-width: 100%;
-    overflow: hidden
+.grid-row.reverse {
+    flex-direction: row-reverse;
 }
 
-.right-feature-1 {
-    display: flex;
-    grid-area: r1;
-    max-width: 100%;
-    overflow: hidden
+.grid-row img {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.right-feature-2 {
+.grid-text {
+    width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    grid-area: r2;
-    max-width: 100%;
-    padding: 3.125rem;
-    background-color: var(--black)
+    gap: 10px;
+    text-align: left;
 }
 
-.left-feature img,
-.top-feature-right img {
-    transform: scale(1);
-    transition: all ease 1s
+/* Ajustar tamaño de los textos */
+.grid-text h2 {
+    font-size: 2rem;  /* Hacer los títulos más grandes */
+    font-weight: bold;
+    color: #333;
 }
 
-.left-feature img:hover,
-.right-feature-1 img:hover,
-.top-feature-right img:hover {
-    transform: scale(1.05);
-    transition: all ease .5s
+.grid-text p {
+    font-size: 1.2rem;  /* Aumentar el tamaño del texto */
+    color: #666;
+    margin-bottom: 20px;
 }
-*/
+
+.carousel {
+    position: relative;
+}
+
+.carousel img {
+    width: 100%;
+    display: none; /* Oculta todas las imágenes por defecto */
+    position: absolute; /* Asegura que las imágenes estén apiladas unas encima de otras */
+}
+
+.carousel img:first-child {
+    display: block; /* Muestra la primera imagen */
+}
+
 
 /********* ANIMACIÓN AL CARGAR LA PÁGINA **********/
 

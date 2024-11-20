@@ -1,28 +1,8 @@
+body {
+    background-color: rgb(71, 6, 248);
+}
 
 #header {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-}
-
-
-.module h2 {
-    color: #FF6347; /* Tomate */
-}
-
-
-.module table {
-    background-color: #f4f4f4;
-}
-
-
-.button {
     background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-}
-
-
-.filter-related {
-    background-color: #D3D3D3; 
+    color: gray; 
 }

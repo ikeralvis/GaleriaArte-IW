@@ -8,7 +8,7 @@ from django.utils.html import format_html
 class CustomAdminSite(AdminSite):
     class Media:  
         css = {
-             'all': ('galeriaArteAPP/static/css/admin.css',)
+            'all': ('/static/css/admin.css',)
         }
 
     site_header = "Panel de Administración de Galeria de Arte"
