@@ -17,9 +17,10 @@
 
 .titulo h1 {
     font-size: 2.5em;
-    color: var(--bluegray);
+    color: var(--black);
     margin-bottom: 30px;
     text-align: center;
+    letter-spacing: 0.05em;
 }
 
 h2 {
