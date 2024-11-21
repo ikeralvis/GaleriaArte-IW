@@ -1,14 +1,6 @@
+/* Estilos CSS base para el header, footer y el buen funcionamiento de todas las páginas. */
+
 @import url(https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;700;900&family=Outfit:wght@100;300&display=swap);
-
-/* Elementos comunes */
-
-/* Nombre de la página (ej: Artistas, Exposiciones, etc.) */
-.titulo h1 {
-    font-size: 2.5em;
-    color: #4a4e69;
-    margin-bottom: 30px;
-    justify-self: center;
-}
 
 main {
     padding: 40px;
@@ -71,15 +63,7 @@ textarea {
     }
 }
 
-/* Variables de color */
-
-:root {
-    --brown: hsla(24, 56%, 63%, 1);
-    --black: hsla(0, 0%, 8%, 1);
-    --gray: hsla(0, 0%, 27%, 1);
-    --white: hsla(0, 0%, 100%, 1);
-    --whitebg: hsla(0, 0%, 99%, 1);
-}
+/* Clases para aplicar color */
 
 .white {
     color: var(--white)

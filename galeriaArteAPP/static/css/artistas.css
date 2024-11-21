@@ -1,109 +1,24 @@
-.lista_artistas {
-    display: flex; /* Ajusta la lista de artistas en una fila */
-    flex-wrap: wrap; /* Ajusta la lista de artistas en varias filas */
-    gap: 20px;
-    justify-content: center;
-    
+/* Lista de estilos de common.css usados:
+
+- Título de la página.
+- Flexbox contenedora de los artistas.
+- Preview de artista.
+- Botón de Volver al índice.
+*/
+
+/* El siguiente estilo se sobrescribe al de common.css */
+
+.preview {
+    width: 400px !important;
+    height: 300px !important;
 }
 
-.enlace_artista {
-    display: block; /* Ajusta el contenedor de la imagen y el texto en un bloque */
-    position: relative; /* Ajusta la posición de la imagen y el texto */
-    width: 400px; /* Ajusta el ancho del contenedor para que sea más compacto */
-    height: 300px; /* Ajusta la altura del contenedor */
-    text-decoration: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s;
-    background: linear-gradient(to top, black, #7563ae);
-    overflow: hidden;
-}
-
-.enlace_artista img {
-    /* Ajusta la imagen para que cubra el contenedor */
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    transition: filter 0.3s ease-in; 
-    /* Asegura que la imagen cubra el contenedor */
-    object-fit: cover;  
-}
-
-.preview_artista {
-    /* Ajusta la imagen para que cubra el contenedor */
-    position: absolute;
-    width: 100%;
-    max-height: 100%;
-    bottom: 0;
-    background: linear-gradient(to top, black, transparent);
-    padding: 20px;
-    border-radius: 12px;
-    /* Asegura que el texto no se desborde del contenedor */
-    overflow: hidden;
-}
-
-.preview_artista h3 {
-    font-size: 1.5em;
-    margin: 0;
-    color: #fff;
-    font-weight: bold;
-}
-
-.preview_artista p {
-    margin: 10px 0 0;
-    font-size: 1em;
-    color: #e0e0e0;
-}
-
-/* Aplica una máscara de imagen con un degradado lineal 
-que va de opaco a transparente */
-.info_superpuesta {
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 200px, rgba(0, 0, 0, 0) 250px);
-}
-
-/* Estilo para la información que se muestra 
-al pasar el ratón por encima */
-.info_hover {
-    height: 0px;
-    overflow: hidden;
-    text-align: justify;
-    transition: height 0.3s ease-out;
-}
-
-.info_hover hr {
-    border: none;
-    border-top: 1px solid #e0e0e0;
-    margin-top: 10px;
-}
-
-
-.enlace_artista:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Al pasar el ratón por encima, la imagen scambia de altura */
-.enlace_artista:hover .info_hover {
-    height: 150px;
+/* Al pasar el ratón por encima, el texto cambia de altura */
+.preview:hover .info_hover {
+    height: 100px !important;
 }
 
 /* Al pasar el ratón por encima, la imagen se desvanece */
-.enlace_artista:hover img {
-    filter: opacity(0);
-}
-
-.volver-index {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4a4e69;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.volver-index:hover {
-    background-color: #22223b;
+.preview:hover img {
+    filter: opacity(0) !important;
 }

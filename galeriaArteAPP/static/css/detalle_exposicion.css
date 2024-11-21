@@ -1,115 +1,77 @@
-.exposicion-detalle {
-    /* Para que los elementos se alineen en fila */
-    display: flex; 
-    /* Para que los elementos se alineen en columna */
-    flex-direction: column;  
-    /* Gap hace que haya un espacio entre los elementos */
-    gap: 20px;
-    margin-bottom: 30px;
-}
+/* Lista de estilos de common.css usados:
+
+- Título de la página.
+- Título 2 (Obras de la exposición).
+- Tarjeta de información.
+- Flexbox contenedora de los cuadros.
+- Botón de Volver a la lista de exposiciones.
+*/
 
 .foto {
     width: 100%;
-    max-width: 300px;
+    max-width: 500px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
+    margin-bottom: 30px;
 }
 
-.info {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.info h2 {
-    color: #4a4a8a;
-    margin-bottom: 10px;
-    font-size: 1.5em;
-}
-
-.info p {
-    font-size: 1em;
-    color: #555;
-    line-height: 1.6;
-}
-
-.biografia {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.biografia h2 {
-    color: #4a4a8a;
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.biografia p {
-    font-size: 1em;
-    color: #555;
-    line-height: 1.6;
-}
-
-.obras {
-    margin-top: 40px;
-}
-
-.obras h2 {
-    font-size: 1.8em;
-    color: #4a4a8a;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.cuadros {
-    display: flex; /* Para que los elementos se alineen en fila */
-    flex-wrap: wrap; /* Para que los elementos se alineen en fila y se vayan a la siguiente fila si no caben */
-    gap: 20px;
-    justify-content: center;
-}
-
-.cuadro {
-   width: 30%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.cuadro img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.cuadro h3 {
-    font-size: 1.2em;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.cuadro:hover {
-    transform: translateY(-5px);
-}
-
-main a {
-    display: inline-block;
+.carrusel {
+    display: flex;
+    height: 70vh;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 3%;
     margin-top: 30px;
-    text-align: center;
-    color: #4a4a8a;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.1em;
-}
+    
+    /* Oculta las barras de scroll */
+    -ms-overflow-style: none; /* Para Internet Explorer y Edge */
+    scrollbar-width: none; /* Para Firefox */
+  }
+  
+  .carrusel::-webkit-scrollbar {
+    display: none;  /* Para Chrome, Safari y Opera */
+  }
+    
+    .elemento_carrusel {
+    scroll-snap-align: center;
+    flex: none;
+    height: 100%;
+    width: fit-content;
+    max-width: 2000px; /* En zooms muy bajos o pantallas ultrawide, 
+    muestra varios elementos a la vez */
+    position: relative; /* Para que los subelementos con position 
+    relative calculen las dimensiones que usen porcentajes en base al 
+    alto/ancho de elemento_carrusel. */ 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: var(--whitebg);
+    background-color: rgb(244, 244, 244);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    }
 
-main a:hover {
-    text-decoration: underline;
-}
+    .contenedor_obra {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: fit-content;
+    }
+
+        .contenedor_obra p {
+            text-align: center;
+            margin-top: 10px;
+            color: black;
+        }
+
+        .contenedor_obra img {
+            height: 100%;
+            width: auto;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+
+

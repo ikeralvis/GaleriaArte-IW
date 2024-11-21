@@ -45,15 +45,15 @@
     </fieldset>
 </form><br>
 
-<div class="lista_exposiciones">
+<div class="lista_flex">
 
     {% for exposicion in exposiciones_activas %}
-    <a class="activa enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+    <a class="activa preview" href="{% url 'detalle_exposicion' exposicion.id %}">
         {% if exposicion.foto %}
         <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
         {% endif %}
-        <div class="preview_exposicion">
-            <div class="info_superpuesta">
+        <div class="contenedor_info">
+            <div class="mascara">
                 <h3> {{ exposicion.nombre }} </h3>
                 <div class="info_disponibilidad">
                     <p>{% translate "Hasta el"%} {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
@@ -69,12 +69,12 @@
     {% endfor %}
 
     {% for exposicion in exposiciones_futuras %}
-    <a class="futura enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+    <a class="futura preview" href="{% url 'detalle_exposicion' exposicion.id %}">
         {% if exposicion.foto %}
         <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
         {% endif %}
-        <div class="preview_exposicion">
-            <div class="info_superpuesta">
+        <div class="contenedor_info">
+            <div class="mascara">
                 <h3> {{ exposicion.nombre }} </h3>
                 <div class="info_disponibilidad">
                     <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
@@ -90,12 +90,12 @@
     {% endfor %}
 
     {% for exposicion in exposiciones_acabadas %}
-    <a class="acabada enlace_exposicion" href="{% url 'detalle_exposicion' exposicion.id %}">
+    <a class="acabada preview" href="{% url 'detalle_exposicion' exposicion.id %}">
         {% if exposicion.foto %}
         <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
         {% endif %}
-        <div class="preview_exposicion">
-            <div class="info_superpuesta">
+        <div class="contenedor_info">
+            <div class="mascara">
                 <h3> {{ exposicion.nombre }} </h3>
                 <div class="info_disponibilidad">
                     <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
@@ -111,5 +111,5 @@
     {% endfor %}
 
 </div>
-<a href="{% url 'index' %}" class="volver-index">{% translate "Volver al Índice"%}</a>
+<a href="{% url 'index' %}" class="volver-link">{% translate "Volver al Índice"%}</a>
 {% endblock %}
