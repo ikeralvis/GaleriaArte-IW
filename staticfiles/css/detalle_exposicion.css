@@ -1,0 +1,77 @@
+/* Lista de estilos de common.css usados:
+
+- Título de la página.
+- Título 2 (Obras de la exposición).
+- Tarjeta de información.
+- Flexbox contenedora de los cuadros.
+- Botón de Volver a la lista de exposiciones.
+*/
+
+.foto {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.carrusel {
+    display: flex;
+    height: 70vh;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 3%;
+    margin-top: 30px;
+    
+    /* Oculta las barras de scroll */
+    -ms-overflow-style: none; /* Para Internet Explorer y Edge */
+    scrollbar-width: none; /* Para Firefox */
+  }
+  
+  .carrusel::-webkit-scrollbar {
+    display: none;  /* Para Chrome, Safari y Opera */
+  }
+    
+    .elemento_carrusel {
+    scroll-snap-align: center;
+    flex: none;
+    height: 100%;
+    width: fit-content;
+    max-width: 2000px; /* En zooms muy bajos o pantallas ultrawide, 
+    muestra varios elementos a la vez */
+    position: relative; /* Para que los subelementos con position 
+    relative calculen las dimensiones que usen porcentajes en base al 
+    alto/ancho de elemento_carrusel. */ 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: var(--whitebg);
+    background-color: rgb(244, 244, 244);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    }
+
+    .contenedor_obra {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: fit-content;
+    }
+
+        .contenedor_obra p {
+            text-align: center;
+            margin-top: 10px;
+            color: black;
+        }
+
+        .contenedor_obra img {
+            height: 100%;
+            width: auto;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+
+
