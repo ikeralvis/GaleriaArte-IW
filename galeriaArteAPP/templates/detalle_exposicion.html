@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
@@ -27,23 +26,22 @@
     </div>
 
     {% if exposicion.cuadros.all %}
-        <section class="obras">
-            <h2>{% translate "Obras de la exposición" %}</h2>
-            <div class="cuadros">
-                {% for cuadro in exposicion.cuadros.all %}
-                    <div class="cuadro"> 
-                        {% if cuadro.foto %}
-                            <a href="{% url 'detalle_cuadro' cuadro.id %}">
-                                <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}">
-                            </a>
-                        {% endif %}
-                        <h3>{{ cuadro.nombre }}</h3>
-                    </div>
-                {% endfor %}
-            </div>
-        </section>
+    <div class = "carrusel">
+
+        {% for cuadro in exposicion.cuadros.all %}
+
+        <div class = "elemento_carrusel">
+            <a href="{% url 'detalle_cuadro' cuadro.id %}" class = "contenedor_obra">
+                <p> {{ cuadro.nombre }} </p>
+                <img src="{{ cuadro.foto }}" alt = "Cuadro de la exposición">
+            </a>
+        </div>
+
+        {% endfor %}
+    
+    </div>
     {% endif %}
 
-    <a href="{% url 'lista_exposiciones' %}">{% translate "Volver a la lista de exposiciones" %}</a>
+    <a href="{% url 'lista_exposiciones' %}" class = "volver-link">{% translate "Volver a la lista de exposiciones" %}</a>
 
 {% endblock %}

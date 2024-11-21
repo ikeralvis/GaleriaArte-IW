@@ -6,11 +6,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        console.log("jQuery está funcionando");
+    });
+</script>
+
   <title>Galeria Arte</title>
 
   {% block extra_css %}
   {% endblock %}
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/common.css' %}">
  
 </head>
 
