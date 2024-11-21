@@ -1,0 +1,41 @@
+/* Lista de estilos de common.css usados:
+
+- Título de la página.
+- Botón de Volver a la lista de cuadros.
+*/
+
+.detalle-cuadro {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.cuadro-imagen {
+    width: 40%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.imagen-detalle {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.informacion {
+    width: 55%;
+    text-align: left;
+}
+
+.informacion p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.informacion strong {
+    font-weight: bold;
+    color: #4a4e69;
+}
+

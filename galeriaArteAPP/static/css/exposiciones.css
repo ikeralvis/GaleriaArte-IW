@@ -6,6 +6,10 @@
 - Botón de Volver al índice.
 */
 
+h2 {
+    margin-top: 30px;
+}
+
 .info_disponibilidad {
     display: flex;
     align-items: flex-start;
