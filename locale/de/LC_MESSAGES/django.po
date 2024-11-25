@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 20:22+0100\n"
+"POT-Creation-Date: 2024-11-25 20:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: German <LL@li.org>\n"
@@ -18,175 +18,260 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\galeriaArteAPP\templates\artistas.html:12
+#: .\galeriaArteAPP\templates\artistas.html:13
+#: .\galeriaArteAPP\templates\base.html:23
+#: .\galeriaArteAPP\templates\index.html:41
 msgid "Artistas"
 msgstr "Künstler"
 
-#: .\galeriaArteAPP\templates\artistas.html:19
+#: .\galeriaArteAPP\templates\artistas.html:20
 msgid "Imagen del artista"
 msgstr "Bild des Künstlers"
 
-#: .\galeriaArteAPP\templates\artistas.html:34
-#: .\galeriaArteAPP\templates\cuadros.html:25
-#: .\galeriaArteAPP\templates\exposiciones.html:117
+#: .\galeriaArteAPP\templates\artistas.html:35
+#: .\galeriaArteAPP\templates\cuadros.html:28
+#: .\galeriaArteAPP\templates\exposiciones.html:114
 msgid "Volver al Índice"
 msgstr "Zurück zum Index"
 
-#: .\galeriaArteAPP\templates\cuadros.html:10
+#: .\galeriaArteAPP\templates\base.html:21
+msgid "Inicio"
+msgstr "Home"
+
+#: .\galeriaArteAPP\templates\base.html:22
+#: .\galeriaArteAPP\templates\index.html:29
+msgid "Exposiciones"
+msgstr "Ausstellungen"
+
+#: .\galeriaArteAPP\templates\base.html:24
+#: .\galeriaArteAPP\templates\cuadros.html:12
+#: .\galeriaArteAPP\templates\index.html:35
 msgid "Cuadros"
 msgstr "Gemälde"
 
-#: .\galeriaArteAPP\templates\cuadros.html:17
-#: .\galeriaArteAPP\templates\detalle_artista.html:48
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:19
-#: .\galeriaArteAPP\templates\detalle_exposicion.html:40
+#: .\galeriaArteAPP\templates\base.html:38
+msgid ""
+"La Galería de Arte Moderno es gratuita para todos los visitantes y abre los "
+"siete días de la semana de 8:00 a 21:00 horas. Encuéntrenos en 99 King "
+"Street, Newport, EE. UU."
+msgstr ""
+"Der Eintritt in die Modern Art Gallery ist für alle Besucher kostenlos und "
+"sie ist sieben Tage die Woche von 8 bis 21 Uhr geöffnet. Sie finden uns in "
+"der 99 King Street, Newport, USA."
+
+#: .\galeriaArteAPP\templates\cuadros.html:20
+#: .\galeriaArteAPP\templates\detalle_artista.html:46
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:17
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:37
 msgid "Imagen de"
 msgstr "Bild von"
 
-#: .\galeriaArteAPP\templates\cuadros.html:24
-#: .\galeriaArteAPP\templates\detalle_artista.html:57
+#: .\galeriaArteAPP\templates\cuadros.html:27
+#: .\galeriaArteAPP\templates\detalle_artista.html:55
 msgid "Volver a la lista de artistas"
 msgstr "Zurück zur Künstlerliste"
 
-#: .\galeriaArteAPP\templates\detalle_artista.html:5
-msgid "Detalle del Artista"
-msgstr "Künstlerdetails"
-
-#: .\galeriaArteAPP\templates\detalle_artista.html:18
-#: .\galeriaArteAPP\templates\detalle_exposicion.html:21
+#: .\galeriaArteAPP\templates\detalle_artista.html:16
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:18
 msgid "Foto de"
 msgstr "Foto von"
 
-#: .\galeriaArteAPP\templates\detalle_artista.html:22
-#: .\galeriaArteAPP\templates\detalle_exposicion.html:25
+#: .\galeriaArteAPP\templates\detalle_artista.html:20
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:22
 msgid "Información"
 msgstr "Informationen"
 
-#: .\galeriaArteAPP\templates\detalle_artista.html:24
+#: .\galeriaArteAPP\templates\detalle_artista.html:22
 msgid "Nacionalidad:"
 msgstr "Nationalität:"
 
-#: .\galeriaArteAPP\templates\detalle_artista.html:27
+#: .\galeriaArteAPP\templates\detalle_artista.html:25
 msgid "Fecha de Nacimiento:"
 msgstr "Geburtsdatum:"
 
-#: .\galeriaArteAPP\templates\detalle_artista.html:30
+#: .\galeriaArteAPP\templates\detalle_artista.html:28
 msgid "Fecha de Fallecimiento:"
 msgstr "Todestag:"
 
-#: .\galeriaArteAPP\templates\detalle_artista.html:35
+#: .\galeriaArteAPP\templates\detalle_artista.html:33
 msgid "Biografía"
 msgstr "Biografie"
 
-#: .\galeriaArteAPP\templates\detalle_artista.html:42
+#: .\galeriaArteAPP\templates\detalle_artista.html:40
 msgid "Obras Representativas"
 msgstr "Vertretene Werke"
 
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:5
-msgid "Detalle del Cuadro"
-msgstr "Gemäldedetails"
-
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:25
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:23
 msgid "Fecha de Creación:"
 msgstr "Erstellungsdatum:"
 
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:28
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:26
 msgid "Técnica:"
 msgstr "Technik:"
 
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:31
-#: .\galeriaArteAPP\templates\detalle_exposicion.html:28
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:29
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:25
 msgid "Descripción:"
 msgstr "Beschreibung:"
 
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:34
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:32
 msgid "Estilo:"
 msgstr "Stil:"
 
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:38
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:36
 msgid "Dato Curioso:"
 msgstr "Interessante Tatsache:"
 
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:42
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:40
 msgid "Dimensiones:"
 msgstr "Abmessungen:"
 
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:45
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:43
 msgid "Artista:"
 msgstr "Künstler:"
 
-#: .\galeriaArteAPP\templates\detalle_cuadro.html:51
+#: .\galeriaArteAPP\templates\detalle_cuadro.html:49
 msgid "Volver a la lista de cuadros"
 msgstr "Zurück zur Gemäldeliste"
 
-#: .\galeriaArteAPP\templates\detalle_exposicion.html:26
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:23
 msgid "Fecha de inicio:"
 msgstr "Beginndatum:"
 
-#: .\galeriaArteAPP\templates\detalle_exposicion.html:27
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:24
 msgid "Fecha de fin:"
 msgstr "Enddatum:"
 
-#: .\galeriaArteAPP\templates\detalle_exposicion.html:34
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:31
 msgid "Obras de la exposición"
 msgstr "Werke der Ausstellung"
 
-#: .\galeriaArteAPP\templates\detalle_exposicion.html:50
+#: .\galeriaArteAPP\templates\detalle_exposicion.html:47
 msgid "Volver a la lista de exposiciones"
 msgstr "Zurück zur Ausstellungsübersicht"
 
 #: .\galeriaArteAPP\templates\exposiciones.html:14
-msgid "Exposiciones"
-msgstr "Ausstellungen"
-
-#: .\galeriaArteAPP\templates\exposiciones.html:19
-msgid "Filtrar"
-msgstr "Filtern"
-
-#: .\galeriaArteAPP\templates\exposiciones.html:21
-msgid "Del:"
-msgstr "Vom:"
-
-#: .\galeriaArteAPP\templates\exposiciones.html:24
-msgid "Al:"
-msgstr "Bis:"
-
-#: .\galeriaArteAPP\templates\exposiciones.html:27
-msgid "Aplicar filtros:"
-msgstr "Filter anwenden:"
-
-#: .\galeriaArteAPP\templates\exposiciones.html:28
-msgid "Borrar todos los filtros:"
-msgstr "Alle Filter löschen:"
-
-#: .\galeriaArteAPP\templates\exposiciones.html:35
 msgid "Todas las exposiciones"
 msgstr "Alle Ausstellungen"
 
-#: .\galeriaArteAPP\templates\exposiciones.html:37
+#: .\galeriaArteAPP\templates\exposiciones.html:16
 msgid "Exposiciones anteriores al"
 msgstr "Ausstellungen vor dem"
 
-#: .\galeriaArteAPP\templates\exposiciones.html:41
+#: .\galeriaArteAPP\templates\exposiciones.html:20
 msgid "Exposiciones posteriores al"
 msgstr "Ausstellungen nach dem"
 
-#: .\galeriaArteAPP\templates\exposiciones.html:45
+#: .\galeriaArteAPP\templates\exposiciones.html:24
 msgid "Exposiciones el"
 msgstr "Ausstellungen am"
 
-#: .\galeriaArteAPP\templates\exposiciones.html:47
+#: .\galeriaArteAPP\templates\exposiciones.html:26
 msgid "Exposiciones entre el"
 msgstr "Ausstellungen zwischen dem"
 
-#: .\galeriaArteAPP\templates\exposiciones.html:47
+#: .\galeriaArteAPP\templates\exposiciones.html:26
 msgid "y el"
 msgstr "und dem"
 
-#: .\galeriaArteAPP\templates\exposiciones.html:62
+#: .\galeriaArteAPP\templates\exposiciones.html:34
+msgid "Filtrar"
+msgstr "Filtern"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:37
+msgid "Del:"
+msgstr "Vom:"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:40
+msgid "Al:"
+msgstr "Bis:"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:43
+msgid "Aplicar filtros:"
+msgstr "Filter anwenden:"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:44
+msgid "Borrar todos los filtros:"
+msgstr "Alle Filter löschen:"
+
+#: .\galeriaArteAPP\templates\exposiciones.html:59
 msgid "Hasta el"
 msgstr "Bis zum"
 
-#: .\galeriaArteAPP\templates\exposiciones.html:84
+#: .\galeriaArteAPP\templates\exposiciones.html:81
 msgid "Próximamente"
 msgstr "Demnächst"
+
+#: .\galeriaArteAPP\templates\index.html:11
+msgid "Art Gallery Picture"
+msgstr "Kunstgaleriebild"
+
+#: .\galeriaArteAPP\templates\index.html:15
+msgid "Galería de Arte"
+msgstr "Kunstgalerie"
+
+#: .\galeriaArteAPP\templates\index.html:17
+msgid "Visita esta estupenda exposición exclusva de nuestra galeria de arte."
+msgstr "Besuchen Sie diese wunderbare exklusive Ausstellung unserer Kunstgalerie."
+
+#: .\galeriaArteAPP\templates\index.html:19
+#, fuzzy
+#| msgid "Obras de la exposición"
+msgid "Ver la exposición"
+msgstr "Werke der Ausstellung"
+
+#: .\galeriaArteAPP\templates\index.html:20
+msgid "Arrow Button"
+msgstr "Pfeiltaste"
+
+#: .\galeriaArteAPP\templates\index.html:30
+msgid "Descubre nuestras colecciones y eventos."
+msgstr "Entdecken Sie unsere Kollektionen und Veranstaltungen."
+
+#: .\galeriaArteAPP\templates\index.html:31
+#, fuzzy
+#| msgid "Exposiciones"
+msgid "Ver Exposiciones"
+msgstr "Ausstellungen"
+
+#: .\galeriaArteAPP\templates\index.html:36
+msgid "Explora una selección de obras de arte."
+msgstr "Entdecken Sie eine Auswahl an Kunstwerken."
+
+#: .\galeriaArteAPP\templates\index.html:37
+#, fuzzy
+#| msgid "Cuadros"
+msgid "Ver Cuadros"
+msgstr "Gemälde"
+
+#: .\galeriaArteAPP\templates\index.html:42
+msgid "Conoce a los artistas y su legado."
+msgstr "Lernen Sie die Künstler und ihr Erbe kennen."
+
+#: .\galeriaArteAPP\templates\index.html:43
+#, fuzzy
+#| msgid "Artistas"
+msgid "Ver Artistas"
+msgstr "Künstler"
+
+#: .\proyectoGaleriaArte\settings.py:120
+msgid "Spanish"
+msgstr ""
+
+#: .\proyectoGaleriaArte\settings.py:121
+msgid "French"
+msgstr ""
+
+#: .\proyectoGaleriaArte\settings.py:122
+msgid "German"
+msgstr ""
+
+#: .\proyectoGaleriaArte\settings.py:123
+msgid "English"
+msgstr ""
+
+#~ msgid "Detalle del Artista"
+#~ msgstr "Künstlerdetails"
+
+#~ msgid "Detalle del Cuadro"
+#~ msgstr "Gemäldedetails"
