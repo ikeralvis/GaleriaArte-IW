@@ -39,42 +39,25 @@ El proyecto "Galería de Arte" es un sitio web desarrollado en Django que permit
 - **Cuadros**: ManyToManyField (relación con el modelo Cuadro)
 
 ## Instalación
-   1. **Crear un entorno virtual**:
-      - Navega hasta la carpeta del proyecto en la terminal y ejecuta:
-        ```bash
-        python -m venv entornovirtual
-        ```
-      - Activa el entorno virtual:
-        - **Windows**:
-          ```bash
-          entornovirtual\Scripts\activate
-          ```
-        - **Mac/Linux**:
-          ```bash
-          source entornovirtual/bin/activate
-          ```
 
-   2. **Instalar las dependencias necesarias**:
-      - Asegúrate de instalar las bibliotecas requeridas para el proyecto:
-        ```bash
-        pip install django django-admin-interface django-colorfield
-        ```
+Para instalar el proyecto en tu máquina local, sigue estos pasos:
 
-   3. **Realizar las migraciones de la base de datos**:
-      - Configura la base de datos ejecutando:
-        ```bash
-        python manage.py migrate
-        ```
+1. **Copia la URI del repositorio**:
+   - Ve a la página principal de tu repositorio en GitHub.
+   - Haz clic en el botón verde "Code".
+   - En el menú desplegable, asegúrate de seleccionar la opción "HTTPS".
+   - Copia la URI que aparece, que debería verse algo así: `https://github.com/tu_usuario/GaleriaArte-IW.git`.
 
-   4. **Ejecutar el servidor de desarrollo**:
-      - Inicia el servidor local con el siguiente comando:
-        ```bash
-        python manage.py runserver
-        ```
+2. **Clona el repositorio en Visual Studio Code**:
+   - Abre Visual Studio Code.
+   - Abre la paleta de comandos presionando `Ctrl + Shift + P` (Windows) o `Cmd + Shift + P` (Mac).
+   - Escribe `Git: Clone` y selecciona la opción cuando aparezca.
+   - Pega la URI que copiaste y presiona `Enter`.
+   - Elige la ubicación en tu sistema donde deseas clonar el repositorio.
 
-### Notas importantes
-- Asegúrate de tener **Python 3.10 o superior** instalado.
-- Si deseas incluir dependencias adicionales, agrégalas en el entorno virtual antes de iniciar el proyecto.
-- Si el proyecto utiliza archivos estáticos, no olvides ejecutar:
-  ```bash
-  python manage.py collectstatic
+3. **Abre la carpeta del proyecto**:
+   - Una vez que el repositorio se haya clonado, Visual Studio Code te preguntará si deseas abrir el proyecto. Haz clic en "Abrir" para cargar la carpeta del proyecto.
+
+4. **Configura el entorno**:
+   - Asegúrate de tener instalado Python y las dependencias necesarias. Consulta la sección correspondiente en este README para más detalles.
+

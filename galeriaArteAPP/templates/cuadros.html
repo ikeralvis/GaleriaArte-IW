@@ -3,17 +3,16 @@
 {% load i18n %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/cuadros.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cuadro.css' %}">
 {% endblock %}
 
 {% block content %}
-    
 
     <div class="titulo">
-        <h1>{% translate "CUADROS" %}</h1>
+        <h1>{% translate "Cuadros" %}</h1>
     </div>
 
-    <div class="lista_flex">
+    <div class="cuadros-lista">
         {% for cuadro in cuadros %}
             <div class="cuadro-item">
                 <a href="{% url 'detalle_cuadro' cuadro.id %}">
@@ -26,9 +25,6 @@
         {% endfor %}
     </div>
     <a class="volver-link" href="{% url 'lista_artistas' %}">{% translate "Volver a la lista de artistas" %}</a>
-    <a href="{% url 'index' %}" class="volver-link">{% translate "Volver al Índice" %}</a>
-{% endblock %}
+    <a href="{% url 'index' %}" class="volver-index">{% translate "Volver al Índice" %}</a>
 
-{% block extra_js %}
-<script src="{% static 'js/cuadros.js' %}"></script>
 {% endblock %}

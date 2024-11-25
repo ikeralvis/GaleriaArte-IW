@@ -29,7 +29,7 @@
             </p>
         </div>
 
-        <div class="info">
+        <div class="biografia">
             <h2>{% translate "Biografía" %}</h2>
             <p>{{ artista.biografia }}</p>
         </div>
@@ -38,7 +38,7 @@
     {% if artista.cuadros.all %}
         <section class="obras">
             <h2>{% translate "Obras Representativas" %}</h2>
-            <div class="lista_flex">
+            <div class="cuadros">
                 {% for cuadro in artista.cuadros.all %}
                     <div class="cuadro"> 
                         {% if cuadro.foto %}
@@ -52,6 +52,6 @@
             </div>
         </section>
     {% endif %}
-    <a href="{% url 'lista_artistas' %}" class = "volver-link"> {% translate "Volver a la lista de artistas" %}</a>
+    <a href="{% url 'lista_artistas' %}">{% translate "Volver a la lista de artistas" %}</a>
     
 {% endblock %}

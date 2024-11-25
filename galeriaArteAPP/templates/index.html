@@ -3,21 +3,21 @@
 {% load i18n %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block content %}
     <div>
-        <img class="hero-image-mobile" src="{% static 'assets/mobile/image-hero@2x.jpg' %}" alt="Art Gallery Picture">
+        <img class="hero-image-mobile" src="{% static 'assets/mobile/image-hero@2x.jpg' %}" alt="{% translate 'Art Gallery Picture' %}">
         <div class="container">
 
             <div class="hero-section">
-            <h1 class="heading-xl h1-heading">Galería de Arte</h1>
+            <h1 class="heading-xl h1-heading">{% translate 'Galería de Arte' %}</h1>
             <div class="hero-text">
-                <p class="body-m hero-paragraph pb-64">Visita esta estupenda exposición exclusva de nuestra galeria de arte.  </p>
+                <p class="body-m hero-paragraph pb-64">{% translate 'Visita esta estupenda exposición exclusva de nuestra galeria de arte.' %}</p>
                 <div class="btn">
-                <a class="btn-link" href="{% url 'lista_exposiciones' %}"> Ver la exposición</a>
-                <a class="arrow-right" href="{% url 'lista_exposiciones' %}"><img src="{% static 'assets/icon-arrow-right.svg' %}" alt="Arrow Button"></a>
+                <a class="btn-link" href="{% url 'lista_exposiciones' %}">{% translate 'Ver la exposición' %}</a>
+                <a class="arrow-right" href="{% url 'lista_exposiciones' %}"><img src="{% static 'assets/icon-arrow-right.svg' %}" alt="{% translate 'Arrow Button' %}"></a>
                 </div>
             </div>
             </div>
@@ -26,58 +26,58 @@
 
     <div class="main-container">
         <section class="section exposiciones">
-            <h2>Exposiciones</h2>
-            <p>Descubre nuestras colecciones y eventos.</p>
-            <a href="{% url 'lista_exposiciones' %}" class="ver-mas">Ver Exposiciones</a>
+            <h2>{% translate 'Exposiciones' %}</h2>
+            <p>{% translate 'Descubre nuestras colecciones y eventos.' %}</p>
+            <a href="{% url 'lista_exposiciones' %}" class="ver-mas">{% translate 'Ver Exposiciones' %}</a>
         </section>
 
         <section class="section cuadros">
-            <h2>Cuadros</h2>
-            <p>Explora una selección de obras de arte.</p>
-            <a href="{% url 'lista_cuadros' %}" class="ver-mas">Ver Cuadros</a>
+            <h2>{% translate 'Cuadros' %}</h2>
+            <p>{% translate 'Explora una selección de obras de arte.' %}</p>
+            <a href="{% url 'lista_cuadros' %}" class="ver-mas">{% translate 'Ver Cuadros' %}</a>
         </section>
 
         <section class="section artistas">
-            <h2>Artistas</h2>
-            <p>Conoce a los artistas y su legado.</p>
-            <a href="{% url 'lista_artistas' %}" class="ver-mas">Ver Artistas</a>
+            <h2>{% translate 'Artistas' %}</h2>
+            <p>{% translate 'Conoce a los artistas y su legado.' %}</p>
+            <a href="{% url 'lista_artistas' %}" class="ver-mas">{% translate 'Ver Artistas' %}</a>
         </section>
     </div>
 
-      <!-- Información adicional sobre cuadros -->
-      <div class="grid-text">
-        <h2>Cuadros</h2>
-        <p>Descubre nuestras colecciones de arte.</p>
-        <div class="btn">
-          <a class="btn-link" href="{% url 'lista_cuadros' %}">Ver Cuadros</a>
-          <a class="arrow-right" href="{% url 'lista_cuadros' %}">
-            <img src="{% static 'assets/icon-arrow-right.svg' %}" alt="Arrow Button">
-          </a>
+  <!-- <article class="container">
+
+      <div class="grid">
+        <div class="top-feature-left">
+          <h2 class="heading-m">Your Day At The Gallery</h2>
+          <p class="body-m">Wander through our distinct collections and find new about our artists. Dive into the
+            details of their creative process.</p>
+        </div>
+
+        <picture class="top-feature-right">
+          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-1@2x.jpg">
+          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-1@2x.jpg">
+          <img src="./assets/desktop/image-grid-1@2x.jpg" alt="Art Gallery Exposition">
+        </picture>
+
+        <picture class="left-feature">
+          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-2@2x.jpg">
+          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-2@2x.jpg">
+          <img src="./assets/desktop/image-grid-2@2x.jpg" alt="Art Gallery seat">
+        </picture>
+
+        <picture class="right-feature-1">
+          <source media="(max-width:540px)" srcset="./assets/mobile/image-grid-3@2x.jpg">
+          <source media="(max-width:800px)" srcset="./assets/tablet/image-grid-3@2x.jpg">
+          <img src="./assets/desktop/image-grid-3@2x.jpg" alt="Art Gallery People">
+        </picture>
+
+        <div class="right-feature-2">
+          <h2 class="heading-m white">Come & Be Inspired</h2>
+          <p class="body-m-white">We’re excited to welcome you to our gallery and see how our collections influence you.
+          </p>
         </div>
       </div>
-    </div>>
 
-    <!-- Incluir archivo JS -->
-    <script src="{% static 'js/carrusel.js' %}"></script>
-
-
-    <!-- Sección Artistas -->
-    <div class="grid-row">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Salvador_Dal%C3%AD_1939.jpg/800px-Salvador_Dal%C3%AD_1939.jpg"
-        alt="Artistas">
-      <div class="grid-text">
-        <h2>Artistas</h2>
-        <p>Conoce a los artistas y su legado.</p>
-        <div class="btn">
-          <a class="btn-link" href="{% url 'lista_artistas' %}">Ver Artistas</a>
-          <a class="arrow-right" href="{% url 'lista_artistas' %}">
-            <img src="{% static 'assets/icon-arrow-right.svg' %}" alt="Arrow Button">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-
+    </article> 
+  -->
 {% endblock %}

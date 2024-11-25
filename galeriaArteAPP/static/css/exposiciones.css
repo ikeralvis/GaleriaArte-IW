@@ -1,191 +1,56 @@
-/* Lista de estilos de common.css usados:
-
-- Título de la página.
-- Flexbox contenedora de las exposiciones.
-- Preview de exposición.
-- Botón de Volver al índice.
-- Botones de la barra lateral.
-*/
-
-/********************** Barra lateral ***************************/
-
-:root {
-    --sidebar_width: 350px !important; /* Activa la lateral */
-}
-
-    #sidebar-header {
-        flex-direction: row-reverse;
-    }
-
-    #sidebar p, strong {
-        margin-bottom: 8px;
-    }
-
-/******************* Calendario de filtros **********************/
-
-#rango_fechas {
-    display: none;
-}
-
-#calendario_filtros {
+.lista_exposiciones {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
 }
 
-    .flatpickr-calendar {
-        z-index: 3;
-    }
-
-    /* Fuerza al calendario a ocupar exactamente el ancho del contenedor */
-
-    .flatpickr-calendar, .flatpickr-innerContainer, .flatpickr-rContainer, .flatpickr-days {
-        width: 100% !important;
-    }
-
-    .dayContainer {
-        width: 100% !important;
-        min-width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* Cambiar el color de los días seleccionados */
-    .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, 
-    .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, 
-    .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, 
-    .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, 
-    .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, 
-    .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, 
-    .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, 
-    .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, 
-    .flatpickr-day.endRange.nextMonthDay {
-        background: var(--brown) !important;
-        border-color: var(--brown) !important;
-    }
-
-    /* Cuando se seleccionan dos días sucesivos, la sombra hace que no haya una 
-    parte sin colorear en el medio de la selección. Si se selecciona un único 
-    día como rango, evita aplicar la sombra para no deformar el círculo. */
-
-    /* Sombra marrón hacia la derecha */
-    .flatpickr-day.startRange:not(.endRange) {
-        box-shadow: 2px 0px 0px var(--brown) !important;
-    }
-    
-    /* Sombra marrón hacia la izquierda */
-    .flatpickr-day.endRange:not(.startRange) {
-        box-shadow: -2px 0px 0px var(--brown) !important;
-    }
-
-    /* Cambia el color de los botones de cambio de mes */
-    .flatpickr-prev-month:hover svg, .flatpickr-next-month:hover svg {
-        fill: var(--brown) !important; 
-    }
-
-#opciones_filtros {
-    display: flex;
-    justify-content: space-around;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    color: white;
+.enlace_exposicion {
+    display: block;
+    position: relative;
+    width: 620px;
+    height: 400px;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.5s;
+    background: linear-gradient(to top, black, #7563ae);
     overflow: hidden;
 }
 
-    #opciones_filtros button {
-        flex: 1; /* Los botones ocuparán todo el espacio disponible */
-        padding: 10px;
-        text-align: center;
-        background-color: var(--plateado);
-        transition: background-color 0.2s ease;
-        font-size: 14px;
-    }
-
-    #opciones_filtros button:hover {
-        background-color: black;
-    }
-
-    .boton-desactivado {
-        opacity: 0.25;
-        cursor: not-allowed; /* Mostrar un cursor desactivado */
-        pointer-events: none; /* Evitar interacciones */
-    }
-
-/*********************** Calendario de exposiciones **********************/
-
-#calendar {
-    height: 600px;
-    margin-bottom: 30px;
+.enlace_exposicion img {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    transition: filter 0.5s ease-in;
 }
 
-    /* Cabecera del calendario */
+/* Información de la exposición */
 
-    .fc-toolbar-title, .fc-button span {
-        font-size: 1em !important;
-    }
-
-    .fc-today-button, .fc-button-group {
-        display: flex;
-        transform: scale(0.75);
-    }
-
-    .fc-button {
-        background-color: var(--plateado) !important;
-        transition: background-color ease 0.2s;
-        border: 0px !important;
-    }
-
-    .fc-button:hover {
-        background-color: black !important;
-    }
-
-    /* Contenedor de eventos */
-
-    .fc-view-harness {
-        border-radius: 10px !important;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        margin-top: -10px;
-    }
-
-    .fc-scrollgrid {
-        border: 0px !important;
-    }
-
-    /* Seleccionar eventos */
-
-    .fc-event {
-        cursor: pointer;
-        transition: filter ease 0.2s;
-    }
-
-    .fc-event:hover {
-        filter: brightness(0.9);
-    }
-
-    /* Colorear días */
-
-    .fc-day {
-        background-color: white;
-        border: 0px !important;
-    }
-
-    .fc-day-today {
-        background-color: var(--plateado) !important;
-        color: white !important;
-    }
-
-    .fc-day.rango-resaltado {
-        background-color: rgb(220, 220, 220);
-    }
-
-/*********************** Contenedor de exposiciones ******************************/
-
-h2 {
-    margin-top: 30px;
+.preview_exposicion {
+    position: absolute;
+    width: 100%;
+    max-height: 100%;
+    bottom: 0%;
+    background: linear-gradient(to top, black, transparent);
+    padding: 50px;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
-#sin_resultados {
-    text-align: center;
-    margin-top: 50px;
+.preview_exposicion h3 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+}
+
+.preview_exposicion p {
+    margin: 20px 0 0;
+    font-size: 1em;
+    color: #e0e0e0;
 }
 
 .info_disponibilidad {
@@ -204,25 +69,74 @@ h2 {
     display: inline-block;
 }
 
-/* Añade margen respecto a info_disponibilidad */
+.info_superpuesta {
+    /* Desvanecimiento del texto por la parte inferior */
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 250px, rgba(0, 0, 0, 0) 300px);
+}
+
+/* Oculta la información adicional por defecto */
+
+.info_hover {
+    height: 0px;
+    overflow: hidden;
+    text-align: justify;
+    transition: height 0.4s ease-out;
+}
+
 .info_hover hr {
-    margin-top: 30px;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+    max-width: 0px;
+    transition: max-width 0.4s ease;
+}
+
+/* Muestra información adicional y animación con hover */
+
+.enlace_exposicion:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.enlace_exposicion:hover .info_hover {
+    height: 400px;
+}
+
+.enlace_exposicion:hover .info_hover hr {
+    max-width: 600px;
+}
+
+.enlace_exposicion:hover img {
+    filter: blur(50px);
 }
 
 /* Código de colores en función de la disponibilidad */
 
-#lista_exposiciones_acabadas .preview {
+.acabada {
     filter: saturate(0%);
 }
 
-#lista_exposiciones_activas .etiqueta {
+.activa .etiqueta {
     background-color: #28a745;
 }
 
-#lista_exposiciones_futuras .etiqueta {
+.futura .etiqueta {
     background-color: #d9b96d;
 }
 
-#lista_exposiciones_acabadas .etiqueta {
+.acabada .etiqueta {
     background-color: #878787;
+}
+
+.volver-index {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4a4e69;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.volver-index:hover {
+    background-color: #22223b;
 }

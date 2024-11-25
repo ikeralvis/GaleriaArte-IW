@@ -33,8 +33,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "admin_interface",
-    "colorfield",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,9 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'galeriaArteAPP',
 ]
-
-X_FRAME_OPTIONS = "SAMEORIGIN"              # allows you to use modals insated of popups
-SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -138,9 +133,6 @@ LOCALE_PATHS = [
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join('galeriaArteAPP', 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
