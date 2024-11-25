@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Artista, Cuadro, Exposicion
 from django.utils import timezone
-from datetime import datetime
 from django.views import View
 from django.http import JsonResponse
 
@@ -33,16 +32,7 @@ class ListaExposiciones(View):
             }
             return JsonResponse(data)
 
-        # Formatea las fechas
-        if inicio_rango:
-            inicio_rango = datetime.strptime(inicio_rango, "%Y-%m-%d").strftime("%d/%m/%Y")
-        if fin_rango:
-            fin_rango = datetime.strptime(fin_rango, "%Y-%m-%d").strftime("%d/%m/%Y")
-
-        exposiciones["inicio_rango"] = inicio_rango
-        exposiciones["fin_rango"] = fin_rango
-
-        # Renderiza la página completa
+        # Si no, renderiza la página completa
         return render(request, 'exposiciones.html', exposiciones)
 
     def filtrar(self, inicio_rango = None, fin_rango = None):

@@ -1,10 +1,87 @@
-/* Estilos CSS base para el header, footer y el buen funcionamiento de todas las páginas. */
+/* Estilos CSS para la estructura y estilo base de todas las páginas. */
 
 @import url(https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;700;900&family=Outfit:wght@100;300&display=swap);
 
 main {
     padding: 40px;
 }
+
+/************************ SOPORTE PARA BARRA LATERAL ****************************/
+
+:root {
+    /* Cambiar al ancho deseado en caso de querer mostrar la barra lateral */
+    --sidebar_width: 0px; 
+}
+
+/* Ocupa todo el alto e ignora el desplazamiento */
+aside {
+    /* Posicionamiento a la izquierda */
+    position: fixed;
+    left: 0;
+    /* Ocupa todo el ato */
+    top: 0;
+    height: 100vh;
+    /* Ancho fijo */
+    width: var(--sidebar_width);
+    /* Estilo */
+    background-color: whitesmoke;
+    /* z-index menor que #contenido */
+    z-index: 0;
+}
+
+    /* Contenedor para añadir elementos mediante extend block */
+    #sidebar-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow: auto;
+        padding-right: 25px;
+        padding-left: 25px;
+        margin-top: 18px;
+        max-height: 90vh;
+    }
+
+    #sidebar-header {
+        /* Disposición en una sola línea */
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        text-wrap: nowrap;
+        overflow: hidden;
+        /* Posicionamiento */
+        margin-right: 23px;
+        margin-left: 60px;
+        padding-left: 2px;
+        padding-right: 2px;
+        margin-top: 13px;
+    }
+
+#toggle-bar {
+    position: fixed;
+    top: 12px;
+    margin-left: 20px;
+    z-index: 2;
+}
+
+/* Header, main y footer a la derecha */
+#contenido {
+    /* Posicionamiento a la derecha */
+    position: absolute;
+    right: 0;
+    /* Ocupa el ancho restante al de la barra lateral */
+    width: calc(100% - var(--sidebar_width)); 
+    /* Tapa la barra lateral al aumentar el ancho */
+    z-index: 1;
+    background-color: var(--whitebg);
+    transition: width 0.3s ease;
+}
+
+/* Cuando se oculta la barra lateral, el contenido ocupa toda la pantalla */
+#contenido.hidden_sidebar {
+    width: 100%;
+}
+
+/****************************************************************************/
 
 /* Márgenes, rellenos y decoraciones de texto eliminados por defecto */
 
@@ -13,7 +90,7 @@ main {
     padding: 0;
     text-decoration: 0;
     box-sizing: border-box;
-    transition: all ease .2s;
+    transition: width ease .2s;
     list-style-type: none
 }
 
@@ -135,7 +212,9 @@ body {
 
 footer {
     background-color: var(--black);
-    padding-block: 3.5rem
+    padding-block: 3.5rem;
+    padding-left: 2rem; /* Necesario con la barra lateral */
+    padding-right: 2rem;
 }
 
 .container { /* También se aplica al contenedor del título principal del index */
@@ -172,7 +251,8 @@ footer {
     height: 1.875rem;
     width: 1.875rem;
     fill: #fff;
-    gap: 2.5rem
+    gap: 2.5rem;
+    transition: fill 0.4s ease;
 }
 
 .social svg:hover {

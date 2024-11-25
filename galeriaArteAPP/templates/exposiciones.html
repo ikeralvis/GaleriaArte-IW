@@ -1,255 +1,92 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/exposiciones.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/exposiciones.css' %}">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+    <!-- AJAX --> 
+    <script src = "{% static 'js/exposiciones.js' %}"></script>
+
+    <!-- FullCalendar CSS -->
+    <link rel= "stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.2/main.min.css">
+    <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.4.2/main.min.css">
+
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/locales-all.min.js"></script>
+
+{% endblock %}
+
+{% block sidebar-header %}
+
+  <button class = "icon-button" id = "eliminar-filtros">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.013 3H2l8 9.46V19l4 2v-8.54l.9-1.055M22 3l-5 5m0-5l5 5"/></svg>
+  </button>
+
+{% endblock %}
+
+{% block sidebar-content %}
+
+    <form id="filtros">  
+        <div id="calendario_filtros">
+            <strong><label for="rango_fechas">{% translate "Filtrar por fecha" %}</label></strong>
+            <div id="contenedor_calendario">
+                <input type="text" id="rango_fechas" name="rango_fechas" value="{{ rango_fechas|default:'' }}">
+            </div>
+            <div id="opciones_filtros">
+                <button id = "borrar-inicio">{% translate "Borrar inicio" %}</button>
+                <button id = "hoy">{% translate "Hoy" %}</button>
+                <button id = "borrar-fin">{% translate "Borrar fin" %}</button>
+            </div>
+        </div>
+    </form>
+
+    <div>
+        <p><strong> {% translate "Calendario de exposiciones" %} </strong></p>
+        <div id="calendar"></div>
+    </div>
+    
 {% endblock %}
 
 {% block content %}
-{% load i18n %}
-<div class="titulo">
-    <!-- Título condicional según los filtros aplicados -->
-    {% if not inicio_rango %}
-    {% if not fin_rango %}
-    <h1>{% translate "EXPOSICIONES" %}</h1>
-    {% else %}
-    <h1>{% translate "Exposiciones anteriores al" %} {{ fin_rango }}</h1>
-    {% endif %}
 
-    {% elif not fin_rango %}
-    <h1>{% translate "Exposiciones posteriores al" %} {{ inicio_rango }}</h1>
+        <div class="titulo">
+            <h1>{% translate "EXPOSICIONES" %}</h1>
+        </div>
 
-    {% else %}
-    {% if inicio_rango == fin_rango %}
-    <h1>{% translate "Exposiciones el" %} {{ inicio_rango }}</h1>
-    {% else %}
-    <h1>{% translate "Exposiciones entre el" %} {{ inicio_rango }} {% translate "y el"%} {{ fin_rango }}</h1>
-    {% endif %}
-    {% endif %}
-</div>
+        <div class = "contenedor_exposiciones">
 
-<!-- Formulario de filtros de fecha -->
-<form id="filtros">
-    <fieldset>
-        <legend>{% translate "Filtrar" %}</legend>
-        <label for="inicio_rango">{% translate "Del:" %}</label>
-        <input type="date" id="inicio_rango" name="inicio_rango" value="{{ inicio_rango|default:'' }}">
+            <section id = "seccion_exposiciones_activas" >
+                <h2> {% translate "Ya disponible" %} </h2>
+                <div class="lista_flex" id = "lista_exposiciones_activas"></div>
+            </section>
 
-        <label for="fin_rango">{% translate "Al:" %}</label>
-        <input type="date" id="fin_rango" name="fin_rango" value="{{ fin_rango|default:'' }}">
-        
-        <a href="{% url 'lista_exposiciones' %}">{% translate "Borrar todos los filtros" %}</a>
-    </fieldset>
-</form>
+            <section id = "seccion_exposiciones_futuras">
+                <h2> {% translate "Disponible próximamente" %} </h2>
+                <div class="lista_flex" id = "lista_exposiciones_futuras"></div>
+            </section>
 
-<section id = "seccion_exposiciones_activas" >
-    <h2> Disponibles ahora </h2>
-    <div class="lista_flex" id = "lista_exposiciones_activas">
+            <section id = "seccion_exposiciones_acabadas">
+                <h2> {% translate "Finalizadas" %} </h2>
+                <div class="lista_flex" id = "lista_exposiciones_acabadas"></div>
+            </section>
 
-        {% for exposicion in exposiciones_activas %}
-        <a class="activa preview" href="{% url 'detalle_exposicion' exposicion.id %}">
-            {% if exposicion.foto %}
-            <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
-            {% endif %}
-            <div class="contenedor_info">
-                <div class="mascara">
-                    <h3> {{ exposicion.nombre }} </h3>
-                    <div class="info_disponibilidad">
-                        <p>{% translate "Hasta el"%} {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                        <p class="etiqueta">Disponible</p>
-                    </div>
-                    <div class="info_hover">
-                        <hr>
-                        <p>{{ exposicion.descripcion }}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
+        </div>
 
-    </div>
-</section>
-
-<section id = "seccion_exposiciones_futuras">
-    <h2> Próximas exposiciones </h2>
-    <div class="lista_flex" id = "lista_exposiciones_futuras">
-
-        {% for exposicion in exposiciones_futuras %}
-        <a class="futura preview" href="{% url 'detalle_exposicion' exposicion.id %}">
-            {% if exposicion.foto %}
-            <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
-            {% endif %}
-            <div class="contenedor_info">
-                <div class="mascara">
-                    <h3> {{ exposicion.nombre }} </h3>
-                    <div class="info_disponibilidad">
-                        <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                        <p class="etiqueta">{% translate "Próximamente" %}</p>
-                    </div>
-                    <div class="info_hover">
-                        <hr>
-                        <p>{{ exposicion.descripcion }}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-
-    </div>
-</section>
-
-<section id = "seccion_exposiciones_acabadas">
-    <h2> Exposiciones finalizadas </h2>
-    <div class="lista_flex" id = "lista_exposiciones_acabadas">
-
-        {% for exposicion in exposiciones_acabadas %}
-        <a class="acabada preview" href="{% url 'detalle_exposicion' exposicion.id %}">
-            {% if exposicion.foto %}
-            <img src="{{ exposicion.foto }}" alt="Imagen de la exposición">
-            {% endif %}
-            <div class="contenedor_info">
-                <div class="mascara">
-                    <h3> {{ exposicion.nombre }} </h3>
-                    <div class="info_disponibilidad">
-                        <p>{{ exposicion.fecha_inicio|date:"d/m/y" }} - {{ exposicion.fecha_fin|date:"d/m/y" }}</p>
-                        <p class="etiqueta">Finalizada</p>
-                    </div>
-                    <div class="info_hover">
-                        <hr>
-                        <p>{{ exposicion.descripcion }}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-
-    </div>
-</section>
-
-<script>
-    $(document).ready(function () {
-    function aplicarFiltros() {
-        const inicioRango = $('#inicio_rango').val();
-        const finRango = $('#fin_rango').val();
-
-        $.ajax({
-            url: window.location.href,
-            type: 'GET',
-            data: {
-                inicio_rango: inicioRango,
-                fin_rango: finRango
-            },
-            headers: { 'X-Requested-With': 'XMLHttpRequest' },
-            success: function (data) {
-                // Limpiar las listas
-                $('#lista_exposiciones_activas').empty();
-                $('#lista_exposiciones_futuras').empty();
-                $('#lista_exposiciones_acabadas').empty();
-
-                // Exposiciones Activas
-                if (data.exposiciones_activas && data.exposiciones_activas.length > 0) {
-                    data.exposiciones_activas.forEach(exposicion => {
-                        $('#lista_exposiciones_activas').append(`
-                            <a class="activa preview" href="/exposicion/${exposicion.id}">
-                                ${exposicion.foto ? `<img src="${exposicion.foto}" alt="Imagen de la exposición">` : ''}
-                                <div class="contenedor_info">
-                                    <div class="mascara">
-                                        <h3> ${exposicion.nombre} </h3>
-                                        <div class="info_disponibilidad">
-                                            <p>Hasta el ${exposicion.fecha_fin}</p>
-                                            <p class="etiqueta">Disponible</p>
-                                        </div>
-                                        <div class="info_hover">
-                                            <hr>
-                                            <p>${exposicion.descripcion}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        `);
-                    });
-
-                    // Mostrar la sección si hay exposiciones activas
-                    $('#seccion_exposiciones_activas').show();
-                } else {
-                    // Ocultar la sección si no hay exposiciones activas
-                    $('#seccion_exposiciones_activas').hide();
-                }
-
-                // Exposiciones Futuras
-                if (data.exposiciones_futuras && data.exposiciones_futuras.length > 0) {
-                    data.exposiciones_futuras.forEach(exposicion => {
-                        $('#lista_exposiciones_futuras').append(`
-                            <a class="futura preview" href="/exposicion/${exposicion.id}">
-                                ${exposicion.foto ? `<img src="${exposicion.foto}" alt="Imagen de la exposición">` : ''}
-                                <div class="contenedor_info">
-                                    <div class="mascara">
-                                        <h3> ${exposicion.nombre} </h3>
-                                        <div class="info_disponibilidad">
-                                            <p>${exposicion.fecha_inicio} - ${exposicion.fecha_fin}</p>
-                                            <p class="etiqueta">Próximamente</p>
-                                        </div>
-                                        <div class="info_hover">
-                                            <hr>
-                                            <p>${exposicion.descripcion}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        `);
-                    });
-
-                    // Mostrar la sección si hay exposiciones futuras
-                    $('#seccion_exposiciones_futuras').show();
-                } else {
-                    // Ocultar la sección si no hay exposiciones futuras
-                    $('#seccion_exposiciones_futuras').hide();
-                }
-
-                // Exposiciones Acabadas
-                if (data.exposiciones_acabadas && data.exposiciones_acabadas.length > 0) {
-                    data.exposiciones_acabadas.forEach(exposicion => {
-                        $('#lista_exposiciones_acabadas').append(`
-                            <a class="acabada preview" href="/exposicion/${exposicion.id}">
-                                ${exposicion.foto ? `<img src="${exposicion.foto}" alt="Imagen de la exposición">` : ''}
-                                <div class="contenedor_info">
-                                    <div class="mascara">
-                                        <h3> ${exposicion.nombre} </h3>
-                                        <div class="info_disponibilidad">
-                                            <p>${exposicion.fecha_inicio} - ${exposicion.fecha_fin}</p>
-                                            <p class="etiqueta">Finalizada</p>
-                                        </div>
-                                        <div class="info_hover">
-                                            <hr>
-                                            <p>${exposicion.descripcion}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        `);
-                    });
-
-                    // Mostrar la sección si hay exposiciones acabadas
-                    $('#seccion_exposiciones_acabadas').show();
-                } else {
-                    // Ocultar la sección si no hay exposiciones acabadas
-                    $('#seccion_exposiciones_acabadas').hide();
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error("Error al cargar los datos", error);
-            }
-        });
-    }
-
-    // Usa 'input' para capturar cambios en tiempo real
-    $('#inicio_rango, #fin_rango').on('input', aplicarFiltros);
-});
-
-
-</script>
-
-
-<a href="{% url 'index' %}" class="volver-link">{% translate "Volver al Índice"%}</a>
+        <a href="{% url 'index' %}" class="volver-link">{% translate "Volver al Índice"%}</a>
 
 {% endblock %}
