@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
+    
 
     <div class="titulo">
-        <h1>{% translate "Cuadros" %}</h1>
+        <h1>{% translate "CUADROS" %}</h1>
     </div>
 
     <div class="lista_flex">
@@ -26,5 +27,8 @@
     </div>
     <a class="volver-link" href="{% url 'lista_artistas' %}">{% translate "Volver a la lista de artistas" %}</a>
     <a href="{% url 'index' %}" class="volver-link">{% translate "Volver al Índice" %}</a>
+{% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/cuadros.js' %}"></script>
 {% endblock %}

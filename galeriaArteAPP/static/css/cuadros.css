@@ -4,6 +4,16 @@
 - Flexbox contenedora de los cuadros.
 - Botón de Volver al índice.
 */
+@keyframes aparecer {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
 .cuadro-item {
     width: 250px;
@@ -13,9 +23,19 @@
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/*FUNCIONA POCO FLUIDO*/
+.cuadro-item.show {
+    opacity: 0.9;
+   /* animation: aparecer 0.5s ease forwards;*/
 }
 
 .cuadro-item:hover {
+    opacity: 1;
     transform: translateY(-5px);
 }
 
