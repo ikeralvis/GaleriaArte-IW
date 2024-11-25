@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Artista, Cuadro, Exposicion
 from django.utils import timezone
-from datetime import datetime
 from django.views import View
+from django.http import JsonResponse
 
 # Create your views here.
 def lista_artistas(request):
@@ -16,26 +16,23 @@ def lista_cuadros(request):
 class ListaExposiciones(View):
 
     def get(self, request):
-        """Permite al usuario aplicar filtros mediante parámetros GET.
-        """
+        """Permite al usuario aplicar filtros mediante parámetros GET."""
         inicio_rango = request.GET.get('inicio_rango', None)
         fin_rango = request.GET.get('fin_rango', None)
 
         # Llama al método filtrar()
         exposiciones = self.filtrar(inicio_rango, fin_rango)
 
-        # Formatea las fechas
-        if inicio_rango:
-            inicio_rango = datetime.strptime(inicio_rango, "%Y-%m-%d")  # Ajusta el formato si es necesario
-            inicio_rango = inicio_rango.strftime("%d/%m/%Y")  # Formato deseado
-        if fin_rango:
-            fin_rango = datetime.strptime(fin_rango, "%Y-%m-%d")  # Ajusta el formato si es necesario
-            fin_rango = fin_rango.strftime("%d/%m/%Y")  # Formato deseadoo
-            
-        exposiciones["inicio_rango"] = inicio_rango
-        exposiciones["fin_rango"] = fin_rango
+        # Si es una solicitud AJAX, devuelve JSON
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            data = {
+                "exposiciones_activas": list(exposiciones["exposiciones_activas"].values("id", "nombre", "descripcion", "foto", "fecha_inicio", "fecha_fin")),
+                "exposiciones_futuras": list(exposiciones["exposiciones_futuras"].values("id", "nombre", "descripcion", "foto", "fecha_inicio", "fecha_fin")),
+                "exposiciones_acabadas": list(exposiciones["exposiciones_acabadas"].values("id", "nombre", "descripcion", "foto", "fecha_inicio", "fecha_fin")),
+            }
+            return JsonResponse(data)
 
-        # Pasa los conjuntos de exposiciones y el rango de fechas al template
+        # Si no, renderiza la página completa
         return render(request, 'exposiciones.html', exposiciones)
 
     def filtrar(self, inicio_rango = None, fin_rango = None):
