@@ -218,7 +218,7 @@ footer {
 }
 
 .container { /* También se aplica al contenedor del título principal del index */
-    max-width: 69.375rem;
+    
     margin: 0 auto;
     padding-inline: 1.25rem
 }
