@@ -1,78 +1,89 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load i18n %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div>
-        <img class="hero-image-mobile" src="{% static 'assets/mobile/image-hero@2x.jpg' %}" alt="Art Gallery Picture">
-        <div class="container">
+<div>
+  <img class="hero-image-mobile" src="{% static 'assets/mobile/image-hero@2x.jpg' %}" alt="{% translate 'Art Gallery Picture' %}">
+  <div class="container">
 
-            <div class="hero-section">
-            <h1 class="heading-xl h1-heading">Galería de Arte</h1>
-            <div class="hero-text">
-                <p class="body-m hero-paragraph pb-64">Visita esta estupenda exposición exclusva de nuestra galeria de arte.  </p>
-                <div class="btn">
-                <a class="btn-link" href="{% url 'lista_exposiciones' %}"> Ver la exposición</a>
-                <a class="arrow-right" href="{% url 'lista_exposiciones' %}"><img src="{% static 'assets/icon-arrow-right.svg' %}" alt="Arrow Button"></a>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>  
-
-    <div class="main-container">
-        <section class="section exposiciones">
-            <h2>Exposiciones</h2>
-            <p>Descubre nuestras colecciones y eventos.</p>
-            <a href="{% url 'lista_exposiciones' %}" class="ver-mas">Ver Exposiciones</a>
-        </section>
-
-        <section class="section cuadros">
-            <h2>Cuadros</h2>
-            <p>Explora una selección de obras de arte.</p>
-            <a href="{% url 'lista_cuadros' %}" class="ver-mas">Ver Cuadros</a>
-        </section>
-
-        <section class="section artistas">
-            <h2>Artistas</h2>
-            <p>Conoce a los artistas y su legado.</p>
-            <a href="{% url 'lista_artistas' %}" class="ver-mas">Ver Artistas</a>
-        </section>
-    </div>
-
-      <!-- Información adicional sobre cuadros -->
-      <div class="grid-text">
-        <h2>Cuadros</h2>
-        <p>Descubre nuestras colecciones de arte.</p>
+    <div class="hero-section">
+      <h1 class="heading-xl h1-heading">{% translate 'Galería de Arte' %}</h1>
+      <div class="hero-text">
+        <p class="body-m hero-paragraph pb-64">{% translate 'Visita esta estupenda exposición exclusiva de nuestra galeria de arte.' %}</p>
         <div class="btn">
-          <a class="btn-link" href="{% url 'lista_cuadros' %}">Ver Cuadros</a>
-          <a class="arrow-right" href="{% url 'lista_cuadros' %}">
-            <img src="{% static 'assets/icon-arrow-right.svg' %}" alt="Arrow Button">
+          <a class="btn-link" href="{% url 'lista_exposiciones' %}">{% translate 'Ver la exposición' %}</a>
+          <a class="arrow-right" href="{% url 'lista_exposiciones' %}"><img
+              src="{% static 'assets/icon-arrow-right.svg' %}" alt="{% translate 'Arrow Button' %}"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<article class="container">
+  <div class="grid">
+    <!-- Sección Exposiciones -->
+    <div class="grid-row">
+      <img
+        src="https://img.freepik.com/fotos-premium/paisaje-mental-imaginativo-donde-pensamientos-emociones-manifiestan-como-paisajes-surrealistas_721791-3162.jpg"
+        alt="{% translate 'Exposiciones' %}">
+      <div class="grid-text">
+        <h2>{% translate 'Exposiciones' %}</h2>
+        <p>{% translate 'Descubre nuestras colecciones y eventos.' %}</p>
+        <div class="btn">
+          <a class="btn-link" href="{% url 'lista_exposiciones' %}">{% translate 'Ver Exposiciones' %}</a>
+          <a class="arrow-right" href="{% url 'lista_exposiciones' %}">
+            <img src="{% static 'assets/icon-arrow-right.svg' %}" alt="{% translate 'Arrow Button' %}">
           </a>
         </div>
       </div>
-    </div>>
+    </div>
+
+    <!-- Sección Cuadros -->
+    <div class="grid-row">
+      <!-- Carrusel de Cuadros -->
+      <div class="carousel-container">
+        <div class="carousel">
+          {% for cuadro in cuadros %}
+          {% if cuadro.foto %}
+          <img src="{{ cuadro.foto }}" alt="{{ cuadro.nombre }}">
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Información adicional sobre cuadros -->
+      <div class="grid-text">
+        <h2>{% translate 'Cuadros' %}</h2>
+        <p>{% translate 'Descubre nuestras colecciones de arte.' %}</p>
+        <div class="btn">
+          <a class="btn-link" href="{% url 'lista_cuadros' %}">{% translate 'Ver Cuadros' %}</a>
+          <a class="arrow-right" href="{% url 'lista_cuadros' %}">
+            <img src="{% static 'assets/icon-arrow-right.svg' %}" alt="{% translate 'Arrow Button' %}">
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- Incluir archivo JS -->
     <script src="{% static 'js/carrusel.js' %}"></script>
-
 
     <!-- Sección Artistas -->
     <div class="grid-row">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Salvador_Dal%C3%AD_1939.jpg/800px-Salvador_Dal%C3%AD_1939.jpg"
-        alt="Artistas">
+        alt="{% translate 'Artistas' %}">
       <div class="grid-text">
-        <h2>Artistas</h2>
-        <p>Conoce a los artistas y su legado.</p>
+        <h2>{% translate 'Artistas' %}</h2>
+        <p>{% translate 'Conoce a los artistas y su legado.' %}</p>
         <div class="btn">
-          <a class="btn-link" href="{% url 'lista_artistas' %}">Ver Artistas</a>
+          <a class="btn-link" href="{% url 'lista_artistas' %}">{% translate 'Ver Artistas' %}</a>
           <a class="arrow-right" href="{% url 'lista_artistas' %}">
-            <img src="{% static 'assets/icon-arrow-right.svg' %}" alt="Arrow Button">
+            <img src="{% static 'assets/icon-arrow-right.svg' %}" alt="{% translate 'Arrow Button' %}">
           </a>
         </div>
       </div>
