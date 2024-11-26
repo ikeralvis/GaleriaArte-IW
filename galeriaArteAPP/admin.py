@@ -61,7 +61,7 @@ class CustomAdminSite(AdminSite):
     def has_permission(self, request):
         # Aquí personalizar quién puede ver el panel de administración
         # 1. Solo usuarios en el grupo 'Administrador General'
-        return request.user.is_active and (request.user.is_superuser or request.user.groups.filter(name='Administrador General').exists())
+        return request.user.is_active and (request.user.is_superuser or request.user.groups.filter(name='Administrador General').exists() or request.user.groups.filter(name='Administrador de Lectura').exists())
 
     
 # Instancia el sitio de administración personalizado
