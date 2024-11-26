@@ -7,19 +7,79 @@
 - Botones de la barra lateral.
 */
 
-/********************** Barra lateral ***************************/
+/************************ Comportamiento de la barra lateral  ****************************/
 
 :root {
-    --sidebar_width: 350px !important; /* Activa la lateral */
+    --sidebar_width: 350px; 
 }
 
-    #sidebar-header {
-        flex-direction: row-reverse;
+main {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+/* Ocupa todo el alto e ignora el desplazamiento */
+aside {
+    position: sticky;
+    /* Ocupa todo el alto */
+    top: 60px;
+    height: 90vh;
+    /* Ancho fijo con la barra visible*/
+    width: var(--sidebar_width);
+    /* Transición de despliegue */
+    transition: all 0.4s ease;
+    mask-image: linear-gradient(to top, transparent 70px, black 75px);
+}
+
+    #sidebar-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow: auto;
+        max-height: 90vh;
+        padding-right: 25px;
+        padding-left: 10px;
     }
 
-    #sidebar p, strong {
-        margin-bottom: 8px;
-    }
+#toggle-bar {
+    color: white; /* Botón iniclamente blanco (cambia con JS) */
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    z-index: 2;
+}
+
+#contenido {
+    /* Ocupa el ancho restante al de la barra lateral */
+    width: calc(100vw - var(--sidebar_width));
+    /* Tapa la barra lateral al aumentar el ancho */
+    transition: width 0.5s ease;
+}
+
+/* Cuando se oculta la barra lateral, el contenido ocupa toda la pantalla */
+#contenido.hidden-sidebar {
+    width: 100%;
+}
+
+#sidebar.hidden-sidebar {
+    transform: translateX(-380px);
+    width: 0px;
+}
+
+/********************** Barra lateral ***************************/
+
+#header-filtros {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#sidebar p, strong {
+    margin-bottom: 8px;
+}   
 
 /******************* Calendario de filtros **********************/
 
@@ -113,7 +173,7 @@
 
 #calendar {
     height: 600px;
-    margin-bottom: 30px;
+    margin-bottom: 80px /* Debe ser mayor que la máscara del contenedor */;
 }
 
     /* Cabecera del calendario */
