@@ -20,7 +20,7 @@ msgstr ""
 
 #: .\galeriaArteAPP\templates\artistas.html:13
 msgid "ARTISTAS"
-msgstr "Artists"
+msgstr "ARTISTS"
 
 #: .\galeriaArteAPP\templates\artistas.html:20
 msgid "Imagen del artista"
@@ -34,7 +34,7 @@ msgstr "Back to Index"
 
 #: .\galeriaArteAPP\templates\cuadros.html:13
 msgid "CUADROS"
-msgstr "Paintings"
+msgstr "PAINTINGS"
 
 #: .\galeriaArteAPP\templates\cuadros.html:21
 #: .\galeriaArteAPP\templates\detalle_artista.html:46
