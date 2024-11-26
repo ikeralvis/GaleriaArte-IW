@@ -1,0 +1,182 @@
+/* Estilos CSS para elementos HTML comunes a varias páginas */
+
+/* Paleta de colores */
+
+:root {
+    --brown: hsla(24, 56%, 63%, 1);
+    --black: hsla(0, 0%, 8%, 1);
+    --gray: hsla(0, 0%, 27%, 1);
+    --white: hsla(0, 0%, 100%, 1);
+    --whitebg: hsla(0, 0%, 99%, 1);
+    --bluegray: #4a4e69;
+    --darkblue: #4a4a8a;
+    --purple_accent: #7563ae;
+}
+
+/* Títulos */
+
+.titulo h1 {
+    font-size: 2.5em;
+    color: var(--bluegray);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: var(--darkblue);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Botón de volver a la anterior página */
+
+.volver-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: var(--bluegray);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.volver-link:hover {
+    background-color: #22223b;
+}
+
+/* Tarjeta de información (en detalles de artista o de exposición) */
+
+.info {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info h2 {
+    color: var(--darkblue);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    text-align: left;
+}
+
+.info p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Contenedor responsive para listas de exposiciones, cuadros o artistas */
+
+.lista_flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/***************** PREVIEW DE EXPOSICIÓN/ARTISTA ******************/
+
+/* Contenedor principal */
+.preview {
+    display: block;
+    position: relative;
+    width: 620px;
+    height: 400px;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.5s;
+    background: linear-gradient(to top, black, var(--purple_accent));
+    overflow: hidden;
+}
+
+/* Imagen de fondo */
+.preview img {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    transition: filter 0.5s ease-in;
+}
+
+/* Información de la exposición o el artista */
+
+/* Contenedor de la información, de altura variable y fondo oscuro */
+.contenedor_info {
+    /* Ocupa todo el ancho */
+    position: absolute;
+    width: 100%;
+    /* Altura variable hacia arriba */
+    max-height: 100%; /* La altura varía según la altura de info_hover, sin llegar a superar el 100% */
+    bottom: 0%; /* Cuando la altura varía, el elemento se despliega desde abajo hacia arriba */
+    overflow: hidden;
+    /* Estilo */
+    background: linear-gradient(to top, black, transparent);
+    padding: 50px;
+    border-radius: 12px;
+}
+
+.contenedor_info h3 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+}
+
+.contenedor_info p {
+    margin: 20px 0 0;
+    font-size: 1em;
+    color: #e0e0e0;
+}
+
+/* Efecto de desvanecimiento de la parte inferior del texto */
+.mascara {
+    mask-image: linear-gradient(to bottom, black 250px, transparent 300px);
+}
+
+/* Oculta la información adicional por defecto */
+
+.info_hover {
+    /* Ocultar */
+    height: 0px;
+    overflow: hidden;
+    /* Transición al desplegarse */
+    transition: height 0.4s ease-out;
+    /* Estilo (una vez se muestra) */
+    text-align: justify;
+}
+
+.info_hover hr {
+    /* Ocultar */
+    max-width: 0px;
+    /* Transición al desplegarse */
+    transition: max-width 0.4s ease;
+    /* Estilo (una vez se muestra) */
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Estilo al pasar el ratón */
+
+/* Sombreado */
+.preview:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* La información adicional, inicialmente oculta (height: 0 -> 350), se muestra */
+.preview:hover .info_hover {
+    height: 350px;
+}
+
+/* La línea separadora se despliega */
+.preview:hover .info_hover hr {
+    max-width: 600px;
+}
+
+/* Difumina la imagen de fondo */
+.preview:hover img {
+    filter: blur(50px);
+}

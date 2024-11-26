@@ -1,3 +1,10 @@
+/* Lista de estilos de common.css usados:
+
+- Título de la página.
+- Botón de Volver a la lista de cuadros.
+- Negrita (strong).
+*/
+
 .detalle-cuadro {
     display: flex;
     justify-content: center;
@@ -26,23 +33,4 @@
 .informacion p {
     font-size: 1.1em;
     margin-bottom: 15px;
-}
-
-.informacion strong {
-    font-weight: bold;
-    color: #4a4e69;
-}
-
-.volver-link {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 10px 20px;
-    background-color: #4a4e69;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.volver-link:hover {
-    background-color: #22223b;
 }
