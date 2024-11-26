@@ -43,7 +43,7 @@
                     <div class="cuadro"> 
                         {% if cuadro.foto %}
                             <a href="{% url 'detalle_cuadro' cuadro.id %}">
-                                <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}">
+                                <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}">
                             </a>
                         {% endif %}
                         <h3>{{ cuadro.nombre }}</h3>

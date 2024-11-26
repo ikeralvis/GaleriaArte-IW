@@ -301,19 +301,57 @@ $(document).ready(function () {
         const fecha_actual = obtenerFechaActual();
         let titulo = '';
         
+        const currentURL = window.location.href;
+        const myArray = currentURL.split("/");
+        let loc = myArray[3];
+        
         if (!inicioRangoParam && !finRangoParam) {
-            titulo = 'EXPOSICIONES';
+            
+            if ( loc == 'es' ) titulo = 'EXPOSICIONES';
+            else if (loc == 'en') titulo = 'EXHIBITIONS';
+            else if (loc == 'fr') titulo = 'EXPOSITIONS';
+            else titulo = 'AUSSTELLUNGEN';
+
         } else if (!finRangoParam) {
-            titulo = `EXPOSICIONES POSTERIORES Al ${formatearFecha(inicioRangoParam)}`;
+            
+            if ( loc == 'es' ) titulo = 'EXPOSICIONES POSTERIORES AL ';
+            else if (loc == 'en') titulo = 'POST-EXHIBITIONS TO ';
+            else if (loc == 'fr') titulo = 'EXPOSITIONS SUIVANTES ';
+            else titulo = 'AUSSTELLUNGEN NACH DEM ';
+            titulo += `${formatearFecha(inicioRangoParam)}`;
+        
         } else if (!inicioRangoParam) {
-            titulo = `EXPOSICIONES ANTERIORES AL ${formatearFecha(finRangoParam)}`;
+            
+            if ( loc == 'es' ) titulo = `EXPOSICIONES ANTERIORES AL `;
+            else if (loc == 'en') titulo = 'PREVIOUS EXHIBITIONS TO ';
+            else if (loc == 'fr') titulo = 'EXPOSITIONS AVANT LE ';
+            else titulo = 'AUSSTELLUNGEN BIS ZUM ';
+            
+            titulo += `${formatearFecha(finRangoParam)}`;
+            
+
         } else {
             if (inicioRangoParam === fecha_actual && finRangoParam === fecha_actual) {
-                titulo = 'EXPOSICIONES HOY';
+                if ( loc == 'es' ) titulo = `EXPOSICIONES HOY `;
+                else if (loc == 'en') titulo = 'EXHIBITIONS TODAY ';
+                else if (loc == 'fr') titulo = `EXPOSITIONS AUJOURD'HUI `;
+                else titulo = 'AUSSTELLUNGEN HEUTE ';
+               
+        
             } else if (inicioRangoParam === finRangoParam) {
-                titulo = `EXPOSICIONES EL ${formatearFecha(inicioRangoParam)}`;
+                
+                if ( loc == 'es' ) titulo = 'EXPOSICIONES EL ';
+                else if (loc == 'en') titulo = 'EXHIBITIONS OF THE ';
+                else if (loc == 'fr') titulo = `EXPOSITIONS DE LA `;
+                else titulo = 'AUSSTELLUNGEN VOM ';
+                titulo += `${formatearFecha(inicioRangoParam)}`;
+        
             } else {
-                titulo = `EXPOSICIONES DEL ${formatearFecha(inicioRangoParam)} AL ${formatearFecha(finRangoParam)}`;
+                if ( loc == 'es' ) titulo = `EXPOSICIONES DEL ${formatearFecha(inicioRangoParam)} AL ${formatearFecha(finRangoParam)}`;
+                else if (loc == 'en') titulo = `EXHIBITIONS FROM THE ${formatearFecha(inicioRangoParam)} TO ${formatearFecha(finRangoParam)}`;
+                else if (loc == 'fr') titulo = `EXPOSITIONS DU  ${formatearFecha(inicioRangoParam)} À ${formatearFecha(finRangoParam)}`;
+                else titulo = `AUSSTELLUNGEN VON  ${formatearFecha(inicioRangoParam)} BIS ${formatearFecha(finRangoParam)}`;
+                
             }
         }
 

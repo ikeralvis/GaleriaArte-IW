@@ -18,7 +18,7 @@
             <div class="cuadro-item">
                 <a href="{% url 'detalle_cuadro' cuadro.id %}">
                     {% if cuadro.foto %}
-                        <img src="{{ cuadro.foto }}" alt="{% translate "Imagen de" %} {{ cuadro.nombre }}" class="cuadro-imagen">
+                        <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}" class="cuadro-imagen">
                     {% endif %}
                     <p class="cuadro-nombre">{{ cuadro.nombre }}</p>
                 </a>
