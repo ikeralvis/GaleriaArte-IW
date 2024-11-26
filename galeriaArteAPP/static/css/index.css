@@ -129,13 +129,6 @@
     display: none
 }
 
-/* Título principal (Galería de Arte) */
-.h1-heading {
-    max-width: 28.125rem;
-    mix-blend-mode: difference;
-    color: var(--white) !important;
-}
-
 /* Párrafo derecho */
 .hero-paragraph {
     max-width: 18.75rem
