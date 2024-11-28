@@ -11,6 +11,8 @@ class ImageTiltEffect {
         // Add event listeners
         this.container.addEventListener('mousemove', this.handleMouseMove);
         this.container.addEventListener('mouseleave', this.handleMouseLeave);
+
+        this.container.style.borderRadius = window.getComputedStyle(this.element).borderRadius;
     }
 
     handleMouseMove(e) {
@@ -32,10 +34,10 @@ class ImageTiltEffect {
         const tiltY = -(mouseX / (containerWidth / 2)) * maxTilt;
 
          // Calculate shadow based on tilt
-        const shadowOffsetX = -tiltY * 0.5; // Horizontal shadow offset
-        const shadowOffsetY = tiltX * 0.5;  // Vertical shadow offset
-        const shadowBlur = 15;
-        const shadowSpread = Math.abs(tiltX) + Math.abs(tiltY) * 0.3;
+        const shadowOffsetX = -tiltY * 0.2; // Horizontal shadow offset
+        const shadowOffsetY = tiltX * 0.2;  // Vertical shadow offset
+        const shadowBlur = 10;
+        const shadowSpread = (Math.abs(tiltX) + Math.abs(tiltY)) * 0.2;
         
         // Apply 3D transform
         container.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
