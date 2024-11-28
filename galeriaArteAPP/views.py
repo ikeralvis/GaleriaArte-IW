@@ -2,16 +2,26 @@ from django.shortcuts import render, get_object_or_404
 from .models import Artista, Cuadro, Exposicion
 from django.utils import timezone
 from django.views import View
+from django.views.generic import ListView, DetailView
 from django.http import JsonResponse
 
 # Create your views here.
-def lista_artistas(request):
-    artistas = Artista.objects.all()
-    return render(request, 'artistas.html', {'artistas': artistas})
 
-def lista_cuadros(request):
-    cuadros = Cuadro.objects.all()
-    return render(request, 'cuadros.html', {'cuadros': cuadros})
+class ListaArtistas(ListView):
+    model = Artista
+    template_name = 'artistas.html'
+    context_object_name = 'artistas'
+
+    def get_queryset(self):
+        return Artista.objects.values('id', 'nombre_ape', 'foto', 'biografia')
+
+class ListaCuadros(ListView):
+    model = Cuadro
+    template_name = 'cuadros.html'
+    context_object_name = 'cuadros'
+
+    def get_queryset(self):
+        return Cuadro.objects.values('id', 'nombre', 'foto')
 
 class ListaExposiciones(View):
 
@@ -58,20 +68,23 @@ class ListaExposiciones(View):
                 "exposiciones_acabadas": exposiciones_acabadas.order_by("fecha_inicio"),
                 "exposiciones_futuras": exposiciones_futuras.order_by("fecha_inicio")}
 
-def detalle_exposicion(request, id):
-    exposicion = get_object_or_404(Exposicion, pk = id)
-    return render(request, "detalle_exposicion.html", {"exposicion": exposicion})
+class DetalleExposicion(DetailView):
+    model = Exposicion
+    template_name = 'detalle_exposicion.html'
+    context_object_name = 'exposicion'
 
-def detalle_artista(request, artista_id):
-    artista = get_object_or_404(Artista, pk=artista_id)
-    return render(request, 'detalle_artista.html', {'artista': artista})
-                  
+class DetalleArtista(DetailView):
+    model = Artista
+    template_name = 'detalle_artista.html'
+    context_object_name = 'artista'
+
+class DetalleCuadro(DetailView):
+    model = Cuadro
+    template_name = 'detalle_cuadro.html'
+    context_object_name = 'cuadro'
+
 def index(request):
     return render(request, 'index.html')
 
 def base(request):
     return render(request, 'base.html')
-
-def detalle_cuadro(request, cuadro_id):
-    cuadro = get_object_or_404(Cuadro, pk=cuadro_id)
-    return render(request, 'detalle_cuadro.html', {'cuadro': cuadro})

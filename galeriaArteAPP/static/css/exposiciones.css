@@ -59,7 +59,7 @@ aside {
         color: white;
     }
 
-    #toggle-bar-icon.on_header:hover {
+    #toggle-bar:hover #toggle-bar-icon.on_header {
         color: var(--brown);
     }
 
