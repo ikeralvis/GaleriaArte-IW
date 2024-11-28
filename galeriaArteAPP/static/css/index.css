@@ -122,6 +122,12 @@
     margin-bottom: 3rem;
 }
 
+.hero-section img {
+    filter: brightness(0.9);
+    transition: filter 0.3s ease; /* Añade una transición suave */
+}
+
+
 .hero-image-mobile {
     display: none
 }
