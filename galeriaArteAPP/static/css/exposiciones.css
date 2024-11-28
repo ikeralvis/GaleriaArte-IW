@@ -163,12 +163,6 @@ aside {
         background-color: black;
     }
 
-    .boton-desactivado {
-        opacity: 0.25;
-        cursor: not-allowed; /* Mostrar un cursor desactivado */
-        pointer-events: none; /* Evitar interacciones */
-    }
-
 /*********************** Calendario de exposiciones **********************/
 
 #calendar {

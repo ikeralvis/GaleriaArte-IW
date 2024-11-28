@@ -51,6 +51,12 @@ strong {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+.desactivado {
+    opacity: 0.25;
+    cursor: not-allowed; /* Mostrar un cursor desactivado */
+    pointer-events: none; /* Evitar interacciones */
+}
+
 /* Botón de volver a la anterior página */
 
 .volver-link {
