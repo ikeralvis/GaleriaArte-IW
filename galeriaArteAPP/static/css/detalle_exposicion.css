@@ -17,12 +17,33 @@
     margin-bottom: 30px;
 }
 
+
+.carrusel-header {
+    display: flex;
+    margin-top: 30px;
+}
+
+    .carrusel-header h2 {
+        justify-content: center;
+        flex: 1; /* Ocupa todo el espacio restante */
+    }
+
+    .carrusel-header botones-control {
+        justify-content: right;
+        border-radius: 10px;
+    }
+
+        .botones-control .icon-button svg {
+            height: 15px;
+            width: 15px;
+        }
+
+
 .carrusel {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 3%;
-    margin-top: 30px;
     
     /* Oculta las barras de scroll */
     -ms-overflow-style: none; /* Para Internet Explorer y Edge */
@@ -67,6 +88,3 @@
             padding: 10px;
             border-radius: 15px;
         }
-
-
-

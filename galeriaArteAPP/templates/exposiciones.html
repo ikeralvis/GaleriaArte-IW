@@ -34,7 +34,7 @@
 {% block content %}
 
     <!-- Botón para mostrar/ocultar la barra lateral. -->
-    <button id="toggle-bar" class="icon-button">
+    <button id="toggle-bar" class="icon-button" title = "Mostrar/ocultar la barra lateral">
         <svg id="toggle-bar-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></g></svg>
     </button>
 
@@ -46,7 +46,7 @@
                     <div id = "header-filtros">
                         <strong><label for="rango_fechas">{% translate "Filtrar por fecha" %}</label></strong>
                         <div id="sidebar-header">
-                            <button class = "icon-button" id = "eliminar-filtros">
+                            <button class = "icon-button" id = "eliminar-filtros" title = "Eliminar filtros">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.013 3H2l8 9.46V19l4 2v-8.54l.9-1.055M22 3l-5 5m0-5l5 5"/></svg>
                             </button>
                         </div>
@@ -94,9 +94,6 @@
             </section>
 
         </div>
-
-        <a href="{% url 'index' %}" class="volver-link">{% translate "Volver al Índice"%}</a>
-
         <script src="{% static 'js/toggle-bar.js' %}"></script>
 
     </div>
