@@ -122,6 +122,12 @@
     margin-bottom: 3rem;
 }
 
+.hero-section img {
+    filter: brightness(0.9);
+    transition: filter 0.3s ease; /* Añade una transición suave */
+}
+
+
 .hero-image-mobile {
     display: none
 }
@@ -159,6 +165,7 @@
 .grid-row img {
     width: 50%;
     height: auto;
+    max-height: 300px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
