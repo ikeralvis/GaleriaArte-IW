@@ -100,16 +100,26 @@
     padding: .625rem
 }
 
-/* Imagen de fondo */
-.hero-section {
+
+/*.hero-section {
     display: flex;
-    padding-block: 11.875rem 18.75rem;
+    padding-block: 12rem 19rem;
     margin-bottom: 11.25rem;
     background-repeat: no-repeat;
-    background-image: url("https://img.freepik.com/fotos-premium/paisaje-mental-imaginativo-donde-pensamientos-emociones-manifiestan-como-paisajes-surrealistas_721791-3162.jpg");
     background-position: 50% 50%;
     justify-content: space-between;
 
+}*/
+
+.hero-section {
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente */
+    justify-content: space-around; /* Distribuye espacio entre los elementos */
+    gap: 2rem; /* Espacio entre los elementos */
+    padding: 2rem; /* Espaciado interior */
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin-bottom: 3rem;
 }
 
 .hero-image-mobile {
@@ -258,7 +268,7 @@ h1 {
 
 /************************ MEDIA QUERIES **************************/
 
-@media (max-width:1000px) {
+@media (max-width:876px) {
 
     .hero-section {
         display: grid;

@@ -8,21 +8,22 @@
 
 {% block content %}
 <div>
-  <img class="hero-image-mobile" src="{% static 'assets/mobile/image-hero@2x.jpg' %}" alt="{% translate 'Art Gallery Picture' %}">
-  <d  >
-
-    <div class="hero-section">
-      <h1 class="heading-xl h1-heading">{% translate 'Galería de Arte' %}</h1>
-      <div class="hero-text">
-        <p class="body-m hero-paragraph pb-64">{% translate 'Visita esta estupenda exposición exclusiva de nuestra galeria de arte.' %}</p>
-        <div class="btn">
-          <a class="btn-link" href="{% url 'lista_exposiciones' %}">{% translate 'Ver la exposición' %}</a>
-          <a class="arrow-right" href="{% url 'lista_exposiciones' %}"> <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="2" d="m7 2l10 10L7 22"/></svg></a>
-        </div>
+  <div class="hero-section">
+    <h1 class="heading-xl h1-heading">{% translate 'Galería de Arte' %}</h1>
+    <img src="https://img.freepik.com/fotos-premium/paisaje-mental-imaginativo-donde-pensamientos-emociones-manifiestan-como-paisajes-surrealistas_721791-3162.jpg"
+         alt="{% translate 'Exposición' %}">
+    <div class="hero-text">
+      <p class="body-m hero-paragraph pb-64">{% translate 'Visita esta estupenda exposición exclusiva de nuestra galería de arte.' %}</p>
+      <div class="btn">
+        <a class="btn-link" href="{% url 'lista_exposiciones' %}">{% translate 'Ver la exposición' %}</a>
+        <a class="arrow-right" href="{% url 'lista_exposiciones' %}"> 
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="2" d="m7 2l10 10L7 22"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </div>
+
 
 <article class="container">
   <div class="grid">
