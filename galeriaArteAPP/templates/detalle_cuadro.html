@@ -49,3 +49,7 @@
     <a href="{% url 'lista_cuadros' %}" class="volver-link">{% translate "Volver a la lista de cuadros" %}</a>
 
 {% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/detalle_cuadro.js' %}"></script>
+{% endblock %}

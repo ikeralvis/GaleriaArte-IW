@@ -16,6 +16,8 @@
     width: 40%;
     max-width: 400px;
     text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-out;
 }
 
 .imagen-detalle {
@@ -23,6 +25,8 @@
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backface-visibility: hidden; 
+    transform-style: preserve-3d; /* Prevents pixelation during rotation */
 }
 
 .informacion {
