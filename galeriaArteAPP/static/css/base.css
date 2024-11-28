@@ -155,7 +155,7 @@ footer {
 }
 
 .h1-heading { /* También se aplica al título principal de index */
-    max-width: 28.125rem;
+    max-width: 17.5rem;
     mix-blend-mode: difference;
     color: var(--white) !important;
 }

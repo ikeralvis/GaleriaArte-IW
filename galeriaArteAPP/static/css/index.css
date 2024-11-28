@@ -34,21 +34,6 @@
     margin-bottom: 15px;
 }
 
-.ver-mas {
-    display: inline-block; /* Ajusta el botón en línea con el texto */
-    font-size: 1em;
-    color: #fff;
-    padding: 8px 20px;
-    border: 2px solid #7563ae;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.ver-mas:hover {
-    background-color: #7563ae;
-    color: #ffffff;
-}
 
 /*********************** PORTADA SUPERIOR ************************/
 
@@ -121,10 +106,12 @@
     padding-block: 11.875rem 18.75rem;
     margin-bottom: 11.25rem;
     background-repeat: no-repeat;
-    background-image: url("../assets/desktop/image-hero.jpg");
+    background-image: url("https://img.freepik.com/fotos-premium/paisaje-mental-imaginativo-donde-pensamientos-emociones-manifiestan-como-paisajes-surrealistas_721791-3162.jpg");
     background-position: 50% 50%;
-    justify-content: space-between
+    justify-content: space-between;
+
 }
+
 .hero-image-mobile {
     display: none
 }
