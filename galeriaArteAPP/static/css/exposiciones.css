@@ -67,7 +67,7 @@ aside {
     width: 0px;
 }
 
-/********************** Barra lateral ***************************/
+/********************** Detalles de la barra lateral ***************************/
 
 #header-filtros {
     display: flex;
@@ -168,6 +168,7 @@ aside {
 #calendar {
     height: 600px;
     margin-bottom: 80px /* Debe ser mayor que la máscara del contenedor */;
+    width: 300px; /* Debe ser menor que el ancho del contenedor. */
 }
 
     /* Cabecera del calendario */
