@@ -4,6 +4,7 @@
 - Título 2 (Obras de la exposición).
 - Tarjeta de información.
 - Flexbox contenedora de los cuadros.
+- Botones de control de los cuadros.
 - Botón de Volver a la lista de exposiciones.
 */
 
@@ -44,6 +45,8 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 3%;
+    padding: 3px; /* Hace que se vean las sombras */
+    margin: -3px; /* Compensa el padding añadido */
     
     /* Oculta las barras de scroll */
     -ms-overflow-style: none; /* Para Internet Explorer y Edge */
@@ -65,7 +68,7 @@
     justify-content: center;
     align-items: center; 
     background-color: var(--whitebg);
-    background-color: rgb(244, 244, 244);
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     }

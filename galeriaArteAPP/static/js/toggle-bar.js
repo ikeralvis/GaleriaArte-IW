@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Añade la funcionalidad para mostar/ocultar la barra lateral con el botón
     add_toggle_functionality(toggle_bar, contenido);
+    checkColor(toggle_bar_icon) // Comprueba el color inicialmente
 
     // Comprueba el color del botón cada vez que se hace scroll
     window.addEventListener('scroll', function() {
@@ -35,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const scrollPosition = window.scrollY;
 
         // Cambia el color en función del scroll
-        if (scrollPosition > 20) {
-            toggle_bar_icon.style.color = 'black';
+        if (scrollPosition < 20) {
+            toggle_bar_icon.classList.add('on_header');
         } else {
-            toggle_bar_icon.style.color = 'white';
+            toggle_bar_icon.classList.remove('on_header');
         }
     }
     

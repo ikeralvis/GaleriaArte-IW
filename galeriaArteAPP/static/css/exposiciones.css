@@ -3,7 +3,6 @@
 - Título de la página.
 - Flexbox contenedora de las exposiciones.
 - Preview de exposición.
-- Botón de Volver al índice.
 - Botones de la barra lateral.
 */
 
@@ -43,12 +42,26 @@ aside {
     }
 
 #toggle-bar {
-    color: white; /* Botón iniclamente blanco (cambia con JS) */
     position: fixed;
     top: 12px;
     left: 16px;
+    transition: color ease 0.15s;
     z-index: 2;
 }
+
+    /* Clase on_header controlada por JS según el scroll */
+
+    #toggle-bar-icon:not(.on_header) {
+        color: black;
+    }
+
+    #toggle-bar-icon.on_header {
+        color: white;
+    }
+
+    #toggle-bar-icon.on_header:hover {
+        color: var(--brown);
+    }
 
 #contenido {
     /* Ocupa el ancho restante al de la barra lateral */

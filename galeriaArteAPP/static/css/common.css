@@ -6,11 +6,9 @@
     --brown: hsla(24, 56%, 63%, 1);
     --black: hsla(0, 0%, 8%, 1);
     --gray: hsla(0, 0%, 27%, 1);
+    --plateado: hsl(213, 10%, 62%);
     --white: hsla(0, 0%, 100%, 1);
-    --whitebg: hsla(0, 0%, 99%, 1);
-    --bluegray: #4a4e69;
-    --darkblue: #4a4a8a;
-    --plateado: #959ea9;
+    --whitebg: hsla(0, 0%, 98%, 1);
 }
 
 /* Títulos */
@@ -32,7 +30,6 @@ h2 {
 
 strong {
     font-weight: bold;
-    color: var(--bluegray);
 }
 
 /* Botones en forma de icono */
@@ -59,18 +56,51 @@ strong {
 
 /* Botón de volver a la anterior página */
 
-.volver-link {
-    display: inline-block;
+.btn {
+    display: flex;
+    max-width: 16.25rem;
+    z-index: 1;
+    background-color: var(--black);
+    justify-content: flex-end;
     margin-top: 30px;
-    padding: 10px 20px;
-    background-color: var(--bluegray);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
 }
 
-.volver-link:hover {
-    background-color: #22223b;
+.btn-link {
+    padding: 1.5rem 2.1875rem;
+    font: 600 1.25rem/1.5rem 'Big Shoulders Display', sans-serif;
+    letter-spacing: .2rem;
+    color: var(--white);
+    text-transform: uppercase;
+    transition: all ease .3s;
+}
+
+.arrow-left,
+.arrow-right {
+    padding: 1rem;
+    background-color: var(--brown);
+    transition: all ease .3s;
+    display: flex;
+    align-items: center;
+}
+
+.arrow-left svg,
+.arrow-right svg {
+    width: 18px;
+    height: 18px;
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+    background-color: var(--black);
+    transition: all ease .3s
+}
+
+.btn-link:hover~.arrow-right {
+    background-color: var(--black);
+    transition: all ease .3s
+}
+.btn-link:hover {
+    background-color: var(--brown)
 }
 
 /* Tarjeta de información (en detalles de artista o de exposición) */
@@ -83,7 +113,7 @@ strong {
 }
 
 .info h2 {
-    color: var(--darkblue);
+    color: var(--black);
     margin-bottom: 10px;
     font-size: 1.5em;
     text-align: left;
