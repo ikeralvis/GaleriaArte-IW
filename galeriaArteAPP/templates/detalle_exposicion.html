@@ -26,6 +26,18 @@
     </div>
 
     {% if exposicion.cuadros.all %}
+    <div class = "carrusel-header">
+        <h2> {% translate "En esta exposición descubrirás..." %} </h2>
+        <div class = "botones-control">
+            <button id = "prev" class = "icon-button" title = "Retroceder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M17 2L7 12l10 10"/></svg>
+            </button>
+            <button id = "next" class = "icon-button" title = "Avanzar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="m7 2l10 10L7 22"/></svg>
+            </button>
+        </div>
+    </div>
+
     <div class = "carrusel">
 
         {% for cuadro in exposicion.cuadros.all %}
@@ -44,4 +56,8 @@
 
     <a href="{% url 'lista_exposiciones' %}" class = "volver-link">{% translate "Volver a la lista de exposiciones" %}</a>
 
+{% endblock %}
+
+{% block extra_js %}
+    <script src = "{% static 'js/detalle_exposicion.js' %}"></script>
 {% endblock %}

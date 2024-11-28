@@ -489,11 +489,11 @@ $(document).ready(function () {
         if ((boton.inicioRango === inicioRangoURL || boton.inicioRango === undefined) && 
             (boton.finRango === finRangoURL || boton.finRango === undefined)) {
             // Si ambos parámetros coinciden, deshabilita el botón
-            botonElemento.classList.add('boton-desactivado'); // Añadir clase para desactivar
+            botonElemento.classList.add('desactivado'); // Añadir clase para desactivar
             botonElemento.disabled = true; // Desactiva el botón
         } else {
             // Si al menos uno no coincide, restaura la funcionalidad del botón
-            botonElemento.classList.remove('boton-desactivado'); // Quitar clase para activar
+            botonElemento.classList.remove('desactivado'); // Quitar clase para activar
             botonElemento.disabled = false; // Habilita el botón
         }
     }    
