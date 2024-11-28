@@ -78,7 +78,7 @@ $(document).ready(function () {
             dateFormat: "Y-m-d", // Formato de fecha
             defaultDate: convertirParamsAFecha(inicioRangoParam, finRangoParam),
             inline: true, // Muestra el calendario siempre visible
-            locale: 'es',
+            locale: getLocaleFromUrl(),
             appendTo: document.querySelector("#contenedor_calendario"),
             onChange: function (selectedDates, dateStr, instance) {
 
@@ -131,7 +131,8 @@ $(document).ready(function () {
                     const calendarElement = document.getElementById('calendar');
                     const calendar = new FullCalendar.Calendar(calendarElement, {
                         initialView: 'dayGridMonth',
-                        locale: 'es',
+                        firstDay: 1,
+                        locale: getLocaleFromUrl(),
                         editable: false,
                         selectable: false,
                         events: [],
@@ -524,6 +525,11 @@ $(document).ready(function () {
     
         // Devuelve la URL base sin los parámetros
         return url.toString();
+    }
+
+    function getLocaleFromUrl() {
+        const parts = window.location.pathname.split('/');
+        return parts[1];
     }
 
     function formatearFecha(fecha) {
