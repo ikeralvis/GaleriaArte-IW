@@ -247,6 +247,21 @@ aside {
 
 /*********************** Contenedor de exposiciones ******************************/
 
+.seccion_exposiciones {
+    display: none; /* Se oculta por defecto para no interferir con JS */
+}
+
+.preview {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+    
+.preview.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 h2 {
     margin-top: 30px;
 }

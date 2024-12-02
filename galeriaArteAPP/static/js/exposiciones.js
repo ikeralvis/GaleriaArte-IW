@@ -221,7 +221,7 @@ $(document).ready(function () {
                     // Agregar el HTML a la lista
                     listaContenedor.append(`
                         <a class="preview" href="${urlBase}${exposicion.id}">
-                            ${exposicion.foto ? `<img src="${exposicion.foto}" alt="Imagen de la exposición">` : ''}
+                            ${exposicion.foto ? `<img src="${exposicion.foto}" alt="Imagen de la exposición" loading="lazy">` : ''}
                             <div class="contenedor_info">
                                 <div class="mascara">
                                     <h3> ${exposicion.nombre} </h3>

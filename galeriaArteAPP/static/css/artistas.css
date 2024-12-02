@@ -10,6 +10,14 @@
 .preview {
     width: 400px !important;
     height: 300px !important;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+    
+.preview.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Al pasar el ratón por encima, el texto cambia de altura */

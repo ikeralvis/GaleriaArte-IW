@@ -4,6 +4,9 @@
 
 main {
     padding: 40px;
+    /* Asegura que no se vea un salto abrupto en la colocación del footer cuando
+    el contenido inicial de la página se carga con AJAX */
+    min-height: 100vh; 
 }
 
 /* Márgenes, rellenos y decoraciones de texto eliminados por defecto */
@@ -79,7 +82,7 @@ body {
     line-height: 1.3;
     text-rendering: optimizeSpeed;
     font-family: 'Big Shoulders Display', sans sans-serif;
-    background-color: var(--whitebg)
+    background-color: var(--whitebg);
 }
 
 /* Define estilos de texto en función de su tamaño */

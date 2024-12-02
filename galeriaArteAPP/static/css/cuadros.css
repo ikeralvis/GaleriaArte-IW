@@ -3,6 +3,7 @@
 - Título de la página.
 - Flexbox contenedora de los cuadros.
 */
+
 @keyframes aparecer {
   0% {
     opacity: 0;
@@ -15,29 +16,48 @@
   }
 }
 
+/* Estado inicial de los cuadros */
+
 .cuadro-item {
   width: 250px;
-  background-color: #d6d6e5;
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
   opacity: 0;
-  transform: translateY(20px);
   animation-fill-mode: forwards;
+  overflow: visible;
 }
 
+.cuadro-wrapper {
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  background-color: #d6d6e5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación de aparición */
 
 .cuadro-item.show {
   animation: aparecer 0.7s ease-out forwards !important;
 }
 
+.cuadro-item.immediate-show { /* Sin animación; clase añadida por JS */
+  opacity: 1;
+}
+
+/* Efecto de hover sobre cuadro-wrapper para no entrar en conflicto con la animación de aparecer*/
+
 .cuadro-item:hover {
-  transform: scale(1.02) !important;
   opacity: 1 !important;
+}
+
+.cuadro-wrapper:hover {
+  transform: scale(1.02) translateY(-10px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
+/* Estilo del cuadro */
 
 .cuadro-imagen {
   width: 100%;
@@ -48,7 +68,8 @@
 
 .cuadro-nombre {
   font-size: 1.2em;
-  margin-top: 10px;
+  margin-top: 8px;
+  padding-bottom: 2px;
   color: #333;
   font-weight: bold;
 }

@@ -16,17 +16,26 @@
     <div class="lista_flex">
         {% for cuadro in cuadros %}
             <div class="cuadro-item">
-                <a href="{% url 'detalle_cuadro' cuadro.id %}">
-                    {% if cuadro.foto %}
-                        <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}" class="cuadro-imagen">
-                    {% endif %}
-                    <p class="cuadro-nombre">{{ cuadro.nombre }}</p>
-                </a>
+                <!-- cuadro-wrapper permite aplicar distintas animaciones a las de
+                cuadro-item sin que entren en conflicto -->
+                <div class="cuadro-wrapper">
+                    <a href="{% url 'detalle_cuadro' cuadro.id %}">
+                        {% if cuadro.foto %}
+                            <img src="{{ cuadro.foto }}" alt="Imagen de {{ cuadro.nombre }}" class="cuadro-imagen" loading="lazy">
+                        {% endif %}
+                        <p class="cuadro-nombre">{{ cuadro.nombre }}</p>
+                    </a>
+                </div>
             </div>
         {% endfor %}
     </div>
+
+    <!-- Elementos controlados por JS, necesarios para la paginación -->
+    <div id="final-pagina"></div>
+    <div id="info-pagina" data-total-paginas="{{ total_paginas }}" style="display:none;"></div>
+    
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/cuadros.js' %}"></script>
+    <script src="{% static 'js/cuadros.js' %}"></script>
 {% endblock %}

@@ -6,28 +6,12 @@
 
     <link rel="stylesheet" href="{% static 'css/exposiciones.css' %}">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-    <!-- Flatpickr JS -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-
-    <!-- AJAX --> 
-    <script src = "{% static 'js/exposiciones.js' %}"></script>
 
     <!-- FullCalendar CSS -->
     <link rel= "stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.2/main.min.css">
     <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.4.2/main.min.css">
-
-
-    <!-- FullCalendar JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/index.global.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/index.global.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/locales-all.min.js"></script>
 
 {% endblock %}
 
@@ -78,17 +62,17 @@
 
         <div class = "contenedor_exposiciones">
 
-            <section id = "seccion_exposiciones_activas" >
+            <section class = "seccion_exposiciones" id = "seccion_exposiciones_activas" >
                 <h2> {% translate "Ya disponible" %} </h2>
                 <div class="lista_flex" id = "lista_exposiciones_activas"></div>
             </section>
 
-            <section id = "seccion_exposiciones_futuras">
+            <section class = "seccion_exposiciones" id = "seccion_exposiciones_futuras">
                 <h2> {% translate "Disponible próximamente" %} </h2>
                 <div class="lista_flex" id = "lista_exposiciones_futuras"></div>
             </section>
 
-            <section id = "seccion_exposiciones_acabadas">
+            <section class = "seccion_exposiciones" id = "seccion_exposiciones_acabadas">
                 <h2> {% translate "Finalizadas" %} </h2>
                 <div class="lista_flex" id = "lista_exposiciones_acabadas"></div>
             </section>
@@ -98,4 +82,24 @@
 
     </div>
 
+{% endblock %}
+
+{% block extra_js %}
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+    <!-- Exposiciones --> 
+    <script src = "{% static 'js/exposiciones.js' %}"></script>
+    <script src = "{% static 'js/animacion_exposiciones.js' %}"></script>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/locales-all.min.js"></script>
+    
 {% endblock %}

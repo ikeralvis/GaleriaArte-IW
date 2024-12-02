@@ -71,6 +71,11 @@
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
+    transition: transform 0.2s ease;
+    }
+
+    .elemento_carrusel:hover {
+        transform: scale(1.01);
     }
 
     .contenedor_obra {
