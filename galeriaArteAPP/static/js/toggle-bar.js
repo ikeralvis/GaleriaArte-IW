@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
         toggle_bar.addEventListener('click', function () {
             contenido.classList.toggle('hidden-sidebar');
             sidebar.classList.toggle('hidden-sidebar');
-            refreshLayout()
         });
     }
     

@@ -145,7 +145,6 @@ footer {
 }
 
 .container { /* También se aplica al contenedor del título principal del index */
-    
     margin: 0 auto;
     padding-inline: 1.25rem
 }
@@ -154,7 +153,8 @@ footer {
     display: flex;
     gap: 1.875rem;
     justify-content: space-between;
-    align-items: flex-start
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .h1-heading { /* También se aplica al título principal de index */
@@ -168,7 +168,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    gap: 1.5rem
+    gap: 1.5rem;
 }
 
 .social svg:hover {
@@ -210,6 +210,15 @@ footer {
     transform: scale(1)
 }
 
+
+footer flex div {
+    width: 100%;
+}
+
+footer p {
+    text-align: justify;
+}
+
 /* Header */
 
 .simple-header {
@@ -217,27 +226,28 @@ footer {
     background-color: var(--black); 
     padding: 1rem 0;
 }
+    .simple-header nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        transition: all 0.3s ease;
+    }
 
-.simple-header nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
+        .simple-header nav ul li {
+            list-style-type: none;
+        }
 
-.simple-header nav ul li {
-    list-style-type: none;
-}
+            .simple-header nav ul li a {
+                font: 500 1rem/1.5rem 'Outfit', sans-serif;
+                color: var(--white);
+                text-decoration: none;
+                transition: color 0.2s ease-in-out;
+                padding: 1rem 0; /* Aumenta el área clicable */
+            }
 
-.simple-header nav ul li a {
-    font: 500 1rem/1.5rem 'Outfit', sans-serif;
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-}
-
-.simple-header nav ul li a:hover {
-    color: var(--brown); /* Cambia el color al pasar el cursor */
-}
+            .simple-header nav ul li a:hover {
+                color: var(--brown); /* Cambia el color al pasar el cursor */
+            }
 
 /* Media queries */
 
@@ -274,6 +284,24 @@ footer {
 
     .body-xs {
         max-width: 16.5625rem
+    }
+}
+
+@media (max-width:500px) {
+
+    main {
+        padding: 20px;
+    }
+
+    .simple-header nav ul {
+        flex-direction: column;
+        align-items: left;
+        padding-left: 20px;
+        gap: 0.4rem
+    }
+
+    .simple-header nav ul li a{
+        padding: 0 1rem;
     }
 }
 

@@ -124,7 +124,36 @@ class DetalleCuadro(DetailView):
     context_object_name = 'cuadro'
 
 def index(request):
-    return render(request, 'index.html')
+    # Obtener exposiciones activas
+    exposiciones_activas = Exposicion.objects.filter(
+        fecha_inicio__lte=timezone.now().date(),
+        fecha_fin__gte=timezone.now().date()
+    ).order_by('fecha_fin')[:4]
 
-def base(request):
-    return render(request, 'base.html')
+    # Si hay menos de 4 activas, rellenar con exposiciones futuras
+    if len(exposiciones_activas) < 4:
+        exposiciones_futuras = Exposicion.objects.filter(
+            fecha_inicio__gt=timezone.now().date()
+        ).order_by('fecha_inicio')[:(4 - len(exposiciones_activas))]
+        exposiciones_activas = list(exposiciones_activas) + list(exposiciones_futuras)
+
+    # Si aún faltan, rellenar con exposiciones finalizadas
+    if len(exposiciones_activas) < 4:
+        exposiciones_acabadas = Exposicion.objects.filter(
+            fecha_fin__lt=timezone.now().date()
+        ).order_by('fecha_inicio')[:(4 - len(exposiciones_activas))]
+        exposiciones_activas = list(exposiciones_activas) + list(exposiciones_acabadas)
+
+    # Obtener 4 artistas cualesquiera (sin filtro específico)
+    artistas = Artista.objects.all()[:4]
+
+    # Obtener 4 cuadros cualesquiera (sin filtro específico)
+    cuadros = Cuadro.objects.all()[:4]
+
+    # Renderizar la página con las exposiciones, artistas y cuadros
+    return render(request, 'index.html', {
+        'exposicion_portada': exposiciones_activas[0],
+        'exposiciones': exposiciones_activas[1:],
+        'artistas': artistas,
+        'cuadros': cuadros,
+    })
