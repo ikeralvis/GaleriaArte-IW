@@ -30,18 +30,18 @@
 
   <article class="container">
 
-    <h2 id = "titulo-grid"> Cuadros y artistas destacados </h2>
+    <h2 id = "titulo-grid"> {% translate 'Cuadros y artistas destacados' %}s </h2>
 
     <div class="grid-container">
       <a class="grid-item" id = "item-1" href="{% url 'detalle_cuadro' cuadro1.id %}">
         <img src = "{{ cuadro1.foto }}" alt = "{{ cuadro1.nombre }}">
         <p> {{ cuadro1.nombre }}</p>
       </a>
-      <a class="grid-item" id = "item-2" href="{% url 'detalle_cuadro' artista1.id %}">
+      <a class="grid-item" id = "item-2" href="{% url 'detalle_artista' artista1.id %}">
         <img src = "{{ artista1.foto }}" alt = "{{ artista1.nombre_ape }}">
         <p> {{ artista1.nombre_ape }}</p>
       </a>
-      <a class="grid-item" id = "item-3" href="{% url 'detalle_cuadro' artista2.id %}">
+      <a class="grid-item" id = "item-3" href="{% url 'detalle_artista' artista2.id %}">
         <img src = "{{ artista2.foto }}" alt = "{{ artista2.nombre_ape }}">
         <p> {{ artista2.nombre_ape }}</p>
       </a>

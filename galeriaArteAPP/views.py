@@ -31,7 +31,7 @@ class ListaCuadros(ListView):
     model = Cuadro
     template_name = 'cuadros.html'
     context_object_name = 'cuadros'
-    paginate_by = 8 # Paginación con 8 cuadros por página
+    paginate_by = 4 # Paginación con 4 cuadros por página
 
     def get_queryset(self):
         page = self.request.GET.get('page', 1)  # Página actual
