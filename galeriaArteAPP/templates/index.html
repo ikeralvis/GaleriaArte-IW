@@ -13,14 +13,14 @@
     <h1 class="heading-xl h1-heading">{% translate 'Galería de Arte' %}</h1>
 
     <div id = "portada">
-      <img src="{{ exposicion_portada.foto }}"alt="{% translate 'Exposiciones' %}">
+      <img id = "portada-imagen">
     </div>
 
     <div class="hero-text">
       <p class="body-m hero-paragraph pb-64">{% translate 'Visita esta estupenda exposición exclusiva de nuestra galería de arte.' %}</p>
       <div class="btn">
-        <a class="btn-link" href = "{% url 'detalle_exposicion' exposicion_portada.id %}">{% translate 'Ver la exposición' %}</a>
-        <a class="arrow-right" href="{% url 'lista_exposiciones' %}"> 
+        <a id = "portada-enlace1" class="btn-link">{% translate 'Ver la exposición' %}</a>
+        <a id = "portada-enlace2" class="arrow-right"> 
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="white" d="M7 1L5.6 2.5L13 10l-7.4 7.5L7 19l9-9z"/></svg>
         </a>
       </div>
@@ -29,61 +29,36 @@
   </div>
 
   <article class="container">
-    <div class="grid">
 
-      <!-- Sección Exposiciones -->
-      <div class="grid-row">
-        <img src="{{ primera_exposicion_imagen.url }}"alt="{% translate 'Exposiciones' %}">
-        <div class="grid-text">
-          <h2>{% translate 'Exposiciones' %}</h2>
-          <p>{% translate 'Descubre nuestras colecciones y eventos.' %}</p>
-          <div class="btn">
-            <a class="btn-link" href="{% url 'lista_exposiciones' %}">{% translate 'Ver Exposiciones' %}</a>
-            <a class="arrow-right" href="{% url 'lista_exposiciones' %}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="white" d="M7 1L5.6 2.5L13 10l-7.4 7.5L7 19l9-9z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
+    <h2 id = "titulo-grid"> Cuadros y artistas destacados </h2>
 
-      <!-- Sección Cuadros -->
-      <!-- Información adicional sobre cuadros -->
-      <div class="grid-row">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Las_Meninas_01.jpg/800px-Las_Meninas_01.jpg"
-          alt="{% translate 'Cuadros' %}">
-        <div class="grid-text">
-          <h2>{% translate 'Cuadros' %}</h2>
-          <p>{% translate "Descubre nuestras colecciones de arte." %}</p>
-          <div class="btn">
-            <a class="btn-link" href="{% url 'lista_cuadros' %}">{% translate 'Ver Cuadros' %}</a>
-            <a class="arrow-right" href="{% url 'lista_cuadros' %}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="white" d="M7 1L5.6 2.5L13 10l-7.4 7.5L7 19l9-9z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sección Artistas -->
-      <div class="grid-row">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Salvador_Dal%C3%AD_1939.jpg/800px-Salvador_Dal%C3%AD_1939.jpg"
-          alt="{% translate 'Artistas' %}">
-        <div class="grid-text">
-          <h2>{% translate 'Artistas' %}</h2>
-          <p>{% translate 'Conoce a los artistas y su legado.' %}</p>
-          <div class="btn">
-            <a class="btn-link" href="{% url 'lista_artistas' %}">{% translate 'Ver Artistas' %}</a>
-            <a class="arrow-right" href="{% url 'lista_artistas' %}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="white" d="M7 1L5.6 2.5L13 10l-7.4 7.5L7 19l9-9z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      
+    <div class="grid-container">
+      <a class="grid-item" id = "item-1" href="{% url 'detalle_cuadro' cuadro1.id %}">
+        <img src = "{{ cuadro1.foto }}" alt = "{{ cuadro1.nombre }}">
+        <p> {{ cuadro1.nombre }}</p>
+      </a>
+      <a class="grid-item" id = "item-2" href="{% url 'detalle_cuadro' artista1.id %}">
+        <img src = "{{ artista1.foto }}" alt = "{{ artista1.nombre_ape }}">
+        <p> {{ artista1.nombre_ape }}</p>
+      </a>
+      <a class="grid-item" id = "item-3" href="{% url 'detalle_cuadro' artista2.id %}">
+        <img src = "{{ artista2.foto }}" alt = "{{ artista2.nombre_ape }}">
+        <p> {{ artista2.nombre_ape }}</p>
+      </a>
+      <a class="grid-item" id = "item-4" href="{% url 'detalle_cuadro' cuadro2.id %}">
+        <img src = "{{ cuadro2.foto }}" alt = "{{ cuadro2.nombre }}">
+        <p> {{ cuadro2.nombre }}</p>
+      </a>
     </div>
-  </article>
+  
+{% endblock %}
 
-      <!-- Incluir archivo JS -->
-      <script src="{% static 'js/carrusel.js' %}"></script>
+{% block extra_js %}
+
+  <script id="exposiciones-data" type="application/json">
+    {{ exposiciones_json|safe }}
+  </script>
+
+  <script src = "{% static 'js/carrusel.js' %}"></script>
 
 {% endblock %}

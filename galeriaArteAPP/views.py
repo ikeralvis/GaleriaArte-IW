@@ -6,9 +6,8 @@ from django.views.generic import ListView, DetailView
 from django.http import JsonResponse
 from django.core.cache import cache
 from django.core.paginator import Paginator
-import logging
-
-logger = logging.getLogger(__name__)
+from django.urls import reverse
+import json
 
 # Create your views here.
 
@@ -124,36 +123,43 @@ class DetalleCuadro(DetailView):
     context_object_name = 'cuadro'
 
 def index(request):
+    today = timezone.now().date()
+
     # Obtener exposiciones activas
-    exposiciones_activas = Exposicion.objects.filter(
-        fecha_inicio__lte=timezone.now().date(),
-        fecha_fin__gte=timezone.now().date()
-    ).order_by('fecha_fin')[:4]
+    exposiciones_activas = list(Exposicion.objects.values("id", "nombre", "foto").filter(
+        fecha_inicio__lte=today,
+        fecha_fin__gte=today
+    ).order_by('fecha_fin')[:4])
 
     # Si hay menos de 4 activas, rellenar con exposiciones futuras
     if len(exposiciones_activas) < 4:
-        exposiciones_futuras = Exposicion.objects.filter(
-            fecha_inicio__gt=timezone.now().date()
-        ).order_by('fecha_inicio')[:(4 - len(exposiciones_activas))]
-        exposiciones_activas = list(exposiciones_activas) + list(exposiciones_futuras)
+        exposiciones_futuras = list(Exposicion.objects.values("id", "nombre", "foto").filter(
+            fecha_inicio__gt=today
+        ).order_by('fecha_inicio')[:(4 - len(exposiciones_activas))])
+        exposiciones_activas.extend(exposiciones_futuras)
 
     # Si aún faltan, rellenar con exposiciones finalizadas
     if len(exposiciones_activas) < 4:
-        exposiciones_acabadas = Exposicion.objects.filter(
-            fecha_fin__lt=timezone.now().date()
-        ).order_by('fecha_inicio')[:(4 - len(exposiciones_activas))]
-        exposiciones_activas = list(exposiciones_activas) + list(exposiciones_acabadas)
+        exposiciones_acabadas = list(Exposicion.objects.values("id", "nombre", "foto").filter(
+            fecha_fin__lt=today
+        ).order_by('-fecha_fin')[:(4 - len(exposiciones_activas))])
+        exposiciones_activas.extend(exposiciones_acabadas)
 
-    # Obtener 4 artistas cualesquiera (sin filtro específico)
-    artistas = Artista.objects.all()[:4]
+    # Obtener 2 artistas cualesquiera
+    artistas = Artista.objects.values("id", "nombre_ape", "foto")[:2]
 
-    # Obtener 4 cuadros cualesquiera (sin filtro específico)
-    cuadros = Cuadro.objects.all()[:4]
+    # Obtener 2 cuadros cualesquiera
+    cuadros = Cuadro.objects.values("id", "nombre", "foto")[:2]
+
+    # Incluir la URL completa de cada exposición en el contexto
+    for exposicion in exposiciones_activas:
+        exposicion['url'] = reverse('detalle_exposicion', args=[exposicion['id']])
 
     # Renderizar la página con las exposiciones, artistas y cuadros
     return render(request, 'index.html', {
-        'exposicion_portada': exposiciones_activas[0],
-        'exposiciones': exposiciones_activas[1:],
-        'artistas': artistas,
-        'cuadros': cuadros,
+        'exposiciones_json': json.dumps(exposiciones_activas),
+        'artista1': artistas[0],
+        'artista2': artistas[1],
+        'cuadro1': cuadros[0],
+        'cuadro2': cuadros[1]
     })
