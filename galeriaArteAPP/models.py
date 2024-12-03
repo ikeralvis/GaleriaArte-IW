@@ -46,4 +46,4 @@ class Exposicion(models.Model):
     def posterior(self, fecha=timezone.now().date()):
         return fecha < self.fecha_inicio
     def duracion(self):
-        return self.fecha_fin - self.fecha_inicio
+        return (self.fecha_fin - self.fecha_inicio).days

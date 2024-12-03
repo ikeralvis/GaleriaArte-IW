@@ -45,8 +45,8 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 3%;
-    padding: 3px; /* Hace que se vean las sombras */
-    margin: -3px; /* Compensa el padding añadido */
+    padding: 10px; /* Hace que se vean las sombras */
+    margin: -10px; /* Compensa el padding añadido */
     
     /* Oculta las barras de scroll */
     -ms-overflow-style: none; /* Para Internet Explorer y Edge */
