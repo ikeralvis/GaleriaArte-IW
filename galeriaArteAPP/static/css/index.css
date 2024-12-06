@@ -46,11 +46,13 @@
 
 .grid-container {
     display: grid;
+    margin-left: auto;
+    margin-right: auto;
     grid-template-columns: repeat(3, 1fr); /* 3 columnas */
     grid-template-rows: repeat(2, 1fr);    /* 2 filas */
     gap: 20px; /* Espacio entre los elementos */
     width: 100%;
-    max-width: 2000px;
+    max-width: 900px;
 }
 
     .grid-item {
@@ -162,41 +164,5 @@ h1 {
     #portada, #portada img {
         height: 100%;
         width: auto;
-    }
-
-    .grid-container {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media (max-width:100%) {
-
-    .hero-section {
-        display: flex;
-        gap: 2.25rem;
-        padding-block: 2.25rem;
-        flex-direction: column
-    }
-
-    .hero-paragraph {
-        max-width: 100%
-    }
-
-    .btn-link {
-        padding: .5rem 1rem;
-        font: 600 .75rem/1.25rem 'Big Shoulders Display', sans-serif
-    }
-
-    .btn,
-    .btn-2 {
-        gap: .625rem;
-        max-width: 11.25rem;
-        align-items: center;
-        justify-content: space-between
-    }
-
-    .arrow-right {
-        padding: .5rem .375rem
     }
 }
